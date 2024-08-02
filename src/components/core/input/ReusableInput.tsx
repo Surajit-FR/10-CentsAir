@@ -23,7 +23,7 @@ const ReusableInput = ({
                 onBlur={onBlur}
                 style={{ border: touched && error ? "1px solid red" : "" }}
             />
-            {touched && error && <div style={{ color: "red" }}>{error}</div>}
+            {touched && error && <div style={{ marginLeft: "10px", color: "red", fontSize: "14px" }}>{error}</div>}
         </div>
     );
 };
