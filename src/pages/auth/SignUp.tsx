@@ -49,12 +49,16 @@ const SignUp = (): JSX.Element => {
                                                             </span>
                                                         </Link>
                                                     </li>
+                                                    <Link to="/login" style={{ color: "#000" }}>Already Have an Account? Please Login</Link>
                                                 </ul>
                                                 <div className="or_box">
                                                     <h5><span>OR</span></h5>
                                                     <input className="sign_email" type="submit" value="Sign up with email" />
-                                                    <p>By signing up, you agree to the <Link to="#">Terms of Service</Link> and
-                                                        <Link to="#"> Privacy Policy,</Link> including <Link to="#">cookie use.</Link>
+                                                    <p>By signing up, you agree to the
+
+                                                        <Link to="#">Terms of Service</Link> and
+                                                        <Link to="#"> Privacy Policy,</Link> including
+                                                        <Link to="#">cookie use.</Link>
                                                     </p>
                                                 </div>
                                             </div>

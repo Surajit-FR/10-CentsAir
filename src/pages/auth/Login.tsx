@@ -45,7 +45,8 @@ const Login = (): JSX.Element => {
                                                 >
                                                     <em>{passwordVisible ? "Hide" : "Show"}</em>
                                                 </span>
-                                                <div className="text-end">
+                                                <div className="d-flex justify-content-between">
+                                                    <Link to="/signup" className="forgot">Don't Have Account? Please Sign Up</Link>
                                                     <Link to="#" className="forgot">Forgot password?</Link>
                                                 </div>
                                             </div>
