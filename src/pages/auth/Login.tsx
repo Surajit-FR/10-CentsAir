@@ -2,11 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { loginValidationSchema, togglePasswordVisibility } from "../../helper/FormHelper";
 import { useFormik } from "formik";
+import ReusableInput from "../../components/core/input/ReusableInput";
+
+interface LoginFormValues {
+    email: string;
+    password: string;
+}
 
 const Login = (): JSX.Element => {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik<LoginFormValues>({
         initialValues: {
             email: "",
             password: "",
@@ -14,9 +20,23 @@ const Login = (): JSX.Element => {
         validationSchema: loginValidationSchema,
         onSubmit: (values) => {
             console.log(values);
-
-        }
+        },
     });
+
+    const inputFields = [
+        {
+            name: "email",
+            type: "email",
+            placeholder: "Enter Your Email ID",
+            label: "Email",
+        },
+        {
+            name: "password",
+            type: passwordVisible ? "text" : "password",
+            placeholder: "Enter Your Password",
+            label: "Password",
+        },
+    ];
 
     return (
         <>
@@ -39,38 +59,32 @@ const Login = (): JSX.Element => {
                                             <div className="text_sing">
                                                 <h1 className="l1">Log In</h1>
                                             </div>
+                                            {inputFields?.map((field, index) => (
+                                                <div key={index} className="email_tr">
+                                                    <p>{field?.label}</p>
+                                                    <ReusableInput
+                                                        className="email_1"
+                                                        type={field?.type}
+                                                        name={field?.name}
+                                                        placeholder={field?.placeholder}
+                                                        value={values[field?.name as keyof LoginFormValues] || ""}
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                        touched={touched[field?.name as keyof LoginFormValues]}
+                                                        error={errors[field?.name as keyof LoginFormValues]}
+                                                    />
+                                                    {field?.name === "password" && (
+                                                        <span
+                                                            className={`fa ${passwordVisible ? "fa-eye-slash" : "fa-eye"} fet_eye`}
+                                                            onClick={() => togglePasswordVisibility(passwordVisible, setPasswordVisible)}
+                                                            style={{ cursor: 'pointer' }}
+                                                        >
+                                                            <em>{passwordVisible ? "Hide" : "Show"}</em>
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            ))}
                                             <div className="email_tr">
-                                                <p>Email</p>
-                                                <input
-                                                    className="email_1"
-                                                    type="email"
-                                                    name="email"
-                                                    placeholder="Enter Your Email ID"
-                                                    value={values?.email || ""}
-                                                    onChange={handleChange}
-                                                    onBlur={handleBlur}
-                                                    style={{ border: touched?.email && errors?.email ? "1px solid red" : "" }}
-                                                />
-                                            </div>
-                                            <div className="email_tr">
-                                                <p>Password </p>
-                                                <input
-                                                    className="email_1"
-                                                    type={passwordVisible ? "text" : "password"}
-                                                    name="password"
-                                                    placeholder="Enter Your Password"
-                                                    value={values?.password || ""}
-                                                    onChange={handleChange}
-                                                    onBlur={handleBlur}
-                                                    style={{ border: touched?.password && errors?.password ? "1px solid red" : "" }}
-                                                />
-                                                <span
-                                                    className={`fa ${passwordVisible ? "fa-eye-slash" : "fa-eye"} fet_eye`}
-                                                    onClick={() => togglePasswordVisibility(passwordVisible, setPasswordVisible)}
-                                                    style={{ cursor: 'pointer' }}
-                                                >
-                                                    <em>{passwordVisible ? "Hide" : "Show"}</em>
-                                                </span>
                                                 <div className="d-flex justify-content-between">
                                                     <Link to="/signup" className="forgot">Don't Have Account? Please Sign Up</Link>
                                                     <Link to="#" className="forgot">Forgot password?</Link>
