@@ -1,9 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { togglePasswordVisibility } from "../../helper/FormHelper";
+import { loginValidationSchema, togglePasswordVisibility } from "../../helper/FormHelper";
+import { useFormik } from "formik";
 
 const Login = (): JSX.Element => {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        validationSchema: loginValidationSchema,
+        onSubmit: (values) => {
+            console.log(values);
+
+        }
+    });
 
     return (
         <>
@@ -21,14 +34,23 @@ const Login = (): JSX.Element => {
                         <div className="col-md-9 col-lg-9">
                             <div className="row box_showd">
                                 <div className="col-md-6 pr_0">
-                                    <form className="signup_box">
+                                    <form className="signup_box" onSubmit={handleSubmit}>
                                         <div className="text_bt">
                                             <div className="text_sing">
                                                 <h1 className="l1">Log In</h1>
                                             </div>
                                             <div className="email_tr">
                                                 <p>Email</p>
-                                                <input className="email_1" type="email" name="email" placeholder="" />
+                                                <input
+                                                    className="email_1"
+                                                    type="email"
+                                                    name="email"
+                                                    placeholder="Enter Your Email ID"
+                                                    value={values?.email || ""}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    style={{ border: touched?.email && errors?.email ? "1px solid red" : "" }}
+                                                />
                                             </div>
                                             <div className="email_tr">
                                                 <p>Password </p>
@@ -36,7 +58,11 @@ const Login = (): JSX.Element => {
                                                     className="email_1"
                                                     type={passwordVisible ? "text" : "password"}
                                                     name="password"
-                                                    placeholder=""
+                                                    placeholder="Enter Your Password"
+                                                    value={values?.password || ""}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    style={{ border: touched?.password && errors?.password ? "1px solid red" : "" }}
                                                 />
                                                 <span
                                                     className={`fa ${passwordVisible ? "fa-eye-slash" : "fa-eye"} fet_eye`}
