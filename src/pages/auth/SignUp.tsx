@@ -49,7 +49,6 @@ const SignUp = (): JSX.Element => {
                                                             </span>
                                                         </Link>
                                                     </li>
-                                                    <Link to="/login" style={{ color: "#000" }}>Already Have an Account? Please Login</Link>
                                                 </ul>
                                                 <div className="or_box">
                                                     <h5><span>OR</span></h5>
