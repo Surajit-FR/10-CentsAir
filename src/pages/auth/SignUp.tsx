@@ -8,7 +8,7 @@ const SignUp = (): JSX.Element => {
                     <div className="row">
                         <div className="col-md-3 col-lg-3">
                             <div className="header_logo">
-                                <Link to="#">
+                                <Link to="/">
                                     <img src="assets/images/logo.png" alt="" />
                                 </Link>
                             </div>
