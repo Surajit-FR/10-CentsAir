@@ -12,63 +12,64 @@ import CheckBoxSection from "../../components/core/home/CheckBoxSection";
 import EarnBoxSection from "../../components/core/home/EarnBoxSection";
 import SinupBoxSection from "../../components/core/home/SinupBoxSection";
 
-const handpickedData: Array<CarouselItem> = [
-    {
-        imageUrl: "assets/images/hand/1.png",
-        rank: "Top 8",
-        title: "Stays in & Around Maldives for a Week-Long Retreat"
-    },
-    {
-        imageUrl: "assets/images/hand/2.png",
-        rank: "Top 8",
-        title: "Stays in & Around Bali for a Week-Long Retreat"
-    },
-    {
-        imageUrl: "assets/images/hand/3.png",
-        rank: "Top 10",
-        title: "Beach Getaways"
-    },
-    {
-        imageUrl: "assets/images/hand/4.png",
-        rank: "Top 10",
-        title: "Hill-station Getaways"
-    },
-    {
-        imageUrl: "assets/images/hand/5.png",
-        rank: "Top 12",
-        title: "Weekend Getaways"
-    }
-];
-
-const internationalData: Array<CarouselItem> = [
-    {
-        imageUrl: "assets/images/hand/h2.png",
-        destination: "Greece",
-        price: "Starting at $1500 per person"
-    },
-    {
-        imageUrl: "assets/images/hand/h3.png",
-        destination: "Japan",
-        price: "Starting at $1000 per person"
-    },
-    {
-        imageUrl: "assets/images/hand/h4.png",
-        destination: "India",
-        price: "Starting at $1000 per person"
-    },
-    {
-        imageUrl: "assets/images/hand/h5.png",
-        destination: "Thailand",
-        price: "Starting at $1000 per person"
-    },
-    {
-        imageUrl: "assets/images/hand/h1.png",
-        destination: "Turkey",
-        price: "Starting at $500 per person"
-    }
-];
 
 const Home = (): JSX.Element => {
+    const handpickedData: Array<CarouselItem> = [
+        {
+            imageUrl: "assets/images/hand/1.png",
+            rank: "Top 8",
+            title: "Stays in & Around Maldives for a Week-Long Retreat"
+        },
+        {
+            imageUrl: "assets/images/hand/2.png",
+            rank: "Top 8",
+            title: "Stays in & Around Bali for a Week-Long Retreat"
+        },
+        {
+            imageUrl: "assets/images/hand/3.png",
+            rank: "Top 10",
+            title: "Beach Getaways"
+        },
+        {
+            imageUrl: "assets/images/hand/4.png",
+            rank: "Top 10",
+            title: "Hill-station Getaways"
+        },
+        {
+            imageUrl: "assets/images/hand/5.png",
+            rank: "Top 12",
+            title: "Weekend Getaways"
+        }
+    ];
+
+    const internationalData: Array<CarouselItem> = [
+        {
+            imageUrl: "assets/images/hand/h2.png",
+            destination: "Greece",
+            price: "Starting at $1500 per person"
+        },
+        {
+            imageUrl: "assets/images/hand/h3.png",
+            destination: "Japan",
+            price: "Starting at $1000 per person"
+        },
+        {
+            imageUrl: "assets/images/hand/h4.png",
+            destination: "India",
+            price: "Starting at $1000 per person"
+        },
+        {
+            imageUrl: "assets/images/hand/h5.png",
+            destination: "Thailand",
+            price: "Starting at $1000 per person"
+        },
+        {
+            imageUrl: "assets/images/hand/h1.png",
+            destination: "Turkey",
+            price: "Starting at $500 per person"
+        }
+    ];
+
     return (
         <>
             {/* banner_tabs */}

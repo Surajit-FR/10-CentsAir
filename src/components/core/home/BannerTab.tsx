@@ -1,6 +1,8 @@
 import { useState } from "react";
-import FlightTabContent from "./FlightTabContent";
+import FlightTabContent from "../tabcontent/FlightTabContent";
 import { TabData } from "../../../types/common";
+import FlightHotelTabContent from "../tabcontent/FlightHotelTabContent";
+import HotelsTabContent from "../tabcontent/HotelsTabContent";
 
 const tabData: Array<TabData> = [
     {
@@ -13,13 +15,13 @@ const tabData: Array<TabData> = [
         id: "tab-2",
         icon: "assets/images/tabs/2.png",
         title: "Flight +<em>Hotel</em>",
-        content: <div className="tabs_bg_color">Lorem ipsum dolor sit</div>,
+        content: (<FlightHotelTabContent />),
     },
     {
         id: "tab-3",
         icon: "assets/images/tabs/3.png",
         title: "Hotels",
-        content: <div className="tabs_bg_color">Lorem ipsum dolor sit</div>,
+        content: (<HotelsTabContent />),
     },
     {
         id: "tab-4",
