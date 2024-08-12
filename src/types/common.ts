@@ -40,6 +40,7 @@ export interface Deal {
 export interface TabData {
     id: string;
     icon: string;
+    altIcon: string;
     title: string;
     content: JSX.Element;
 }
