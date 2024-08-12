@@ -13,9 +13,10 @@ const App: React.FC = (): JSX.Element => {
   const renderHeader = (): JSX.Element => {
     if (location.pathname === "/") {
       return <HeaderTop />;
-    } else if (location.pathname.startsWith("/another-path")) {
-      <CommonHeaderTop />
     }
+    // else if (location.pathname.startsWith("/another-path")) {
+    //   <CommonHeaderTop />
+    // }
     return <CommonHeaderTop />;
   };
 
@@ -23,9 +24,10 @@ const App: React.FC = (): JSX.Element => {
   const renderFooter = (): JSX.Element => {
     if (location.pathname === "/") {
       return <LandingPageFooter />;
-    } else if (location.pathname.startsWith("/another-path")) {
-      <CommonFooter />
     }
+    // else if (location.pathname.startsWith("/another-path")) {
+    //   <CommonFooter />
+    // }
     return <CommonFooter />;
   };
 
