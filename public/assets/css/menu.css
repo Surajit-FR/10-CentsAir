@@ -109,7 +109,7 @@ nav .navbar .links li:hover .js-sub-menu{
   position: relative;
    height: 40px;
 }
-.navbar .search-box i{
+/*.navbar .search-box i{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -120,7 +120,7 @@ nav .navbar .links li:hover .js-sub-menu{
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-}
+}*/
 .navbar .search-box .input-box{
   position: absolute;
   right: calc(100% - 40px);

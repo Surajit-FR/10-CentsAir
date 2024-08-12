@@ -14,3 +14,61 @@
 .in_box {
     border: none
 }
+
+.show_text_box {
+    display: flex;
+    align-items: center;
+    border: none;
+    min-height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#show-all-fares .owl-item {
+    height: 91px;
+    border: 1px solid #D8D8D8;
+}
+
+/* Adjust these styles to match your design */
+.pagination_123 ul {
+    display: flex;
+    gap: 5px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination_123 li {
+    display: inline;
+}
+
+.pagination_123 a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #21B4E2;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination_123 a:hover {
+    background-color: #e0e0e0;
+}
+
+.pagination_123 .active a {
+    background-color: #21B4E2;
+    color: white;
+    border: 1px solid #D8D8D8;
+}
+
+.pagination_123 .page-link {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #21B4E2;
+}
+
+.pagination_123 .page-item {
+    display: inline;
+}

@@ -15,9 +15,11 @@
     "axios": "^1.7.3",
     "formik": "^2.4.6",
     "jquery": "^3.7.1",
+    "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-owl-carousel": "^2.3.3",
+    "react-paginate": "^8.2.0",
     "react-phone-number-input": "^3.4.5",
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.5.30",
+    "@types/lodash": "^4.17.7",
     "@types/owl.carousel": "^2.3.6"
   }
 }

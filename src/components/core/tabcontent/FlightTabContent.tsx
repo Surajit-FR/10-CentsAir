@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 
 const FlightTabContent = (): JSX.Element => {
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
     const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
+    const navigate: NavigateFunction = useNavigate();
 
     const fareTypes: Array<string> = [
         'Regular',
@@ -26,8 +27,6 @@ const FlightTabContent = (): JSX.Element => {
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
-    console.log({ selectedFareType });
-    console.log({ selectedTripType });
 
     return (
         <>
@@ -123,7 +122,7 @@ const FlightTabContent = (): JSX.Element => {
                     </ul>
                 </div>
                 <div className="text-center mt_top">
-                    <input className="search_bt" type="submit" value="Search" />
+                    <input className="search_bt" type="submit" value="Search" onClick={() => navigate('/flights')} />
                 </div>
             </form>
         </>
