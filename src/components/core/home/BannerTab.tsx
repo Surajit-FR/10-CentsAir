@@ -46,7 +46,7 @@ const tabData: Array<TabData> = [
     {
         id: "tab-6",
         icon: "assets/images/tabs/6.png",
-        altIcon: "assets/images/tabs/f5.png",
+        altIcon: "assets/images/tabs/f6.png",
         title: "Holiday<em>Packages</em>",
         content: (<HolidayPackagesTabContent />),
     },
