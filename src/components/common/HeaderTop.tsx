@@ -51,7 +51,8 @@ const HeaderTop = (): JSX.Element => {
                                     </li>
                                     <li>
                                         <span className="d_span">
-                                            <Link to="/login">LogIn /</Link>
+                                            <Link to="/login">LogIn</Link>
+                                            <span> / </span>
                                             <Link to="/signup">SignUp</Link>
                                         </span>
                                     </li>
