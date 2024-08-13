@@ -1,4 +1,16 @@
+import { useState } from "react";
+
 const RenalCarsTabContent = (): JSX.Element => {
+    const types: Array<string> = [
+        'Rental Cars',
+        'Airport Transportation',
+    ];
+
+    const [selectedType, setSelectedType] = useState<string>('Rental Cars');
+    const handleTypeClick = (tripType: string) => {
+        setSelectedType(tripType);
+    };
+
     return (
         <>
             <form>
@@ -6,8 +18,15 @@ const RenalCarsTabContent = (): JSX.Element => {
                     <div className="row">
                         <div className="col-md-12">
                             <ul className="one_way">
-                                <li className="active">Rental Cars</li>
-                                <li>Airport Transportation</li>
+                                {types?.map((tripType) => (
+                                    <li
+                                        key={tripType}
+                                        className={selectedType === tripType ? 'active' : ''}
+                                        onClick={() => handleTypeClick(tripType)}
+                                    >
+                                        {tripType}
+                                    </li>
+                                ))}
                             </ul>
                             <ul className="search_return mb-4">
                                 <li>

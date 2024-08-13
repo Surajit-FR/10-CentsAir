@@ -39,14 +39,14 @@ const HeaderTop = (): JSX.Element => {
                                     </li>
                                     <li>
                                         <select className="usd_123">
-                                            <option disabled defaultValue="true" >USD $ / EN</option>
+                                            <option value="US">USD $ / EN</option>
                                             <option value="US">USD $ / EN</option>
                                         </select>
                                     </li>
                                     <li>
                                         <select className="usd_123">
-                                            <option disabled defaultValue="true" >Help</option>
-                                            <option value="US">Help</option>
+                                            <option value="Help">Help</option>
+                                            <option value="Help">Help</option>
                                         </select>
                                     </li>
                                     <li>

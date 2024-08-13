@@ -1,6 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const GroupTravelTabContent = (): JSX.Element => {
+    const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
+
+    const tripTypes: Array<string> = [
+        'One-way',
+        'Round-trip',
+        'Multi-city'
+    ];
+    const handleTripTypeClick = (tripType: string) => {
+        setSelectedTripType(tripType);
+    };
+
     return (
         <>
             <form>
@@ -8,9 +20,15 @@ const GroupTravelTabContent = (): JSX.Element => {
                     <div className="row">
                         <div className="col-md-7">
                             <ul className="one_way">
-                                <li className="active">One-way</li>
-                                <li>Round- trip</li>
-                                <li>Multi-city</li>
+                                {tripTypes?.map((tripType) => (
+                                    <li
+                                        key={tripType}
+                                        className={selectedTripType === tripType ? 'active' : ''}
+                                        onClick={() => handleTripTypeClick(tripType)}
+                                    >
+                                        {tripType}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="col-md-5">

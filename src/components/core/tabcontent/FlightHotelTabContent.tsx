@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const FlightHotelTabContent = (): JSX.Element => {
+    const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
+    const [selectedTripType2, setSelectedTripType2] = useState<string>('Flight + Hotel');
+
+    const tripTypes: Array<string> = [
+        'One-way',
+        'Round-trip',
+    ];
+
+    const fareTypes: Array<string> = [
+        'Flight + Hotel',
+        'Hotel + Car',
+    ];
+
+    const handleTripTypeClick = (tripType: string) => {
+        setSelectedTripType(tripType);
+    };
+
+    const handleTypeClick = (fareType: string) => {
+        setSelectedTripType2(fareType);
+    };
+
     return (
         <>
             <form>
@@ -8,12 +30,26 @@ const FlightHotelTabContent = (): JSX.Element => {
                     <div className="row">
                         <div className="col-md-12">
                             <ul className="one_way">
-                                <li className="active">Flight + Hotel</li>
-                                <li>Hotel + Car</li>
+                                {fareTypes?.map((tripType) => (
+                                    <li
+                                        key={tripType}
+                                        className={selectedTripType2 === tripType ? 'active' : ''}
+                                        onClick={() => handleTypeClick(tripType)}
+                                    >
+                                        {tripType}
+                                    </li>
+                                ))}
                             </ul>
                             <ul className="one_way">
-                                <li className="active">One- way</li>
-                                <li>Round-trip</li>
+                                {tripTypes?.map((tripType) => (
+                                    <li
+                                        key={tripType}
+                                        className={selectedTripType === tripType ? 'active' : ''}
+                                        onClick={() => handleTripTypeClick(tripType)}
+                                    >
+                                        {tripType}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
