@@ -1,28 +1,11 @@
 import { Link } from "react-router-dom";
-import FlightItem from "./FlightItem";
-import CustomPagination from "../../util/CustomPagination";
+import CustomPagination from "../../../util/CustomPagination";
 import { useState } from "react";
+import OneWayFlightResultItem from "./OneWayFlightResultItem";
+import { FlightItemsType, RecommendationsItemsType } from "../../../types/common";
 
-type FlightItemsType = {
-    imageSrc: string;
-    stops: string;
-    airline: string;
-    duration: string;
-    departureTime: string;
-    arrivalTime: string;
-    departureAirport: string;
-    arrivalAirport: string;
-    price: string
-};
-type RecommendationsItemsType = {
-    icon: string;
-    title: string;
-    price: string;
-    image: string;
-}
-
-const FlightResult = (): JSX.Element => {
-    const flights: Array<FlightItemsType> = [
+const OneWayFlightResult = ({ recommendations }: { recommendations: Array<RecommendationsItemsType> }): JSX.Element => {
+    const flightDummyData: Array<FlightItemsType> = [
         {
             imageSrc: "assets/images/show/1.png",
             stops: "2 stops",
@@ -89,54 +72,6 @@ const FlightResult = (): JSX.Element => {
             arrivalAirport: "SFO",
             price: "USD 1,800"
         },
-        {
-            imageSrc: "assets/images/show/6.png",
-            stops: "Direct",
-            airline: "Turkish Airlines",
-            duration: "14h 05m",
-            departureTime: "3:00 PM",
-            arrivalTime: "5:05 AM",
-            departureAirport: "DAC",
-            arrivalAirport: "IST",
-            price: "USD 1,100"
-        },
-        {
-            imageSrc: "assets/images/show/6.png",
-            stops: "2 stops",
-            airline: "Air India",
-            duration: "29h 15m",
-            departureTime: "10:00 AM",
-            arrivalTime: "8:15 PM",
-            departureAirport: "DAC",
-            arrivalAirport: "MIA",
-            price: "USD 1,400"
-        },
-    ];
-    const recommendations: Array<RecommendationsItemsType> = [
-        {
-            icon: "fa-solid fa-star",
-            title: "Recommended",
-            price: "USD 1,746.08",
-            image: "",
-        },
-        {
-            icon: "",
-            title: "Cheapest",
-            price: "USD 1,746.08",
-            image: "assets/images/show/p1.png",
-        },
-        {
-            icon: "fa-regular fa-clock",
-            title: "Shortest",
-            price: "USD 1,746.08",
-            image: "",
-        },
-        {
-            icon: "fa-solid fa-calendar-days",
-            title: "Alternate Dates",
-            price: "USD 1,746.08",
-            image: "",
-        },
     ];
 
     const [pageNumber, setPageNumber] = useState<number>(0);
@@ -174,9 +109,9 @@ const FlightResult = (): JSX.Element => {
                         ))}
                     </ul>
 
-                    {flights?.map((flight, index) => (
-                        <FlightItem key={index} {...flight} />
-                    )).slice(0, 6)}
+                    {flightDummyData?.map((flight, index) => (
+                        <OneWayFlightResultItem key={index} flight={flight} />
+                    )).slice(0, 4)}
 
                     <div className="instantly_box">
                         <h4>
@@ -198,9 +133,9 @@ const FlightResult = (): JSX.Element => {
                             Conditions, Privacy Policy</Link> and to receive email marketing.</p>
                     </div>
 
-                    {flights?.map((flight, index) => (
-                        <FlightItem key={index} {...flight} />
-                    )).slice(6, 8)}
+                    {flightDummyData?.map((flight, index) => (
+                        <OneWayFlightResultItem key={index} flight={flight} />
+                    )).slice(4, 6)}
 
                     <div className="row">
                         <div className="col-md-9">
@@ -224,4 +159,4 @@ const FlightResult = (): JSX.Element => {
     );
 };
 
-export default FlightResult;
+export default OneWayFlightResult;

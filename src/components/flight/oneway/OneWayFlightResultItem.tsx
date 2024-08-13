@@ -1,40 +1,31 @@
 import { Link } from 'react-router-dom';
+import { FlightItemsType } from '../../../types/common';
 
-const FlightItem = ({ imageSrc, stops, airline, duration, departureTime, arrivalTime, departureAirport, arrivalAirport, price }: {
-    imageSrc: string;
-    stops: string;
-    airline: string;
-    duration: string;
-    departureTime: string;
-    arrivalTime: string;
-    departureAirport: string;
-    arrivalAirport: string;
-    price: string
-}) => {
+const OneWayFlightItem = ({ flight }: { flight: FlightItemsType }) => {
     return (
         <>
             <div className="bg_bcolor">
                 <ul className="stops_t2">
                     <li className="fd_1">
                         <div className="n_img">
-                            <img src={imageSrc} alt="" />
+                            <img src={flight?.imageSrc} alt="" />
                         </div>
                     </li>
                     <li className="fd_2">
                         <div className="n_text1">
-                            <h5>{stops}</h5>
-                            <p>{airline} <span className="q_1">(with others)</span></p>
+                            <h5>{flight?.stops}</h5>
+                            <p>{flight?.airline} <span className="q_1">(with others)</span></p>
                         </div>
                     </li>
                     <li className="fd_3">
                         <div className="m_1">
-                            <h6>{duration}</h6>
+                            <h6>{flight?.duration}</h6>
                         </div>
                     </li>
                     <li className="fd_4">
                         <div className="time_b1">
                             <div className="dac_box12">
-                                <h6>{departureTime} <span className="dac_1">{departureAirport}</span></h6>
+                                <h6>{flight?.departureTime} <span className="dac_1">{flight?.departureAirport}</span></h6>
                             </div>
                             <div className="bom">
                                 <span className="bom_1">
@@ -44,7 +35,7 @@ const FlightItem = ({ imageSrc, stops, airline, duration, departureTime, arrival
                             </div>
                             <div className="dac_box12">
                                 <p>next day</p>
-                                <h6>{arrivalTime}<span className="dac_1">{arrivalAirport}</span></h6>
+                                <h6>{flight?.arrivalTime}<span className="dac_1">{flight?.arrivalAirport}</span></h6>
                             </div>
                             <div className="clearfix"></div>
                         </div>
@@ -60,7 +51,7 @@ const FlightItem = ({ imageSrc, stops, airline, duration, departureTime, arrival
                     <li className="fd_6">
                         <div className="book_t1">
                             <Link className="book_t2" to="#">BOOK</Link>
-                            <h5>{price}<em>.99</em></h5>
+                            <h5>{flight?.price}<em>.99</em></h5>
                             <p>Price per person (incl. taxes & fees)</p>
                         </div>
                     </li>
@@ -95,4 +86,4 @@ const FlightItem = ({ imageSrc, stops, airline, duration, departureTime, arrival
     );
 };
 
-export default FlightItem;
+export default OneWayFlightItem;

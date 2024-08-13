@@ -50,3 +50,74 @@ export interface Pagination {
     pageNumber: number;
     changePage: (data: { selected: number }) => void;
 }
+
+export interface FlightItemsType {
+    imageSrc: string;
+    stops: string;
+    airline: string;
+    duration: string;
+    departureTime: string;
+    arrivalTime: string;
+    departureAirport: string;
+    arrivalAirport: string;
+    price: string
+};
+export interface RecommendationsItemsType {
+    icon: string;
+    title: string;
+    price: string;
+    image: string;
+};
+export interface DepartureArrivalTime {
+    time: string;
+    location: string;
+    note?: string;
+}
+export interface FlightOption {
+    details: {
+        images: string[];
+        stops: { airline: string; additional: string }[];
+        durations: string[];
+        times: {
+            departure: { time: string; airport: string };
+            arrival: { time: string; airport: string; nextDay?: boolean; plusDays?: number };
+        }[];
+        price: string;
+        paymentPlan: string;
+        additionalInfo: { icon: string; text: string }[];
+    };
+    links: {
+        selectDeparture: string;
+        selectReturn: string;
+        book: string;
+        learnMore: string;
+        flightDetails: string;
+        fareRules: string;
+    };
+}
+export interface FlightData {
+    images: Array<string>;
+    stops: Array<{
+        airline: string;
+        additional: string;
+    }>;
+    durations: Array<string>;
+    times: Array<{
+        departure: {
+            time: string;
+            airport: string;
+        };
+        arrival: {
+            time: string;
+            airport: string;
+            nextDay?: boolean;
+            plusDays?: number;
+        };
+    }>;
+    price: string;
+    paymentPlan: string;
+    additionalInfo: Array<{
+        icon: string;
+        text: string;
+    }>;
+}

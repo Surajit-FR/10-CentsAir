@@ -1,8 +1,14 @@
-import TopSection from "../../components/flight/TopSection";
 import FlightFilter from "../../components/flight/FlightFilter";
-import FlightResult from "../../components/flight/FlightResult";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FlightsBottomBox from "../../components/flight/FlightsBottomBox";
+import CommonSearchSection from "../../components/flight/CommonSearchSection";
+import OneWayTab from "../../components/flight/oneway/OneWayTab";
+import RoundTripTab from "../../components/flight/roudtrip/RoundTripTab";
+import MultiCityTab from "../../components/flight/multicity/MultiCityTab";
+import OneWayFlightResult from "../../components/flight/oneway/OneWayFlightResult";
+import MultiCityFlightResult from "../../components/flight/multicity/MultiCityFlightResult";
+import RoundTripFlightResult from "../../components/flight/roudtrip/RoundTripFlightResult";
+import { RecommendationsItemsType } from "../../types/common";
 
 type carousel_OneItemType = {
     image: string,
@@ -15,6 +21,33 @@ type carousel_TwoItemType = {
     date: string,
     className?: string,
 };
+
+const recommendations: Array<RecommendationsItemsType> = [
+    {
+        icon: "fa-solid fa-star",
+        title: "Recommended",
+        price: "USD 1,746.08",
+        image: "",
+    },
+    {
+        icon: "",
+        title: "Cheapest",
+        price: "USD 1,746.08",
+        image: "assets/images/show/p1.png",
+    },
+    {
+        icon: "fa-regular fa-clock",
+        title: "Shortest",
+        price: "USD 1,746.08",
+        image: "",
+    },
+    {
+        icon: "fa-solid fa-calendar-days",
+        title: "Alternate Dates",
+        price: "USD 1,746.08",
+        image: "",
+    },
+];
 
 const Flights = (): JSX.Element => {
     const carouselOneItems: Array<carousel_OneItemType> = [
@@ -29,7 +62,6 @@ const Flights = (): JSX.Element => {
         { image: "6.png", airline: "Singapore Airlines", price: "USD 1,937.99", stops: "1+ Stops" },
         { image: "6.png", airline: "United Airlines", price: "USD 1,937.99", stops: "1+ Stops" }
     ];
-
     const carouselTwoItems: Array<carousel_TwoItemType> = [
         { price: "$430", date: "03, Thu" },
         { price: "$430", date: "04, Thu" },
@@ -48,8 +80,35 @@ const Flights = (): JSX.Element => {
         { price: "$430", date: "25, Thu", className: "fri_10" },
         { price: "$430", date: "26, Thu", className: "fri_10" },
     ];
+    const [selectedTravelType, setSelectedTravelType] = useState<string>('one-way');
 
+    const handleTravelTypeChange = (type: string) => {
+        setSelectedTravelType(type);
+    };
 
+    // Function to Return the Specific Component based on selected tab
+    const renderTripTypeComponent = (): JSX.Element => {
+        if (selectedTravelType === "one-way") {
+            return <OneWayTab />
+        } else if (selectedTravelType === "round-trip") {
+            return <RoundTripTab />
+        } else if (selectedTravelType === "multi-city") {
+            return <MultiCityTab />
+        }
+        return <OneWayTab />
+    };
+
+    // Function to Return the Specific Component based on selected tab
+    const renderFlightResultComponent = (): JSX.Element => {
+        if (selectedTravelType === "one-way") {
+            return <OneWayFlightResult recommendations={recommendations} />
+        } else if (selectedTravelType === "round-trip") {
+            return <RoundTripFlightResult recommendations={recommendations} />
+        } else if (selectedTravelType === "multi-city") {
+            return <MultiCityFlightResult recommendations={recommendations} />
+        }
+        return <OneWayFlightResult recommendations={recommendations} />
+    };
 
     useEffect(() => {
         (window as any).$ = (window as any).jQuery = require('jquery');
@@ -116,7 +175,40 @@ const Flights = (): JSX.Element => {
     return (
         <>
             {/* Flight Page TopSection */}
-            <TopSection />
+            <div className="one_way_banner">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <ul className="one_way">
+                                <li
+                                    className={selectedTravelType === 'one-way' ? 'active' : ''}
+                                    onClick={() => handleTravelTypeChange('one-way')}
+                                >
+                                    One-way
+                                </li>
+                                <li
+                                    className={selectedTravelType === 'round-trip' ? 'active' : ''}
+                                    onClick={() => handleTravelTypeChange('round-trip')}
+                                >
+                                    Round-trip
+                                </li>
+                                <li
+                                    className={selectedTravelType === 'multi-city' ? 'active' : ''}
+                                    onClick={() => handleTravelTypeChange('multi-city')}
+                                >
+                                    Multi-city
+                                </li>
+                            </ul>
+
+                            {/* Render the specific component based on selected trip type */}
+                            {renderTripTypeComponent()}
+
+                            {/* CommonSearchSection */}
+                            <CommonSearchSection />
+                        </div>
+                    </div>
+                </div>
+            </div >
 
             <div className="show_all_fares_banner">
                 <div className="container pa_top">
@@ -182,8 +274,8 @@ const Flights = (): JSX.Element => {
                             {/* Flight Filter */}
                             <FlightFilter />
 
-                            {/* Flight Result */}
-                            <FlightResult />
+                            {/* Render the specific component based on selected trip type */}
+                            {renderFlightResultComponent()}
                         </div>
                     </div>
                 </div>
