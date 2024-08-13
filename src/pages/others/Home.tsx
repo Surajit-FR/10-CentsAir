@@ -4,7 +4,7 @@ import BookNowSection from "../../components/core/home/BookNowSection";
 import DownloadAppSection from "../../components/core/home/DownloadAppSection";
 import ExploreDeals from "../../components/core/home/ExploreDeals";
 import FoundSection from "../../components/core/home/FoundSection";
-import CarouselSection from "../../components/core/home/HandpickedSection";
+import CarouselSection from "../../components/core/home/CarouselSection";
 import HereSection from "../../components/core/home/HereSection";
 import CheckFlightStatusSection from "../../components/core/home/CheckFlightStatusSection";
 import { CarouselItem } from "../../types/common";

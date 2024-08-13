@@ -13,7 +13,7 @@ const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionPro
         (window as any).$ = (window as any).jQuery = require('jquery');
         require('owl.carousel');
 
-        (window as any).$('.owl-carousel').owlCarousel({
+        (window as any).$(".owl-carousel").owlCarousel({
             autoplay: false,
             rewind: false,
             margin: 20,
@@ -56,7 +56,7 @@ const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionPro
                                 {dataType === "International" && <p className="get_12">Get Flat 45% Off! Use code: 10CAHOLIDAY</p>}
                             </div>
                             <div className="col-md-12">
-                                <OwlCarousel className='owl-theme' loop margin={10} nav>
+                                <OwlCarousel id="carousel" className="owl-carousel" loop margin={10} nav>
                                     {data?.map((item, index) => (
                                         <div key={index} className="item">
                                             <div className="hand_1">
