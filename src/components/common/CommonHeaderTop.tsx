@@ -35,7 +35,8 @@ const CommonHeaderTop = (): JSX.Element => {
 
                                     <li>
                                         <span className="d_span">
-                                            <Link to="/login">LogIn /</Link>
+                                            <Link to="/login">LogIn</Link>
+                                            <span className="mx-1">/</span>
                                             <Link to="/signup">SignUp</Link>
                                         </span>
                                     </li>
