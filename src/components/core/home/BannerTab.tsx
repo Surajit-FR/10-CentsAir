@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from 'react';
 import { TabData } from "../../../types/common";
 import FlightTabContent from "../tabcontent/FlightTabContent";
 import FlightHotelTabContent from "../tabcontent/FlightHotelTabContent";
@@ -9,42 +9,42 @@ import HolidayPackagesTabContent from "../tabcontent/HolidayPackagesTabContent";
 
 const tabData: Array<TabData> = [
     {
-        id: "tab-1",
+        id: "flights",
         icon: "assets/images/tabs/1.png",
         altIcon: "assets/images/tabs/f1.png",
         title: "Flights",
         content: (<FlightTabContent />),
     },
     {
-        id: "tab-2",
+        id: "flights_hotels",
         icon: "assets/images/tabs/2.png",
         altIcon: "assets/images/tabs/f2.png",
         title: "Flight +<em>Hotel</em>",
         content: (<FlightHotelTabContent />),
     },
     {
-        id: "tab-3",
+        id: "hotels",
         icon: "assets/images/tabs/3.png",
         altIcon: "assets/images/tabs/f3.png",
         title: "Hotels",
         content: (<HotelsTabContent />),
     },
     {
-        id: "tab-4",
+        id: "rental_cars",
         icon: "assets/images/tabs/4.png",
         altIcon: "assets/images/tabs/f4.png",
         title: "Rental<em>Cars</em>",
         content: (<RenalCarsTabContent />),
     },
     {
-        id: "tab-5",
+        id: "group_travel",
         icon: "assets/images/tabs/5.png",
         altIcon: "assets/images/tabs/f5.png",
         title: "Group<em>Travel</em>",
         content: (<GroupTravelTabContent />),
     },
     {
-        id: "tab-6",
+        id: "holiday_packages",
         icon: "assets/images/tabs/6.png",
         altIcon: "assets/images/tabs/f6.png",
         title: "Holiday<em>Packages</em>",
@@ -52,15 +52,12 @@ const tabData: Array<TabData> = [
     },
 ];
 
-const BannerTab = (): JSX.Element => {
-    // State to track the currently active tab
-    const [activeTab, setActiveTab] = useState("tab-1");
+type BannerTabProps = {
+    activeTab: string,
+    onTabClick: (tabId: string) => void,
+}
 
-    // Function to handle tab clicks
-    const handleTabClick = (tabId: string) => {
-        setActiveTab(tabId);
-    };
-
+const BannerTab = ({ activeTab, onTabClick }: BannerTabProps): JSX.Element => {
     return (
         <>
             <div className="banner_tabs">
@@ -73,7 +70,7 @@ const BannerTab = (): JSX.Element => {
                                         key={id}
                                         className={`tab-link ${activeTab === id ? "current" : ""}`}
                                         data-tab={id}
-                                        onClick={() => handleTabClick(id)}
+                                        onClick={() => onTabClick(id)}
                                     >
                                         <span className="tans_img">
                                             <img src={activeTab === id ? altIcon : icon} alt={title.replace(/<[^>]*>?/gm, "")} />

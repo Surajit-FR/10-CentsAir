@@ -52,7 +52,7 @@ const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionPro
                     <div className="found_box">
                         <div className="row">
                             <div className="col-md-12">
-                                <h2 className="low_text">Handpicked Collections for You</h2>
+                                <h2 className="low_text">{dataType === "International" ? "International Holiday Packages On Sale" : "Handpicked Collections for You"}</h2>
                                 {dataType === "International" && <p className="get_12">Get Flat 45% Off! Use code: 10CAHOLIDAY</p>}
                             </div>
                             <div className="col-md-12">

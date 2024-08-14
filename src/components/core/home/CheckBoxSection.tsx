@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const CheckBoxSection = (): JSX.Element => {
+const CheckBoxSection = ({ activeTab }: { activeTab: string }): JSX.Element => {
     return (
         <>
-            <section className="check_boxt">
+            <section className={`check_boxt ${activeTab === "rental_cars" ? "mt-0" : ""}`}>
                 <div className="container">
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-12 col-md-12">

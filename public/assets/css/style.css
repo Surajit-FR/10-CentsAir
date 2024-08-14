@@ -814,6 +814,29 @@ ul.tabs li.current .flig_text:after{
   position: relative;
   z-index: 9;
 }
+.mt_7{
+	margin-top:70px;
+}
+.handpicked_section.v2_img{
+	position: relative;
+	padding:70px 0 70px 0;
+}
+.v2_img:after{
+	position: absolute;
+	top:30px;
+	left: 0;
+	content: "";
+	background: url(../images/flag/v2.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height:1500px;
+	width: 100%;
+	opacity: 10%;
+}
+
+
+
 .low_text{
 	font-family: "Nunito Sans", sans-serif;
 	font-size:32px;
@@ -1202,6 +1225,9 @@ ul.tabs li.current .flig_text:after{
   margin-top: -626px;
   z-index: 9;
 }
+.kevin_tr{
+	margin-top: 0;
+}
 .by_flight{
 	padding: 0;
 	margin: 0;
@@ -1220,7 +1246,7 @@ ul.tabs li.current .flig_text:after{
 	font-weight: 600;
 	border: 1px solid #DEDEDE;
 	border-radius: 4px;
-	padding: 10px 20px;
+	padding: 7px 20px;
 	margin: 0 20px 0 0;
 	cursor: pointer;
 	transition: all 500ms ease-in-out;
@@ -1332,6 +1358,7 @@ ul.tabs li.current .flig_text:after{
   margin: 0;
   position: relative;
 }
+.p_border_12{border:none;}
 .in_box img{
 box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 -webkit-box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
@@ -3236,6 +3263,74 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 	padding:10px 0 0 0;
 	margin: 0;
 }
+.savings_box{
+	padding:0 0 70px 0;
+	margin: 0;
+}
+.a_color{
+	margin: 0;
+	padding:50px 30px;
+	background:#B5D8FF;
+}
+.s_color{
+  background:#BBFFBE;
+}
+.t_color{
+  background:#FECAFF;
+}
+.a_color h5{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 18px;
+	color:#232020;
+	line-height:24px;
+	font-weight: 400;
+	text-align: center;
+	padding:0;
+	margin: 0;
+}
+.savings_box .owl-nav{
+	position: absolute;
+	top:30%;
+	right: 0;
+	width:100%;
+}
+.savings_box .owl-carousel .owl-nav button.owl-prev {
+	position: absolute;
+	left:-50px;
+	top: 0;
+	font-size: 20px;
+	line-height: 0px;
+	background: #fff;
+	border-radius: 20px 0px 0px 20px;
+	padding: 9px 12px 10px 12px !important;
+	margin: 0 1px 0 0;
+	box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+	-webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+	-moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+	height: 36px;
+	color: #21B4E2;
+	font-weight: 400;
+}
+.savings_box .owl-carousel .owl-nav button.owl-next {
+	position: absolute;
+	right:-50px;
+	top: 0;
+	font-size: 20px;
+	line-height: 0px;
+	background: #fff;
+	border-radius:0px 20px 20px 0px;
+	padding: 9px 12px 10px 12px !important;
+	margin: 0;
+	box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+	-webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+	-moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+	height: 36px;
+	color: #21B4E2;
+	font-weight: 400;
+}
+
+
+
 /*----dhaka_box-08-08-24--*/
 
 

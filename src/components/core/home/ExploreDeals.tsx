@@ -61,7 +61,7 @@ const deals: Array<Deal> = [
 const ExploreDeals = (): JSX.Element => {
     return (
         <>
-            <section className="found_section explore_deals">
+            <section className="found_section explore_deals flight_hotel_packages">
                 <div className="container">
                     <div className="found_box mt1">
                         <div className="row">
