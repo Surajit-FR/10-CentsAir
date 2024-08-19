@@ -10,8 +10,8 @@ const MultiCityFlightResultItem = ({ flight }: { flight: FlightOption }): JSX.El
                     <li className="fd_1">
                         <div className="po_brt123">
                             <div className="p_absut_123 search_return">
-                                <input type="radio" id="re3" name="re_3" />
-                                <label className="ret1" htmlFor="re3"></label>
+                                <input type="radio" id={`departure-${flight.id}`} name={`flight-${flight.id}`} />
+                                <label className="ret1" htmlFor={`departure-${flight.id}`}></label>
                             </div>
                             {flight?.details.images.map((src, index) => (
                                 <div className={`n_img ${index > 0 ? 'mt-5' : ''}`} key={index}>
@@ -19,8 +19,8 @@ const MultiCityFlightResultItem = ({ flight }: { flight: FlightOption }): JSX.El
                                 </div>
                             ))}
                             <div className="p_seond1 search_return">
-                                <input type="radio" id="re_3" name="re_3" />
-                                <label className="ret1" htmlFor="re_3"></label>
+                                <input type="radio" id={`return-${flight.id}`} name={`flight-${flight.id}`} />
+                                <label className="ret1" htmlFor={`return-${flight.id}`}></label>
                             </div>
                         </div>
                     </li>

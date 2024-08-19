@@ -6,6 +6,7 @@ import MultiCityFlightResultItem from "./MultiCityFlightResultItem";
 const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<RecommendationsItemsType> }): JSX.Element => {
     const flightDummyData: Array<FlightOption> = [
         {
+            id: "flight1",
             details: {
                 images: [
                     "assets/images/show/1.png",
@@ -43,6 +44,7 @@ const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<Rec
             }
         },
         {
+            id: "flight2",
             details: {
                 images: [
                     "assets/images/show/3.png",
@@ -80,6 +82,7 @@ const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<Rec
             }
         },
         {
+            id: "flight3",
             details: {
                 images: [
                     "assets/images/show/5.png",
@@ -117,6 +120,7 @@ const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<Rec
             }
         },
         {
+            id: "flight4",
             details: {
                 images: [
                     "assets/images/show/1.png",
@@ -154,6 +158,7 @@ const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<Rec
             }
         },
         {
+            id: "flight5",
             details: {
                 images: [
                     "assets/images/show/3.png",
@@ -191,6 +196,7 @@ const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<Rec
             }
         },
         {
+            id: "flight6",
             details: {
                 images: [
                     "assets/images/show/5.png",
@@ -226,7 +232,7 @@ const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<Rec
                 flightDetails: "#",
                 fareRules: "#"
             }
-        },
+        }
     ];
 
     const [pageNumber, setPageNumber] = useState<number>(0);

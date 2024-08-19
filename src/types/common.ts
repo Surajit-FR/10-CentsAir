@@ -74,6 +74,7 @@ export interface DepartureArrivalTime {
     note?: string;
 }
 export interface FlightOption {
+    id: string;
     details: {
         images: string[];
         stops: { airline: string; additional: string }[];
