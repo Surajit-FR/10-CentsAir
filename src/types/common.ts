@@ -44,13 +44,11 @@ export interface TabData {
     title: string;
     content: JSX.Element;
 }
-
 export interface Pagination {
     pageCount: number;
     pageNumber: number;
     changePage: (data: { selected: number }) => void;
 }
-
 export interface FlightItemsType {
     imageSrc: string;
     stops: string;
