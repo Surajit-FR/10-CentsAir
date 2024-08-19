@@ -76,16 +76,16 @@ export interface DepartureArrivalTime {
 export interface FlightOption {
     id: string;
     details: {
-        images: string[];
-        stops: { airline: string; additional: string }[];
-        durations: string[];
-        times: {
+        images: Array<string>;
+        stops: Array<{ airline: string; additional: string }>;
+        durations: Array<string>;
+        times: Array<{
             departure: { time: string; airport: string };
             arrival: { time: string; airport: string; nextDay?: boolean; plusDays?: number };
-        }[];
+        }>;
         price: string;
         paymentPlan: string;
-        additionalInfo: { icon: string; text: string }[];
+        additionalInfo: Array<{ icon: string; text: string }>;
     };
     links: {
         selectDeparture: string;
