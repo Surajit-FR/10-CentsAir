@@ -1,19 +1,31 @@
 import { useEffect } from "react";
 import { CarouselItem } from "../../../types/common";
-import OwlCarousel from 'react-owl-carousel';
 
 interface CarouselSectionProps {
     data: Array<CarouselItem>;
-    carouselOptions?: object;
     dataType: string;
 };
 
-const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionProps): JSX.Element => {
+const CarouselSection = ({ data, dataType }: CarouselSectionProps): JSX.Element => {
     useEffect(() => {
+        const carouselId = dataType === "International" ? "holiday_1" : "carousel";
+
+        // Inject CSS specific to the current carousel
+        const style = document.createElement('style');
+        style.innerHTML = `
+            #${carouselId} .owl-dots,
+            #${carouselId} .owl-nav {
+                display: block !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize the OwlCarousel for the specific ID
         (window as any).$ = (window as any).jQuery = require('jquery');
         require('owl.carousel');
 
-        (window as any).$(".owl-carousel").owlCarousel({
+        const $carousel = (window as any).$(`#${carouselId}`);
+        $carousel.owlCarousel({
             autoplay: false,
             rewind: false,
             margin: 20,
@@ -40,10 +52,16 @@ const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionPro
                 1366: {
                     items: 5
                 }
-            },
-            ...carouselOptions,
+            }
         });
-    }, [carouselOptions, dataType]);
+
+        // Cleanup function to remove injected styles and destroy OwlCarousel instance
+        return () => {
+            style.remove();
+            $carousel.trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
+            $carousel.find('.owl-stage-outer').children().unwrap();
+        };
+    }, [dataType]);
 
     return (
         <>
@@ -56,7 +74,7 @@ const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionPro
                                 {dataType === "International" && <p className="get_12">Get Flat 45% Off! Use code: 10CAHOLIDAY</p>}
                             </div>
                             <div className="col-md-12">
-                                <OwlCarousel id="carousel" className="owl-carousel" loop margin={10} nav>
+                                <div id={`${dataType === "International" ? "holiday_1" : "carousel"}`} className="owl-carousel">
                                     {data?.map((item, index) => (
                                         <div key={index} className="item">
                                             <div className="hand_1">
@@ -76,7 +94,7 @@ const CarouselSection = ({ data, carouselOptions, dataType }: CarouselSectionPro
                                             </div>
                                         </div>
                                     ))}
-                                </OwlCarousel>
+                                </div>
                             </div>
                         </div>
                     </div>

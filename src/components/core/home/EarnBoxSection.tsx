@@ -31,7 +31,7 @@ const EarnBoxSection = (): JSX.Element => {
                                 <p>Book on our apps (iOS & Android) to double your <span>points.</span></p>
                                 <Link to="#">Get the App</Link>
                                 <ul className="earn_link">
-                                    <li>
+                                    <li className="me-1">
                                         <Link to="#">
                                             <img src="assets/images/app/1.png" alt="" />
                                         </Link>
