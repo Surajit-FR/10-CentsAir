@@ -1,16 +1,35 @@
-.header_top{
-  background: #100F0F;
-  padding: 5px 0;
-  min-height: 71px;
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-
+body{
+  min-height: 100vh;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 70px;
+  background: #3E8DA8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
 nav .navbar{
+  height: 100%;
+  max-width: 1250px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  padding: 0 0;
+  /* background: red; */
+  padding: 0 50px;
 }
 .navbar .logo a{
   font-size: 30px;
@@ -18,11 +37,12 @@ nav .navbar{
   text-decoration: none;
   font-weight: 600;
 }
-
+nav .navbar .nav-links{
+  line-height: 70px;
+  height: 100%;
+}
 nav .navbar .links{
   display: flex;
-  padding: 0;
-  margin:0;
 }
 nav .navbar .links li{
   position: relative;
@@ -30,25 +50,16 @@ nav .navbar .links li{
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  padding: 0 25px 0 0;
+  padding: 0 14px;
 }
-nav .navbar .links li:last-child{ padding: 0; }
 nav .navbar .links li a{
+  height: 100%;
   text-decoration: none;
   white-space: nowrap;
   color: #fff;
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 59px;
-  transition:all 500ms ease-in-out;
 }
-nav .navbar .links li.active a{
-  color:#E3E2E2;
-}
-nav .navbar .links li a:hover{
-  color:#E3E2E2;
-}
-
 .links li:hover .htmlcss-arrow,
 .links li:hover .js-arrow{
   transform: rotate(180deg);
@@ -107,9 +118,10 @@ nav .navbar .links li:hover .js-sub-menu{
 }
 .navbar .search-box{
   position: relative;
-  min-height: 40px;
+   height: 40px;
+  width: 40px;
 }
-/*.navbar .search-box i{
+.navbar .search-box i{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -120,35 +132,7 @@ nav .navbar .links li:hover .js-sub-menu{
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-}*/
-.buttom_menu{
-  text-align: right;
-  padding: 0;
-  margin: 0;
 }
-.buttom_menu li{
-  display: inline-block;
-  padding: 0 25px 0 0;
-  margin: 0;
-}
-.buttom_menu li:last-child {
-  padding: 0;
-}
-.buttom_menu li a{
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 18px;
-  line-height:40px;
-  color: #fff;
-  font-weight: 400;
-  padding:5px 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  vertical-align: middle;
-}
-.buttom_menu li a.active{ border-bottom:1px solid #21B4E2; }
-
-
 .navbar .search-box .input-box{
   position: absolute;
   right: calc(100% - 40px);
@@ -316,91 +300,4 @@ nav .navbar .links li .sub-menu li{
   nav .navbar .nav-links{
   max-width: 100%;
 } 
-}
-
-
-.s_box{
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-.s_box li{
-  display: flex;
-  padding: 0 22px 0 0;
-  margin: 0;
-}
-.s_box li:last-child{ 
-  padding: 0; 
-}
-.s_box li .d_span{
-  background: #435970;
-  font-size: 20px;
-  color: #fff;
-  line-height: 25px;
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-weight: 500;
-  margin:0;
-}
-.s_box li .d_span a{
-  color:#fff;
-  list-style:none;
-  text-decoration:none;
-  line-height: 0px;
-  padding: 0;
-  margin:0;
-  transition:all 500ms ease-in-out;
-}
-.s_box li .d_span a:hover{
-  color: #ffb703;
-}
-.speak_img{
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  display: inline-block;
-  float: left;
-}
-.speak_img img{
-  width:40px;
-  height:40px;
-  border-radius:100%;
-  object-fit: cover;
-}
-.speak_1{
-  float:left;
-  padding: 0 0 0 10px;
-  margin: 0;
-}
-.speak_1 h5{
-  font-size: 16px;
-  line-height: 21px;
-  color: #fff;
-  font-weight: 700;
-  padding:0px 0 3px 0;
-  margin: 0;
-}
-.speak_1 p{
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 12px;
-  line-height:14px;
-  color: #fff;
-  font-weight:400;
-  padding:0;
-  margin: 0;
-}
-.usd_123{
-  background:none;
-  font-size:14.4px;
-  color:#fff;
-  line-height:25.2px;
-  font-weight:700;
-  border:none;
-  outline:none;
-  padding:0 12px 0 0;
-  margin: 0;
-}
-.usd_123 option{
-  background:#000;
-  color:#fff;
 }

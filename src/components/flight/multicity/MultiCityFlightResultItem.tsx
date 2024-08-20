@@ -87,7 +87,7 @@ const MultiCityFlightResultItem = ({ flight }: { flight: FlightOption }): JSX.El
                 </ul>
                 <div className="fl_bg_box">
                     <div className="fl_left">
-                        <Link to={flight?.links.flightDetails}>Flight Details <i className="fa-solid fa-angle-down"></i></Link>
+                        <Link to="/flight-details">Flight Details <i className="fa-solid fa-angle-down"></i></Link>
                     </div>
                     <div className="rt_right">
                         <ul>

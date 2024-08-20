@@ -1,6 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/others/Home';
-import Flights from '../pages/others/Flights';
+import {
+    Flights,
+    FlightTravelerDetails,
+    Home
+} from '../pages/AllPages';
 
 const AllRoutes = (): JSX.Element => {
     return (
@@ -8,6 +11,7 @@ const AllRoutes = (): JSX.Element => {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/flights' element={<Flights />} />
+                <Route path='/flight-details' element={<FlightTravelerDetails />} />
             </Routes>
         </>
     );
