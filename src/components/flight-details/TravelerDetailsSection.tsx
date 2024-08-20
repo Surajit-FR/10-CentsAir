@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const TravelerDetailsSection = (): JSX.Element => {
+    const [showOptionalRequests, setShowOptionalRequests] = useState<boolean>(false);
+
+    const toggleOptionalRequests = (): void => {
+        setShowOptionalRequests(!showOptionalRequests);
+    };
+
     return (
         <>
             <div className="found_box mb-5">
@@ -98,12 +105,85 @@ const TravelerDetailsSection = (): JSX.Element => {
                                 <li><span className="upload-btn" id="upload-btn"></span></li>
                             </ul>
                         </div>
+
+                        <Link className="pay_b pay_flyer1" to="#" onClick={toggleOptionalRequests}>
+                            Frequent Flyer and Optional Requests (Optional)
+                            <i className={`fa-solid fa-chevron-${showOptionalRequests ? 'up' : 'down'}`}></i>
+                        </Link>
+
+                        {showOptionalRequests &&
+                            <>
+                                <h5 className="mt-3">Traveller 1 - Adult</h5>
+                                <ul className="ul_list_1 n1 mt-3 mn_11">
+                                    <li>
+                                        <div className="date_it">
+                                            <p>Meal Preference*</p>
+                                            <select className="h_12 rt1">
+                                                <option>Meal</option>
+                                                <option>Meal 1</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="date_it">
+                                            <p>Special Services*</p>
+                                            <select className="h_12 rt1">
+                                                <option>Select Special Services</option>
+                                                <option>Select Special Services 1</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul className="ul_list_1 n1 mn_11">
+                                    <li>
+                                        <div className="date_it">
+                                            <p>Redress*</p>
+                                            <input className="h_12" type="text" name="text" value="Redress Number" />
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul className="ul_list_1 n1 mn_11">
+                                    <li>
+                                        <div className="date_it">
+                                            <p>Known Traveller*</p>
+                                            <input className="h_12" type="text" name="text" value="Known Traveller Number" />
+                                        </div>
+                                    </li>
+                                </ul>
+                                <h6 className="op_12">Frequent Flyer(Optional)</h6>
+                                <ul className="number_123">
+                                    <li>
+                                        <span className="f_e">
+                                            <img src="assets/images/show/1.png" alt="" />
+                                        </span>
+                                        <div className="text">
+                                            <p>Frequent Flyer Number</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span className="f_e">
+                                            <img src="assets/images/show/2.png" alt="" />
+                                        </span>
+                                        <div className="text">
+                                            <p>Frequent Flyer Number</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span className="f_e">
+                                            <img src="assets/images/show/3.png" alt="" />
+                                        </span>
+                                        <div className="text">
+                                            <p>Frequent Flyer Number</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </>
+                        }
+                        <div className="text-center">
+                            <input className="seats_123" type="submit" value="Continue to Seats" />
+                        </div>
                     </form>
-                    <Link className="pay_b pay_flyer1" to="#">Frequent Flyer and Optional Requests(Optional) <i
-                        className="fa-solid fa-chevron-down"></i></Link>
-                    <div className="text-center">
-                        <input className="seats_123" type="submit" placeholder="Continue to Seats" />
-                    </div>
+
                 </div>
             </div>
         </>
