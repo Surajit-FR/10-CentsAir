@@ -95,7 +95,7 @@ const PriceDetailsSection = (): JSX.Element => {
                                 <p>Join ClubMiles and earn 2225 points or more on this booking</p>
                             </li>
                             <li>
-                                <Link to="#">Sign In</Link>
+                                <Link to="/login">Sign In</Link>
                             </li>
                         </ul>
 
