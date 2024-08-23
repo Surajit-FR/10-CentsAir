@@ -119,4 +119,23 @@ export interface FlightData {
         icon: string;
         text: string;
     }>;
+};
+export interface FlightDataTwo {
+    id: string;
+    isActive: boolean;
+    flightNumber: string;
+    route: string;
+    imgSrc: string;
+};
+export interface MealOne {
+    id: string;
+    imageSrc: string;
+    description: string;
+    price: string;
+};
+export interface BaggageOption {
+    id: string;
+    weight: string;
+    description: string;
+    price: string;
 }

@@ -3478,6 +3478,64 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 	padding: 0 0 0 0;
 	margin: 0;
 }
+.f_light123 .pp_12{
+	font-size:24px;
+	line-height:33px;
+	font-weight:700;
+}
+.f_light123 .pp_12 .secure_1{
+	font-weight:600;
+	font-size:14px;
+	color:#24AD53;
+	padding:4px 15px;
+	margin:0 0 0 20px;
+	border: 1px solid #24AD53;
+	border-radius:20px;
+}
+.f_light123 .credite_12{
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size:20px;
+	line-height:30px;
+	font-weight:600;
+	padding:15px 0 0 0;
+	margin: 0;
+}
+.f_light123 .credite_12 .dd_1{
+	color:#24AD53;
+}
+.f_light123 .credite_12 .dd_1 em{
+  font-style: normal;
+  font-size: 13px;
+  position: relative;
+  top: -4px;
+}
+.orpp_1{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 20px;
+	color:#232020;
+	line-height:30px;
+	font-weight: 600;
+	padding:15px 0 15px 0; 
+	margin: 0;
+}
+.visa_plat_form{
+	display: flex;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+}
+.visa_plat_form li{
+	display:inline-block;
+	padding: 0 10px 0 0;
+	margin: 0;
+}
+.visa_plat_form li:last-child{ padding: 0; }
+.visa_plat_form li img{
+	max-width:100%;
+	object-fit:contain;
+}
+
 .text_usd h4{
 	font-family: "Nunito Sans", sans-serif;
 	font-size: 24px;
@@ -4243,10 +4301,14 @@ display: block;
 .seats_e1{
 	display: flex;
 	align-items: center;
-	padding: 0;
+	padding:0 0 5px 0;
 	margin: 0;
 	border:none
 }
+.seats_e1.active{
+	border-bottom:4px solid #21B4E2;
+}
+
 .sea_box1 .seats_img img{
 	display: flex;
 	width: 40px !important;
@@ -4268,6 +4330,9 @@ display: block;
 	padding: 0;
 	margin: 0;
 }
+.seats_e1.active p{
+	color: #21B4E2;
+}
 .sea_box1 p span{
 	display: block;
 }
@@ -4282,30 +4347,30 @@ display: block;
   right: -17px;
 }
  .sea_box1 .owl-carousel .owl-nav button.owl-prev {
-  font-size: 20px;
+  font-size: 17px;
   line-height: 0px;
   background: #fff;
   border-radius: 20px 0px 0px 20px;
-  padding: 9px 12px 10px 12px !important;
-  margin: 0 1px 0 0;
-  box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
-  -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
-  -moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
-  height: 36px;
-  color: #21B4E2;
-  font-weight: 400;
-}
-.sea_box1 .owl-carousel .owl-nav button.owl-next {
-  font-size: 20px;
-  line-height: 0px;
-  background: #fff;
-  border-radius: 10px 20px 20px 0px;
-  padding: 9px 12px 10px 12px !important;
+  padding: 8px 12px 10px 12px !important;
   margin: 0;
   box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
   -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
   -moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
-  height: 36px;
+  height: 32px;
+  color: #21B4E2;
+  font-weight: 400;
+}
+.sea_box1 .owl-carousel .owl-nav button.owl-next {
+  font-size: 17px;
+  line-height: 0px;
+  background: #fff;
+  border-radius:0px 20px 20px 0px;
+  padding: 8px 12px 10px 12px !important;
+  margin: 0;
+  box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+  -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.11);
+  height: 32px;
   color: #21B4E2;
   font-weight: 400;
 }
@@ -4339,6 +4404,7 @@ display: block;
 .preferred_seat_124{
 	display:flex;
 	align-items: center;
+	float:right;
 	padding: 0;
 	margin: 0;
 }
@@ -4350,10 +4416,1012 @@ display: block;
 	font-size: 13px;
 	line-height:15px;
 	font-weight:600;
-	padding: 0 15px 0 0;
+	padding: 0 10px 0 0;
 	margin: 0;
 }
 .preferred_seat_124 li:last-child{ padding: 0; }
+.preferred_seat_124 li .ps_seat_12{
+	width:18px;
+	height:18px;
+	background:#66ADF7;
+	display: flex;
+	align-items: center;
+	font-size:11px;
+	color:#fff;
+	line-height:13px;
+	margin:0 5px 0 0;
+}
+.preferred_seat_124 li .av_1{
+	background:#CCE2F9;
+}
+.preferred_seat_124 li .un_1{
+	background:#EEEEEE;
+	color:#000;
+}
+.preferred_seat_124 li .se_1{
+	background:#24AD53;
+}
+.preferred_seat_124 li .pr_1{
+	background:#D170F4;
+}
+.preferred_seat_124 li .ps_seat_12 i{
+	margin:0 auto;
+	text-align: center;
+}
+.kevin_vo{ display: inline-block; }
+.kevin_vo a{
+	display: flex;
+	align-items: center;
+	border: 1px solid #21B4E2;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #232020;
+	text-decoration: none;
+	list-style: none;
+	line-height: 16px;
+	padding: 10px 10px 10px 10px;
+	margin: 0;
+	width: 180px;
+}
+.kevin_vo a p{
+	padding: 0;
+	margin: 0;
+	line-height:12px;
+}
+.kevin_vo a .k_q1{
+  width: 24px;
+  height: 24px;
+  background: #21B4E2;
+  font-size: 12px;
+  color: #fff;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  margin: 0 15px 0 0;
+}
+.kevin_vo a .k_q1 i{
+	text-align: center;
+	margin:0 auto;
+}
+.vo_1{
+	padding:5px 0 0 0;
+}
+.air_craft{
+	width: 95%;
+	margin: 0 auto;
+}
+.aircraft {
+  position: relative;
+  margin:0;
+}
+.aircraft-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  min-width: min-content;
+  margin:30px 0 0 0;
+  border:4px solid #D8D8D8;
+  border-right: none;
+  border-left: none;
+  padding:80px 0px;
+  background: #fff;
+}
+.aircraft-body .top-left-exists {
+  position: absolute;
+  left: -42px;
+  top: -35px;
+}
+.aircraft-body .top-right-exists {
+  position: absolute;
+  right: -42px;
+  top: -35px;
+}
+.aircraft-body .bottom-right-exists {
+  position: absolute;
+  transform: rotate(180deg);
+  right: -42px;
+  bottom: -35px;
+}
+.aircraft-body .bottom-left-exists {
+  position: absolute;
+  transform: rotate(180deg);
+  left: -42px;
+  bottom: -35px;
+}
+.aircraft-body .seats {
+  display: flex;
+  flex-direction: row;
+/*  justify-content: space-between;*/
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+}
+.aircraft-body .seats:first-child {
+  margin-bottom:15px;
+}
+.aircraft-body .seats-triple {
+  margin-right: 8px;
+}
+.aircraft-body .seats-triple::before {
+  content: attr(data-line);
+  position: relative;
+  text-align: center;
+  font-family: tahoma;
+  left: 8px;
+  font-size: 12px;
+}
+.aircraft-body .seats-triple.first-line .seat::after {
+  left: -16px;
+}
+.aircraft-body .seats-triple.last-line .seat::after {
+  right: -52px;
+}
+.aircraft-body .seat {
+	cursor: pointer;
+	width: 23px;
+	height: 23px;
+	padding:0;
+	margin-top: 6px;
+	background: #EEEEEE;
+	font-size: 14px;
+	color: #51555E;
+	font-family: "Nunito Sans", sans-serif;
+}
+.exit_1{
+  position: absolute;
+  top: -20px;
+  left: 95px;
+}
+.exit_button{
+  padding: 0 5px 0 0;
+  font-size: 10px;
+  color: #FF3030;
+  line-height: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.exit_bottom{
+  position: absolute;
+  bottom:-20px;
+  left: 95px;
+}
+
+
+
+.aircraft-body .seat.active {
+  background:#D170F4;
+}
+.aircraft-body .seat.empty {
+  background:#CCE2F9;
+}
+/*.aircraft-body .seat::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 26px;
+  border: solid 1px #88857c;
+  margin: 2px -2px;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+}*/
+.aircraft-body .seat::after {
+  position: relative;
+  content: attr(data-letter);
+  font-family: tahoma;
+  top: 0;
+}
+.aircraft .exists {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: bottom;
+  position: relative;
+  left: -280px;
+}
+.aircraft-top-wing {
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  top: -202px;
+  left: 50%;
+}
+.aircraft-top-wing .exists {
+  top: 170px;
+}
+.aircraft-top-wing::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 250px;
+  height: 200px;
+  border: 2px solid #c5c5c7;
+  z-index: -1;
+  border-bottom-left-radius: 30px;
+  border-right: none;
+  border-top: none;
+}
+.aircraft-top-wing::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  border: 2px solid #c5c5c7;
+  border-bottom-right-radius: 60px;
+  border-top: none;
+  border-left: none;
+  transform: skew(-35deg);
+  left: -500px;
+  bottom: -2px;
+}
+.aircraft-bottom-wing {
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  bottom: -202px;
+  left: 50%;
+}
+.aircraft-bottom-wing .exists {
+  top: 5px;
+  transform: rotate(180deg);
+}
+.aircraft-bottom-wing::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  width: 250px;
+  height: 200px;
+  border: 2px solid #c5c5c7;
+  z-index: -1;
+  border-top-left-radius: 30px;
+  border-right: none;
+  border-bottom: none;
+}
+.aircraft-bottom-wing::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  border: 2px solid #c5c5c7;
+  border-top-right-radius: 60px;
+  border-bottom: none;
+  border-left: none;
+  transform: skew(35deg);
+  left: -500px;
+  bottom: 0px;
+}
+.aircraft-head {
+  position: absolute;
+  height: 310px;
+  width: 330px;
+  margin: auto;
+  overflow: hidden;
+  top: -2px;
+  left: -326px;
+}
+.aircraft-head-body {
+  position: absolute;
+  height: 300px;
+  width: 548px;
+  padding-left: 115px;
+  border-radius: 50%;
+  right: -343px;
+  border: 2px solid #c5c5c7;
+}
+.aircraft-head-body .windows {
+  position: absolute;
+  top: 70px;
+  left: 50px;
+}
+.aircraft-head-body .front-lavatory {
+  position: absolute;
+  bottom: 15px;
+  left: 220px;
+}
+.aircraft-tail {
+  position: absolute;
+  height: 323px;
+  width: 700px;
+  margin: auto;
+  overflow: hidden;
+  top: -3px;
+  right: -320px;
+  padding-left: 121px;
+  z-index: -1;
+}
+.aircraft-tail-body {
+  position: absolute;
+  height: 302px;
+  width: 548px;
+  padding-left: 135px;
+  border-radius: 50%;
+  border: 2px solid #c5c5c7;
+}
+.aircraft-tail-body .back-lavatory {
+  width: 40px;
+  height: 98%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-left: 250px;
+}
+
+.ke_chaen{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 3px;
+	right: -55px;
+}
+.chaen_12{
+  position: absolute;
+  top: auto;
+  bottom:0;
+}
+.ke_chaen ul{
+	padding: 0;
+	margin: 0;
+}
+.ke_chaen ul li{
+	display:inline-block;
+	padding:0 2px 0 0;
+	margin: 0;
+}
+.ke_chaen ul li:last-child{ padding: 0; }
+.ke_chaen ul li img{
+	max-width: 100%;
+	width: 22px;
+	height: 22px;
+	object-fit: contain;
+}
+
+.ew_list{
+	padding: 0;
+	margin: 0;
+}
+.ew_list li{
+  display:flex;
+  align-items: center;
+  padding:0 0 8px 0;
+  margin: 0;
+  width: 100%;
+}
+.ew_list li span{
+	display:block;
+	padding: 0;
+	margin: 0;
+}
+.ew_list li .le_12{
+	width:60%;
+}
+.ew_list li .le_usd{
+	width:40%;
+}
+
+.ew_list li p{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:13px;
+	color:#232020;
+	line-height:15px;
+	font-weight:600;
+	padding: 0 0 0px 0;
+	margin: 0;
+}
+.ner_1{
+  text-transform: capitalize;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 auto;
+  display: block;
+  width: 60%;
+  margin-bottom: 5px;
+}
+.sq_1{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:11px;
+	color:#707070;
+	line-height:15px;
+	font-weight:400;
+	padding: 0 0 0px 0;
+	margin: 0;
+}
+.note_w{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:12px;
+	color:#707070;
+	line-height:15px;
+	font-weight:600;
+	border-top:1px solid #D8D8D8;
+	padding:12px 0 0px 0;
+	margin:12px 0 0 0;
+}
+.seat_selection_12{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:20px;
+	color:#21B4E2;
+	line-height:22px;
+	font-weight:600;
+	text-decoration: none;
+	list-style:none;
+	padding: 0 0 0px 0;
+	margin: 0;
+}
+.seat_selection_12 i{padding-left:6px}
+.modify_1{
+  display: inline-block;
+  font-family: "Nunito Sans", sans-serif;
+  color:#435970;
+  font-size:16px;
+  line-height:20px;
+  font-weight: 500;
+  border:1px solid #435970;
+  border-radius: 4px;
+  padding:12px 40px;
+  margin:30px 0 0 0;
+  text-decoration:none;
+}
+.pay_a{
+	background-image: linear-gradient(to bottom, #435970, #405770, #3d5670, #3a546f, #37536f);
+	display: inline-block;
+	font-family: "Nunito Sans", sans-serif;
+	color: #fff;
+	font-size:16px;
+	line-height:20px;
+	font-weight: 500;
+	border: none;
+	border-radius: 4px;
+	text-decoration:none;
+	padding: 14px 60px;
+	margin:0 0 10px 0;
+	box-shadow: 0px 0px 64px -12px rgba(0, 0, 0, 0.23);
+	-webkit-box-shadow: 0px 0px 64px -12px rgba(0, 0, 0, 0.23);
+	-moz-box-shadow: 0px 0px 64px -12px rgba(0, 0, 0, 0.23);
+}
+.airbus_q1{
+	padding:10px 0 10px 0;
+	margin: 0;
+}
+.airbus_q1 li{
+	display: inline-block;
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size:14px;
+	line-height:16px;
+	font-weight: 600;
+	padding:0 10px 0 0;
+	margin: 0;
+}
+.airbus_q1 li:last-child{ padding: 0; }
+.check_in_seat_12{
+	display: flex;
+	align-items: center;
+	padding:0;
+	margin: 0;
+}
+.check_in_seat_12 li{
+	display: inline-block;
+	font-family: "Nunito Sans", sans-serif;
+	padding:0 10px 0 0;
+	margin: 0;
+}
+.check_in_seat_12 li:last-child{ padding: 0; }
+/*.regu_bet{
+	display: flex;
+	align-items: center;
+}*/
+.regu_bet h5{
+	color:#232020;
+	font-size:16px;
+	line-height:20px;
+	font-weight: 700;
+	padding: 0;
+	margin: 0;
+}
+.regu_bet p{
+	color:#232020;
+	font-size:12px;
+	line-height:16px;
+	font-weight:500;
+	padding: 0;
+	margin: 0;
+}
+.fa_clock_1{
+	float: left;
+	width:20px;
+}
+.assignment_1{
+	float: left;
+}
+.go_to{
+  background-image: linear-gradient(to bottom, #435970, #405770, #3d5670, #3a546f, #37536f);
+  display: inline-block;
+  font-family: "Nunito Sans", sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 12px 20px;
+  margin: 0 0 0 0;
+  width: 238px;
+  text-align: center;
+}
+.hide_show_12 p{
+  font-family: "Nunito Sans", sans-serif;
+  color: #21B4E2;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: 0 66px 15px 0;
+  margin: 0;
+  display: inline-block;
+}
+.sea_box1 .aisle_1{
+  color:#73767F;
+  font-size:13px;
+  line-height:15px;
+  font-weight:400;
+  padding-top:2px;
+}
+.han_q2{
+	font-weight: 600;
+	color: #232020;
+}
+.sec_top_12{
+	padding:0px 0 0 23px;
+}
+.meals_list_12{
+	display: flex;
+	align-items: center;
+	padding:15px 0 0 0;
+	margin: 0;
+}
+.meals_list_12 li{
+	display:flex;
+	font-family: "Nunito Sans", sans-serif;
+	color:#707070;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 600;
+	border:1px solid #707070;
+	border-radius: 2px;
+	padding:8px 20px;
+	margin: 0 20px 0 0;
+	cursor:pointer;
+}
+.meals_list_12 li:last-child{ margin: 0; }
+.meals_list_12 li.current{
+	color:#21B4E2;
+	border:1px solid #21B4E2;
+}
+.meals_list_12 li img{ margin-right:8px; }
+.meals_list_12 li .fn_1{display:block;}
+.meals_list_12 li.current .fn_1{display:none;}
+.meals_list_12 li .fn_2{display:none;}
+.meals_list_12 li.current .fn_2{display:block;}
+.dhaka_list_12{
+	display: flex;
+	align-items: center;
+	border:1px solid #D8D8D8;
+	border-radius: 4px;
+	padding:10px;
+	margin:15px 0 0 0;	
+}
+.dhaka_list_12 li{
+	display:inline-block;
+	font-family: "Nunito Sans", sans-serif;
+	color:#707070;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 600;
+	padding:0 5px 0 5px;
+	margin:0;
+}
+.dac_bom_list{
+	padding:20px 0 0 0;
+	margin: 0;
+}
+.dac_bom_list li{
+	display: inline-block;
+	border:1px solid #D8D8D8;
+	padding:0;
+	margin:0 10px 0 0;
+}
+.dac_bom_list li:last-child{ margin:0; }
+.dac_bom_list li.active{border-bottom:2px solid #21B4E2; }
+
+.dacbom_1{
+	display: flex;
+	align-items: center;
+	padding:10px;
+}
+.dacbom_img{
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  align-items: center;
+  object-fit: contain;
+}
+.dacbom_text h4{
+	font-family: "Nunito Sans", sans-serif;
+	color:#21B4E2;
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: 600;
+	padding:0 0 3px 0;
+	margin:0;
+}
+.dacbom_text p{
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size: 16px;
+	line-height:16px;
+	font-weight: 600;
+	padding:0;
+	margin:0;
+}
+.dacbom_text p span{color:#DE5151;} 
+.low_border{
+	padding:30px 30px 10px 30px;
+	border:1px solid #D8D8D8;
+	height:490px;
+	overflow-y:auto;
+}
+.low_calorie{
+	display:flex;
+	align-items: center;
+	padding: 0;
+	margin:0 0 20px 0;
+}
+.low_border::-webkit-scrollbar {
+    width:7px;
+}
+.low_border::-webkit-scrollbar-track {
+    background-color:none;
+    border-left:1px solid #D8D8D8;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.low_border::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:#7D8A8F; 
+}
+.low_calorie li{
+	display: inline-block;
+	padding: 0 15px 0 0;
+	margin: 0;
+}
+.low_calorie li:last-child{ padding: 0; }
+.low_calorie .cal_1{width:12%;}
+.low_calorie .cal_2{width:68%;}
+.low_calorie .cal_3{width:10%;}
+.low_calorie .cal_4{width:10%;}
+
+.low_img_123{
+	width:85px;
+	height:58px;
+	object-fit:contain;
+}
+.low_img_123 img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+.low_text_veg_123 p{
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size: 14px;
+	line-height:18px;
+	font-weight: 600;
+	padding:0;
+	margin:0;
+}
+.low_text_veg_123 h5{
+	font-family: "Nunito Sans", sans-serif;
+	color:#707070;
+	font-size: 14px;
+	line-height:18px;
+	font-weight: 600;
+	padding:0;
+	margin:0;
+}
+.low_prices_123 h6{
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size: 14px;
+	line-height:18px;
+	font-weight: 400;
+	padding:0;
+	margin:0;
+}
+.low_add_w2 a{
+	font-family: "Nunito Sans", sans-serif;
+	display:inline-block;
+	background: #21b4e22b;
+	color:#21B4E2;
+	font-size: 14px;
+	line-height:18px;
+	font-weight:500;
+	text-decoration: none;
+	border:1px solid #21B4E2;
+	border-radius:4px;
+	padding:10px 20px;
+	margin:0;
+	transition:all 300ms ease-in-out;
+}
+.low_add_w2 a:hover{
+	background:#19ae1f1a;
+	border:1px solid #34AE39;
+	color:#34AE39;
+}
+
+.step_mullit_123{
+	display:flex;
+	align-items: center;
+	padding: 0 0 60px 0;
+	margin: 0;
+}
+.step_mullit_123 li{
+	display: inline-block;
+	width:33.33%;
+	padding: 0;
+	margin: 0;
+	position: relative;
+}
+.step_mullit_123 li:after{
+	content: "";
+	position: absolute;
+	top:26px;
+	left: auto;
+	right: auto;
+	width: 100%;
+	height: 1px;
+	background: #232020;
+	z-index: -1;
+}
+.step_mullit_123 li:last-child:after{
+	background:none;
+}
+.step_mullit_123 li.active:before{
+	content: "";
+	position: absolute;
+	top: 26px;
+	left: auto;
+	right: auto;
+	width:115%;
+	height: 1px;
+	background: #21B4E2;
+	z-index: 1;
+}
+.step_mullit_123 li.active:last-child:before{
+	background:none;
+}
+
+.step_m1{
+  background: #f0f5fa;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  z-index:9;
+}
+.step_mullit_123 li:last-child .step_m1{
+	background:#f4f8fb;
+}
+.step_mullit_123 .step_1{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	border-radius:100%;
+	border:1px solid #232020;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: 600;
+}
+.step_mullit_123 .step_1 em{
+  font-style: normal;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+.step_mullit_123 .step_2{
+	display: block;
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size: 14px;
+	line-height:18px;
+	font-weight:600;
+	padding:10px 0 0 0;
+	margin:0;
+}
+.step_mullit_123 li.active .step_2{
+	color:#21B4E2;
+}
+.step_mullit_123 li.active .step_1{
+	color:#fff;
+	background:#21B4E2;
+	border:1px solid #21B4E2;
+}
+
+.cvv_list_12{
+	padding:20px 0 0px 0;
+	margin: 0;
+}
+.cvv_list_12 li.f1{width:30%;}
+.cvv_list_12 li.f2{width:20%;}
+.hvw_12{ height: 56px; }
+.cvv_img{
+	position: relative;
+}
+.cvv_img:after{
+	content: "";
+	position: absolute;
+	top: 16px;
+	right: 12px;
+	width: 24px;
+	height: 24px;
+	background: url(../images/flag/atm1.png);
+	background-size: cover;
+	border-radius: 5px;
+}
+.make_easy_pp{
+	display:flex;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+}
+.make_easy_pp li{
+	display:inline-block;
+	padding:0 10px 0 0;
+	margin: 0;
+}
+.make_easy_pp li img{
+	max-width:100%;
+}
+.make_easy_pp li h5{
+	font-family: "Nunito Sans", sans-serif;
+	color:#232020;
+	font-size: 14px;
+	line-height:18px;
+	font-weight:600;
+	padding:0 0 0 0;
+	margin:0;
+}
+.make_easy_pp li p{
+	font-family: "Nunito Sans", sans-serif;
+	color:#707070;
+	font-size: 12px;
+	line-height:14px;
+	font-weight:600;
+	padding:0 0 0 0;
+	margin:0;
+}
+.make_easy_pp li a{
+	font-family: "Nunito Sans", sans-serif;
+	color:#21B4E2;
+	font-size: 14px;
+	line-height:18px;
+	font-weight:600;
+	text-decoration: none;
+	padding:0 0 0 0;
+	margin:0;
+}
+.pri_vacy_123{
+	border-top:1px solid #D8D8D8;
+	padding:20px 0 0 0;
+	margin:20px 0 0 0;
+}
+.pri_vacy_123 li{
+	display:inline-block;
+	font-family: "Nunito Sans", sans-serif;
+	color:#21B4E2;
+	font-size: 14px;
+	line-height:18px;
+	font-weight:600;
+	padding:0 15px 0 0;
+	margin: 0;
+}
+.pri_vacy_123 li a{ color:#21B4E2; }
+.pri_vacy_123 li i{ color:#000; padding:0 5px 0 0; }
+.bil_e12 p{
+	font-family: "Nunito Sans", sans-serif;
+	color:#707070;
+	font-size: 12px;
+	line-height:18px;
+	font-weight:600;
+	padding:0 0 0 0;
+	margin:0;
+}
+.bil_e12 .agree12{
+	font-family: "Nunito Sans", sans-serif;
+	color:#707070;
+	font-size: 12px;
+	line-height:18px;
+	font-weight:600;
+	padding:0 0 0 0;
+	margin:0;
+}
+.confirm_c{
+	display: flex;
+	align-items: center;
+	border:1px solid #435970;
+	border-radius:4px;
+	padding:15px;
+	margin:15px 0 0 0;
+}
+.confirm_c li{
+	display: inline-block;
+	padding:0 20px 0 0;
+	margin: 0;
+}
+.confirm_c li p{
+	font-family: "Nunito Sans", sans-serif;
+	color:#435970;
+	font-size: 14px;
+	line-height:18px;
+	font-weight:600;
+	padding:0 0 0 0;
+	margin:0;
+}
+.gg_1{
+	padding: 0;
+}
+.tesep_11{
+	padding:10px 0 15px 0;
+	margin: 0;
+}
+.tesep_11 li{
+	display: inline-block;
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 14px;
+	color:#232020;
+	line-height: 20px;
+	font-weight:600;
+	padding: 0 10px 0px 0;
+	margin: 0;
+}
+.tesep_11 li a{ text-decoration: none; color:#21B4E2; }
+.by_fer_1{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 12px;
+	color:#51555E;
+	line-height: 18px;
+	font-weight:600;
+	padding:20px 0;
+	margin: 0;
+}
+.tickets_are_12{
+	padding: 0;
+	margin: 0;
+}
+.tickets_are_12 p{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 12px;
+	color:#232020;
+	line-height:16px;
+	font-weight:600;
+	border-top:1px dashed #D8D8D8;
+	border-bottom:1px dashed #D8D8D8;
+	padding:20px 0;
+	margin:20px 0 20px 0;
+}
+.confirm_book_sw{ background:#24AD53; color:#fff; }
+.clicking_byq2{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 12px;
+	color:#232020;
+	line-height:16px;
+	font-weight:600;
+	padding:0 0 0 0;
+	margin:0;
+}
 /*----dhaka_box-08-08-24--*/
 
 

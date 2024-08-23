@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const TravelerDetailsSection = (): JSX.Element => {
+const TravelerDetailsSection = ({ handleStepClick }: { handleStepClick: Function }): JSX.Element => {
     const [showOptionalRequests, setShowOptionalRequests] = useState<boolean>(false);
 
     const toggleOptionalRequests = (): void => {
@@ -180,7 +180,12 @@ const TravelerDetailsSection = (): JSX.Element => {
                             </>
                         }
                         <div className="text-center">
-                            <input className="seats_123" type="submit" value="Continue to Seats" />
+                            <input
+                                className="seats_123"
+                                type="submit"
+                                value="Continue to Seats"
+                                onClick={() => handleStepClick(2)}
+                            />
                         </div>
                     </form>
 
