@@ -54,20 +54,20 @@ const PaymentOptionsSection = (): JSX.Element => {
 
                             <ul className="ul_list_1 cvv_list_12">
                                 <li className="f1">
-                                    <input className="h_12 hvw_12" type="text" name="text" value="Card Number *" />
+                                    <input className="h_12 hvw_12" type="text" name="text" placeholder="Card Number *" />
                                 </li>
                                 <li className="f1">
-                                    <input className="h_12 hvw_12" type="text" name="text" value="Name on Card*" />
+                                    <input className="h_12 hvw_12" type="text" name="text" placeholder="Name on Card*" />
                                 </li>
                                 <li className="f2">
                                     <div className="date_it">
                                         <p>Expiry Date *</p>
-                                        <input className="h_12 hvw_12" type="date" name="date" value="Date of birth*" />
+                                        <input className="h_12 hvw_12" type="date" name="date" placeholder="Date of birth*" />
                                     </div>
                                 </li>
                                 <li className="f2">
                                     <div className="cvv_img">
-                                        <input className="h_12 hvw_12" type="text" name="text" value="CVV*" />
+                                        <input className="h_12 hvw_12" type="text" name="text" placeholder="CVV*" />
                                     </div>
                                 </li>
                             </ul>

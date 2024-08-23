@@ -10,37 +10,37 @@ const BillingSection = (): JSX.Element => {
                     <div className="col-md-5">
                         <div className="date_it">
                             <p>Country*</p>
-                            <input className="h_12 hvw_12" type="text" name="text" value="United States" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="United States" />
                         </div>
                     </div>
                     <div className="col-md-7">
                         <div className="bil_e12">
-                            <input className="h_12 hvw_12" type="text" name="text" value="Address*" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="Address*" />
                         </div>
                     </div>
                 </div>
                 <div className="row ">
                     <div className="col-md-4">
                         <div className="bil_e12">
-                            <input className="h_12 hvw_12" type="text" name="text" value="Zip*" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="Zip*" />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="bil_e12">
-                            <input className="h_12 hvw_12" type="text" name="text" value="City*" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="City*" />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="date_it">
                             <p>State*</p>
-                            <input className="h_12 hvw_12" type="text" name="text" value="State*" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="State*" />
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-6">
                         <div className="bil_e12">
-                            <input className="h_12 hvw_12" type="text" name="text" value="Contact Phone*" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="Contact Phone*" />
                             <ul className="search_return sec_top_12">
                                 <li>
                                     <div className="form-group">
@@ -55,7 +55,7 @@ const BillingSection = (): JSX.Element => {
                     </div>
                     <div className="col-md-6">
                         <div className="bil_e12">
-                            <input className="h_12 hvw_12" type="text" name="text" value="Confirm Email Address*" />
+                            <input className="h_12 hvw_12" type="text" name="text" placeholder="Confirm Email Address*" />
                             <p>Booking confirmation will be sent to this email address</p>
                         </div>
                     </div>
