@@ -3,7 +3,7 @@ import SelectSeatSection from "./SelectSeatSection";
 import AircraftSeats from "./AircraftSeats";
 import ViewSelectedSeats from "./ViewSelectedSeats";
 import MealsBaggageSection from "./MealsBaggageSection";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FlightDataTwo } from "../../types/common";
 
 const flightData: Array<FlightDataTwo> = [
@@ -15,7 +15,7 @@ const flightData: Array<FlightDataTwo> = [
     { id: "6", isActive: false, flightNumber: "Flight 184", route: "BOM - DAC", imgSrc: "assets/images/show/6.png" },
 ];
 
-const SeatsSection = (): JSX.Element => {
+const SeatsSection = ({ handleStepClick }: { handleStepClick: Function }): JSX.Element => {
     const carouselRef = useRef<any>(null);
     const [showSeats, setShowSeats] = useState<boolean>(true);
     const [isCheckinOpens, setIsCheckinOpens] = useState<boolean>(true);
@@ -57,6 +57,10 @@ const SeatsSection = (): JSX.Element => {
         setSelectSeat(true);
     };
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
+
     return (
         <>
             {/* SelectSeatSection */}
@@ -81,14 +85,14 @@ const SeatsSection = (): JSX.Element => {
                         {isCheckinOpens && <ViewSelectedSeats handleNextSeatSelection={handleNextSeatSelection} />}
 
                         {/* Skip Seat Selection */}
-                        <div className="text-center">
+                        <div className="text-center" onClick={() => handleStepClick(3)}>
                             <Link className="seat_selection_12" to="#">Skip Seat Selection <i
                                 className="fa-solid fa-chevron-right"></i></Link>
                         </div>
                     </>
                     :
                     <>
-                        <div className="text-center">
+                        <div className="text-center" onClick={() => handleStepClick(3)}>
                             <Link className="pay_a" to="#">Continue To Payment</Link>
                         </div >
                     </>

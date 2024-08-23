@@ -3,6 +3,7 @@ import PriceDetailsSection from "../../components/flight-details/PriceDetailsSec
 import FlightDetailsListSection from "../../components/flight-details/FlightDetailsListSection";
 import SeatsSection from "../../components/seats/SeatsSection";
 import { useState } from "react";
+import PaymentSection from "../../components/payment/PaymentSection";
 
 const FlightTravelerDetails = (): JSX.Element => {
     const [activeStep, setActiveStep] = useState<number>(1);
@@ -43,11 +44,9 @@ const FlightTravelerDetails = (): JSX.Element => {
                     <div className="row">
 
                         <div className="col-md-4 col-lg-9">
-                            {activeStep === 1 &&
-                                <FlightDetailsListSection
-                                    handleStepClick={handleStepClick}
-                                />}
-                            {activeStep === 2 && <SeatsSection />}
+                            {activeStep === 1 && <FlightDetailsListSection handleStepClick={handleStepClick} />}
+                            {activeStep === 2 && <SeatsSection handleStepClick={handleStepClick} />}
+                            {activeStep === 3 && <PaymentSection />}
                         </div>
 
                         {/* PriceDetailsSection */}

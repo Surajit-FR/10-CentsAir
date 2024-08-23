@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import BaggageInfoSection from "./BaggageInfoSection";
 import FareRulesSection from "./FareRulesSection";
 import FlexibleTicketFlightWatcherSection from "./FlexibleTicketFlightWatcherSection";
@@ -6,6 +7,10 @@ import TravelerDetailsSection from "./TravelerDetailsSection";
 import TravelProtectionSection from "./TravelProtectionSection";
 
 const FlightDetailsListSection = ({ handleStepClick }: { handleStepClick: Function }): JSX.Element => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
+
     return (
         <>
             {/* ListedFlightSection */}
