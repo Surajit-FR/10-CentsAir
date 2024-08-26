@@ -1,10 +1,12 @@
+import { CallEffect, PutEffect, SelectEffect, TakeEffect } from "redux-saga/effects";
+
 export interface ReusableInputProps {
-    name: string;
     type: string;
+    name: string;
+    placeholder: string;
     value: string;
-    placeholder?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    onBlur: React.FocusEventHandler<HTMLInputElement>;
     touched?: boolean;
     error?: string;
     className?: string;
@@ -138,4 +140,13 @@ export interface BaggageOption {
     weight: string;
     description: string;
     price: string;
-}
+};
+
+export interface DataState {
+    data: Array<any>; // data type should be mentioned based on the API response
+    loading: boolean;
+    error: string | null;
+    type: string;
+};
+
+export type SagaGenerator<Y, R = void> = Generator<CallEffect<Y> | PutEffect | SelectEffect | TakeEffect, R, Y>;

@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginValidationSchema, togglePasswordVisibility } from "../../helper/FormHelper";
 import { useFormik } from "formik";
 import ReusableInput from "../../components/core/input/ReusableInput";
-
-interface LoginFormValues {
-    email: string;
-    password: string;
-}
+import { LoginFormValues } from "../../types/authTypes";
+import { Dispatch } from "redux";
+import { useDispatch } from "react-redux";
+import { authRequest } from "../../services/reducers/authReducers";
 
 const Login = (): JSX.Element => {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+    const dispatch: Dispatch<any> = useDispatch();
+    const navigate: any = useNavigate();
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik<LoginFormValues>({
         initialValues: {
@@ -20,6 +21,7 @@ const Login = (): JSX.Element => {
         validationSchema: loginValidationSchema,
         onSubmit: (values) => {
             console.log(values);
+            dispatch(authRequest({ data: values, navigate }));
         },
     });
 
@@ -59,21 +61,21 @@ const Login = (): JSX.Element => {
                                             <div className="text_sing">
                                                 <h1 className="l1">Log In</h1>
                                             </div>
-                                            {inputFields?.map((field, index) => (
+                                            {inputFields.map((field, index) => (
                                                 <div key={index} className="email_tr">
-                                                    <p>{field?.label}</p>
+                                                    <p>{field.label}</p>
                                                     <ReusableInput
                                                         className="email_1"
-                                                        type={field?.type}
-                                                        name={field?.name}
-                                                        placeholder={field?.placeholder}
-                                                        value={values[field?.name as keyof LoginFormValues] || ""}
+                                                        type={field.type}
+                                                        name={field.name}
+                                                        placeholder={field.placeholder}
+                                                        value={values[field.name as keyof LoginFormValues] || ""}
                                                         onChange={handleChange}
                                                         onBlur={handleBlur}
-                                                        touched={touched[field?.name as keyof LoginFormValues]}
-                                                        error={errors[field?.name as keyof LoginFormValues]}
+                                                        touched={touched[field.name as keyof LoginFormValues] as boolean}
+                                                        error={errors[field.name as keyof LoginFormValues] as string}
                                                     />
-                                                    {field?.name === "password" && (
+                                                    {field.name === "password" && (
                                                         <span
                                                             className={`fa ${passwordVisible ? "fa-eye-slash" : "fa-eye"} fet_eye`}
                                                             onClick={() => togglePasswordVisibility(passwordVisible, setPasswordVisible)}
