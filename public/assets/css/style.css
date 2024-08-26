@@ -5422,6 +5422,184 @@ display: block;
 	padding:0 0 0 0;
 	margin:0;
 }
+
+.body_model_123 .modal-dialog{
+	transform: none;
+	width:100%;
+	max-width:900px;
+	/*position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%) !important;*/
+}
+.body_model_123 .modal-content{
+	border-radius:0;
+}
+.body_model_123 .btn-close{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+.travel_expert_243{
+	display:flex;
+	padding: 0;
+	margin: 0;
+}
+.travel_expert_243 li{
+	display: inline-block;
+	padding: 0 30px 0 0;
+	margin: 0;
+}
+.travel_expert_243 li:last-child{ padding: 0; }
+.model_img{
+	width:130px;
+	height:130px;
+	padding: 0;
+	margin:0 auto;
+	text-align: center;
+	position: relative;
+}
+.model_img img{
+	width:130px;
+	height:130px;
+	border:4px solid #62D4F8;
+	border-radius:100%;
+	object-fit: cover;
+}
+.model_img:after{
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  right: 26px;
+  width: 15px;
+  height: 15px;
+  background: #34AE39;
+  border-radius: 100px;
+}
+.model_img a{
+  display: inline-block;
+  font-size: 15px;
+  color: #34AE39;
+  line-height: 18px;
+  background: #34ae392e;
+  padding: 4px 10px 5px 10px;
+  margin: 10px 0 0 0;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.bu_tton_12{
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: none;
+}
+.model_text_12 h4{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 36px;
+	color:#232020;
+	line-height:38px;
+	font-weight:700;
+	padding:0 0 15px 0;
+	margin:0;
+}
+.model_text_12 p{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:20px;
+	color:#232020;
+	line-height:28px;
+	font-weight:600;
+	padding:0 0 15px 0;
+	margin:0;
+}
+.model_text_12 p a{
+	color:#21B4E2;
+}
+.model_text_12 p span{
+	color:#34AE39;
+}
+.model_text_12 h5{
+	padding:10px 0 15px 0;
+	margin: 0;
+}
+.model_text_12 h5 a{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 36px;
+	color:#232020;
+	line-height:38px;
+	text-decoration:none;
+	font-weight:700;
+	padding:0 0 0 0;
+	margin:0;
+}
+.model_text_12 h6{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:16px;
+	color:#232020;
+	line-height:24px;
+	font-weight:600;
+	padding:0 0 10px 0;
+	margin:0;
+}
+.body_model_123 .modal-body{
+	padding:50px;
+}
+.get_fare_b123{
+	border-top:1px solid #D8D8D8;
+	padding:30px 0 0 0;
+	margin:10px 0 0 0;
+}
+.get_fare_b123 h4{
+	font-family: "Nunito Sans", sans-serif;
+	font-size:32px;
+	color:#232020;
+	line-height:36px;
+	font-weight:600;
+	padding:0 0 10px 0;
+	margin:0;
+}
+.get_fare_b123 p{
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 16px;
+  color: #707070;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 0 0 30px 0;
+  margin: 0;
+}
+.get_fare_b123 p .ter_n1{
+	color:#21B4E2;
+}
+.get_fare_b123 p a{ color:#232020; text-decoration: none; }
+.get_fare_b123 ul{
+	padding: 0 0 20px 0;
+	margin: 0;
+}
+.get_fare_b123 ul li{
+	display: inline-block;
+	width:60%;
+	padding:0 20px 0 0;
+	margin: 0;
+}
+.get_fare_b123 ul li:last-child{ padding: 0; width:38%; }
+.get_fare_b123 .ce_text{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 16px;
+	color: #707070;
+	line-height: 20px;
+	font-weight: 400;
+	border: 1px solid #707070;
+	border-radius: 8px;
+	box-sizing: border-box;
+	outline: none;
+	width: 100%;
+	padding: 14px;
+	margin: 0 0 0 0;
+}
+.get_fare_b123 .submit_ui{
+	background:#435970;
+	color:#fff;
+}
+
 /*----dhaka_box-08-08-24--*/
 
 

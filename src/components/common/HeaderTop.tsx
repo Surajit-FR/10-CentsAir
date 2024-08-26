@@ -29,13 +29,15 @@ const HeaderTop = (): JSX.Element => {
                             <div className="search-box">
                                 <ul className="s_box">
                                     <li>
-                                        <span className="speak_img">
-                                            <img src="assets/images/ellips.png" alt="" />
-                                        </span>
-                                        <span className="speak_1">
-                                            <h5>1-646-738-4820</h5>
-                                            <p>Speak to a travel expert</p>
-                                        </span>
+                                        <button className="bu_tton_12" data-bs-toggle="modal" data-bs-target="#SpeakTravelExpertModal">
+                                            <span className="speak_img">
+                                                <img src="assets/images/ellips.png" alt="" />
+                                            </span>
+                                            <span className="speak_1">
+                                                <h5>1-646-738-4820</h5>
+                                                <p>Speak to a travel expert</p>
+                                            </span>
+                                        </button>
                                     </li>
                                     <li>
                                         <select className="usd_123">

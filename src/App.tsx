@@ -5,6 +5,7 @@ import HeaderTop from "./components/common/HeaderTop";
 import AllRoutes from "./routes/AllRoutes";
 import CommonFooter from "./components/common/CommonFooter";
 import CommonHeaderTop from "./components/common/CommonHeaderTop";
+import SpeakTravelExpertModal from "./util/SpeakTravelExpertModal";
 
 const App: React.FC = (): JSX.Element => {
   const location: Location = useLocation();
@@ -39,6 +40,9 @@ const App: React.FC = (): JSX.Element => {
       <AllRoutes />
       {/* Conditional Footer */}
       {renderFooter()}
+
+      {/* SpeakTravelExpertModal */}
+      <SpeakTravelExpertModal />
     </>
   );
 };
