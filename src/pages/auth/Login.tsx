@@ -8,6 +8,13 @@ import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { authRequest } from "../../services/reducers/authReducers";
 
+interface InputFields {
+    name: string;
+    type: string;
+    placeholder: string;
+    label: string;
+};
+
 const Login = (): JSX.Element => {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
     const dispatch: Dispatch<any> = useDispatch();
@@ -25,7 +32,7 @@ const Login = (): JSX.Element => {
         },
     });
 
-    const inputFields = [
+    const inputFields: Array<InputFields> = [
         {
             name: "email",
             type: "email",
