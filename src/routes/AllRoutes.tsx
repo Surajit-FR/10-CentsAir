@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import {
     Flights,
-    FlightTravelerDetails,
+    BookedFlightTravelerDetails,
     Home
 } from '../pages/AllPages';
 
@@ -11,7 +11,7 @@ const AllRoutes = (): JSX.Element => {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/flights' element={<Flights />} />
-                <Route path='/flight-details' element={<FlightTravelerDetails />} />
+                <Route path='/booked-flight-details' element={<BookedFlightTravelerDetails />} />
             </Routes>
         </>
     );

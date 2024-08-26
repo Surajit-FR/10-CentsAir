@@ -50,7 +50,7 @@ const OneWayFlightItem = ({ flight }: { flight: FlightItemsType }) => {
                     </li>
                     <li className="fd_6">
                         <div className="book_t1">
-                            <Link className="book_t2" to="#">BOOK</Link>
+                            <Link className="book_t2" to="/booked-flight-details">BOOK</Link>
                             <h5>{flight?.price}<em>.99</em></h5>
                             <p>Price per person (incl. taxes & fees)</p>
                         </div>
@@ -58,7 +58,7 @@ const OneWayFlightItem = ({ flight }: { flight: FlightItemsType }) => {
                 </ul>
                 <div className="fl_bg_box">
                     <div className="fl_left">
-                        <Link to="/flight-details">Flight Details <i className="fa-solid fa-angle-down"></i></Link>
+                        <Link to="#">Flight Details <i className="fa-solid fa-angle-down"></i></Link>
                     </div>
                     <div className="rt_right">
                         <ul>

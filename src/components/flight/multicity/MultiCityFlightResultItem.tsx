@@ -77,7 +77,7 @@ const MultiCityFlightResultItem = ({ flight }: { flight: FlightOption }): JSX.El
                         <div className="book_t1">
                             <h5>{flight?.details.price}</h5>
                             <p className="pb-1">Price per person (incl. taxes & fees)</p>
-                            <Link className="book_t2" to={flight?.links.book}>BOOK</Link>
+                            <Link className="book_t2" to="/booked-flight-details">BOOK</Link>
                         </div>
                         <div className="book_t1 text-start">
                             <p>As low as {flight?.details.paymentPlan} with <img className="img_01" src="assets/images/show/a1.png" alt="" /></p>
@@ -87,7 +87,7 @@ const MultiCityFlightResultItem = ({ flight }: { flight: FlightOption }): JSX.El
                 </ul>
                 <div className="fl_bg_box">
                     <div className="fl_left">
-                        <Link to="/flight-details">Flight Details <i className="fa-solid fa-angle-down"></i></Link>
+                        <Link to="#">Flight Details <i className="fa-solid fa-angle-down"></i></Link>
                     </div>
                     <div className="rt_right">
                         <ul>

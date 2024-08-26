@@ -5,7 +5,7 @@ import SeatsSection from "../../components/seats/SeatsSection";
 import { useState } from "react";
 import PaymentSection from "../../components/payment/PaymentSection";
 
-const FlightTravelerDetails = (): JSX.Element => {
+const BookedFlightTravelerDetails = (): JSX.Element => {
     const [activeStep, setActiveStep] = useState<number>(1);
 
     const handleStepClick = (step: number) => {
@@ -61,4 +61,4 @@ const FlightTravelerDetails = (): JSX.Element => {
     );
 };
 
-export default FlightTravelerDetails;
+export default BookedFlightTravelerDetails;
