@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'LondonMM';
+    src: url('LondonMM.woff2') format('woff2'),
+        url('LondonMM.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LondonTwo';
+    src: url('LondonTwo.woff2') format('woff2'),
+        url('LondonTwo.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LondonBetween';
+    src: url('LondonBetween.woff2') format('woff2'),
+        url('LondonBetween.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
