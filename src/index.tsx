@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import 'react-phone-number-input/style.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Provider } from 'react-redux';
 import store from './services/store/store';
 

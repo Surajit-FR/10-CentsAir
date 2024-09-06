@@ -1,6 +1,6 @@
 import FlightFilter from "../../components/flight/FlightFilter";
 import { useEffect, useState } from "react";
-import FlightsBottomBox from "../../components/flight/FlightsBottomBox";
+import FlightsBottomBox from "../../components/common/BottomInfoBox";
 import CommonSearchSection from "../../components/flight/CommonSearchSection";
 import OneWayTab from "../../components/flight/oneway/OneWayTab";
 import RoundTripTab from "../../components/flight/roudtrip/RoundTripTab";

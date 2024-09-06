@@ -122,7 +122,7 @@ const FlightTabContent = (): JSX.Element => {
                     </ul>
                 </div>
                 <div className="text-center mt_top">
-                    <input className="search_bt" type="submit" value="Search" onClick={() => navigate('/flights')} />
+                    <input className="search_bt" type="submit" value="Search" onClick={() => navigate('/flights-search-result')} />
                 </div>
             </form>
         </>

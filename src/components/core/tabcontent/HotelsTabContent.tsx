@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const HotelsTabContent = (): JSX.Element => {
+    const navigate: any = useNavigate();
+
     return (
         <>
             <form>
@@ -52,7 +56,7 @@ const HotelsTabContent = (): JSX.Element => {
                     </ul>
                 </div>
                 <div className="text-center mt_top">
-                    <input className="search_bt" type="submit" value="Search" />
+                    <input className="search_bt" type="submit" value="Search" onClick={() => navigate("/hotels-search-result")} />
                 </div>
             </form>
         </>

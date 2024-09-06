@@ -149,4 +149,22 @@ export interface DataState {
     type: string;
 };
 
+export interface Hotel {
+    image: string;
+    name: string;
+    location: string;
+    distance: string;
+    sustainableLevel: string;
+    roomType: string;
+    bedType: string;
+    breakfastIncluded: boolean;
+    freeCancellation: boolean;
+    noPrepayment: boolean;
+    rating: number;
+    reviewCount: number;
+    totalPrice: number;
+    taxesAndCharges: number;
+    availabilityMessage?: string;
+}
+
 export type SagaGenerator<Y, R = void> = Generator<CallEffect<Y> | PutEffect | SelectEffect | TakeEffect, R, Y>;

@@ -1,4 +1,4 @@
-import FlightsBottomBox from "../../components/flight/FlightsBottomBox";
+import FlightsBottomBox from "../../components/common/BottomInfoBox";
 import PriceDetailsSection from "../../components/flight-details/PriceDetailsSection";
 import FlightDetailsListSection from "../../components/flight-details/FlightDetailsListSection";
 import SeatsSection from "../../components/seats/SeatsSection";

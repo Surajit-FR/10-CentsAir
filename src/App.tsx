@@ -6,6 +6,7 @@ import AllRoutes from "./routes/AllRoutes";
 import CommonFooter from "./components/common/CommonFooter";
 import CommonHeaderTop from "./components/common/CommonHeaderTop";
 import SpeakTravelExpertModal from "./util/SpeakTravelExpertModal";
+import HeaderTopWithSubNav from "./components/common/HeaderTopWithSubNav";
 
 const App: React.FC = (): JSX.Element => {
   const location: Location = useLocation();
@@ -14,10 +15,9 @@ const App: React.FC = (): JSX.Element => {
   const renderHeader = (): JSX.Element => {
     if (location.pathname === "/") {
       return <HeaderTop />;
+    } else if (location.pathname.startsWith("/hotels-search-result")) {
+      return <HeaderTopWithSubNav />
     }
-    // else if (location.pathname.startsWith("/another-path")) {
-    //   <CommonHeaderTop />
-    // }
     return <CommonHeaderTop />;
   };
 
@@ -26,9 +26,6 @@ const App: React.FC = (): JSX.Element => {
     if (location.pathname === "/") {
       return <LandingPageFooter />;
     }
-    // else if (location.pathname.startsWith("/another-path")) {
-    //   <CommonFooter />
-    // }
     return <CommonFooter />;
   };
 
