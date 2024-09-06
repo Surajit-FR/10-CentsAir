@@ -90,6 +90,7 @@ const SearchResultFilter = (): JSX.Element => {
                         endDate={checkOutDate as Date}
                         monthsShown={2}
                         placeholderText="Start date"
+                        dateFormat="MMMM, yyyy"
                         className="se_1 check_f"
                     />
                 </div>
@@ -106,6 +107,7 @@ const SearchResultFilter = (): JSX.Element => {
                         minDate={checkInDate as Date}
                         monthsShown={2}
                         placeholderText="End date"
+                        dateFormat="MMMM d, yyyy"
                         className="se_1 check_f"
                     />
                 </div>
