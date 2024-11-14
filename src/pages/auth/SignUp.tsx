@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
-import { auth, google } from "../../config/firebase";
+import { auth, facebook, google } from "../../config/firebase";
 import { signupValidationSchema } from "../../helper/FormHelper";
 import { useFormik } from "formik";
 import { AppDispatch } from "../../store/Store";
@@ -119,7 +119,7 @@ const SignUp = (): JSX.Element => {
                                                                 </Link>
                                                             </li>
                                                             <li>
-                                                                <Link to="#">
+                                                                <Link to="#" onClick={() => socialLogin(facebook)}>
                                                                     <img src="assets/images/social/f.png" alt="" />
                                                                     <span>Continue with Facebook</span>
                                                                 </Link>

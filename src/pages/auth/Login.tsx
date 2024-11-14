@@ -7,7 +7,7 @@ import { LoginFormValues } from "../../types/authTypes";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/Store";
 import { AuthProvider, signInWithPopup } from "firebase/auth";
-import { auth, google } from "../../config/firebase";
+import { auth, facebook, google } from "../../config/firebase";
 import { AuthLoginRequest, AuthSocialRequest } from "../../store/reducers/AuthReducers";
 
 type InputFields = {
@@ -124,14 +124,12 @@ const Login = (): JSX.Element => {
 
                                             <ul className="social_midea">
                                                 <li>
-                                                    <Link to="#"
-                                                        onClick={() => socialLogin(google)}
-                                                    >
+                                                    <Link to="#" onClick={() => socialLogin(google)}>
                                                         <i className="fa-brands fa-google" style={{ color: "#FFC000" }}></i>
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="#">
+                                                    <Link to="#" onClick={() => socialLogin(facebook)}>
                                                         <i className="fa-brands fa-facebook-f" style={{ color: "#005eff" }}></i>
                                                     </Link>
                                                 </li>
