@@ -1,1 +1,1 @@
-export const REACT_APP_BASE_URL = "http://localhost:8000" //"api_base_url"; 
+export const REACT_APP_BASE_URL = "http://localhost:8000/api/v1" //"api_base_url"; 

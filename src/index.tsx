@@ -8,7 +8,8 @@ import SignUp from './pages/auth/SignUp';
 import 'react-phone-number-input/style.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Provider } from 'react-redux';
-import store from './services/store/store';
+import { store } from './store/Store';
+import { Toaster } from 'react-hot-toast';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,6 +23,12 @@ root.render(
         <Route path='/signup' element={<SignUp />} />
       </Routes>
     </Router>
+
+    <Toaster
+      position='top-center'
+      reverseOrder={false}
+      gutter={10}
+    />
   </Provider>
 );
 

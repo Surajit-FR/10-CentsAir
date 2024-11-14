@@ -5,7 +5,7 @@ import HeaderTop from "./components/common/HeaderTop";
 import AllRoutes from "./routes/AllRoutes";
 import CommonFooter from "./components/common/CommonFooter";
 import CommonHeaderTop from "./components/common/CommonHeaderTop";
-import SpeakTravelExpertModal from "./util/SpeakTravelExpertModal";
+import SpeakTravelExpertModal from "./components/SpeakTravelExpertModal";
 import HeaderTopWithSubNav from "./components/common/HeaderTopWithSubNav";
 
 const App: React.FC = (): JSX.Element => {

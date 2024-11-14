@@ -1,6 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { AppDispatch } from "../../store/Store";
+import { useDispatch } from "react-redux";
+import { AuthLogoutRequest } from "../../store/reducers/AuthReducers";
 
 const HeaderTop = (): JSX.Element => {
+    const accessToken: string | null = window.localStorage.getItem("accessToken");
+    const refreshToken: string | null = window.localStorage.getItem("refreshToken");
+
+    const dispatch: AppDispatch = useDispatch();
+    const navigate: NavigateFunction = useNavigate();
+
+    const userLogout = () => {
+        dispatch(AuthLogoutRequest({ navigate }));
+    };
+
     return (
         <>
             <div className="header_top">
@@ -53,9 +66,17 @@ const HeaderTop = (): JSX.Element => {
                                     </li>
                                     <li>
                                         <span className="d_span">
-                                            <Link to="/login">LogIn</Link>
-                                            <span className="mx-1">/</span>
-                                            <Link to="/signup">SignUp</Link>
+                                            {
+                                                (accessToken && refreshToken) ?
+                                                    <Link to="#" onClick={userLogout}>Log Out</Link>
+                                                    :
+                                                    <>
+                                                        <Link to="/login">LogIn</Link>
+                                                        <span className="mx-1">/</span>
+                                                        <Link to="/signup">SignUp</Link>
+                                                    </>
+                                            }
+
                                         </span>
                                     </li>
                                 </ul>

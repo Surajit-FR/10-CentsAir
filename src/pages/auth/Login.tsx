@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { loginValidationSchema, togglePasswordVisibility } from "../../helper/FormHelper";
 import { useFormik } from "formik";
 import ReusableInput from "../../components/core/input/ReusableInput";
 import { LoginFormValues } from "../../types/authTypes";
-import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
-import { authRequest } from "../../services/reducers/authReducers";
+import { AppDispatch } from "../../store/Store";
+import { AuthProvider, signInWithPopup } from "firebase/auth";
+import { auth, google } from "../../config/firebase";
+import { AuthLoginRequest, AuthSocialRequest } from "../../store/reducers/AuthReducers";
 
-interface InputFields {
+type InputFields = {
     name: string;
     type: string;
     placeholder: string;
@@ -17,8 +19,8 @@ interface InputFields {
 
 const Login = (): JSX.Element => {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-    const dispatch: Dispatch<any> = useDispatch();
-    const navigate: any = useNavigate();
+    const dispatch: AppDispatch = useDispatch();
+    const navigate: NavigateFunction = useNavigate();
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik<LoginFormValues>({
         initialValues: {
@@ -27,8 +29,7 @@ const Login = (): JSX.Element => {
         },
         validationSchema: loginValidationSchema,
         onSubmit: (values) => {
-            console.log(values);
-            dispatch(authRequest({ data: values, navigate }));
+            dispatch(AuthLoginRequest({ data: values, navigate }));
         },
     });
 
@@ -46,6 +47,21 @@ const Login = (): JSX.Element => {
             label: "Password",
         },
     ];
+
+    const socialLogin = async (provider: AuthProvider) => {
+        const result = await signInWithPopup(auth, provider);
+        const data = {
+            email: result?.user?.providerData[0]?.email,
+            uid: result?.user?.providerData[0]?.uid,
+            displayName: result?.user?.providerData[0]?.displayName,
+            photoURL: result?.user?.providerData[0]?.photoURL,
+            phoneNumber: result?.user?.providerData[0]?.phoneNumber,
+            providerId: result?.user?.providerData[0]?.providerId,
+            userType: "Customer"
+        };
+        // console.log(data);
+        dispatch(AuthSocialRequest({ data, navigate }));
+    };
 
     return (
         <>
@@ -102,6 +118,29 @@ const Login = (): JSX.Element => {
                                             <div className="or_box">
                                                 <input className="sign_email log_ing" type="submit" value="Log In" />
                                             </div>
+                                            <div className="or_text">
+                                                <h4>Or</h4>
+                                            </div>
+
+                                            <ul className="social_midea">
+                                                <li>
+                                                    <Link to="#"
+                                                        onClick={() => socialLogin(google)}
+                                                    >
+                                                        <i className="fa-brands fa-google" style={{ color: "#FFC000" }}></i>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="#">
+                                                        <i className="fa-brands fa-facebook-f" style={{ color: "#005eff" }}></i>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="#">
+                                                        <i className="fa-brands fa-apple" style={{ color: "#000000" }}></i>
+                                                    </Link>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </form>
                                 </div>

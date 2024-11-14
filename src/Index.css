@@ -79,3 +79,63 @@
     border: 0;
     width: 265px;
 }
+
+.social_midea {
+    text-align: center;
+    padding: 20px 0 0 0;
+    margin: 0;
+}
+
+.social_midea li {
+    display: inline-block;
+    padding: 0 20px 0 0;
+    margin: 0;
+}
+
+.social_midea li:last-child {
+    padding: 0;
+}
+
+.social_midea li a {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 100%;
+    color: #000;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.social_midea li a i {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.or_text {
+    text-align: center;
+    margin: 40px 0 0 0;
+    border-top: 1px solid #000;
+}
+
+.or_text h4 {
+    font-size: 18px;
+    color: #000;
+    line-height: 20px;
+    padding: 0 10px;
+    position: relative;
+    display: block;
+    background: #90a8c0;
+    width: 50px;
+    margin: 0 auto;
+    margin-top: -13px;
+}
+
+.normal_auth {
+    border: 1px solid red;
+}

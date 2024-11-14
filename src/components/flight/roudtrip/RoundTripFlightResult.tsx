@@ -1,5 +1,5 @@
 import { FlightData, RecommendationsItemsType } from "../../../types/common";
-import CustomPagination from "../../../util/CustomPagination";
+import CustomPagination from "../../CustomPagination";
 import { useState } from "react";
 import RoundTripFlightResultItem from "./RoundTripFlightResultItem";
 

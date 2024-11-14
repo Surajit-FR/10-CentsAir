@@ -1,6 +1,7 @@
 import { CallEffect, PutEffect, SelectEffect, TakeEffect } from "redux-saga/effects";
+import { UserData } from "./authTypes";
 
-export interface ReusableInputProps {
+export type ReusableInputProps = {
     type: string;
     name: string;
     placeholder: string;
@@ -10,12 +11,13 @@ export interface ReusableInputProps {
     touched?: boolean;
     error?: string;
     className?: string;
+    component?: string;
 }
-export interface HereSectionData {
+export type HereSectionData = {
     title: string;
     description: string
 }
-export interface FoundDeal {
+export type FoundDeal = {
     destination: string;
     route: string;
     dates: string;
@@ -23,14 +25,14 @@ export interface FoundDeal {
     imageUrl: string;
     similarTripText: string;
 }
-export interface CarouselItem {
+export type CarouselItem = {
     imageUrl: string;
     rank?: string;
     title?: string;
     destination?: string;
     price?: string;
 }
-export interface Deal {
+export type Deal = {
     id: number;
     city: string;
     airportCode: string;
@@ -39,19 +41,19 @@ export interface Deal {
     tripType: string;
     imageUrl: string;
 }
-export interface TabData {
+export type TabData = {
     id: string;
     icon: string;
     altIcon: string;
     title: string;
     content: JSX.Element;
 }
-export interface Pagination {
+export type Pagination = {
     pageCount: number;
     pageNumber: number;
     changePage: (data: { selected: number }) => void;
 }
-export interface FlightItemsType {
+export type FlightItemsType = {
     imageSrc: string;
     stops: string;
     airline: string;
@@ -62,18 +64,18 @@ export interface FlightItemsType {
     arrivalAirport: string;
     price: string
 };
-export interface RecommendationsItemsType {
+export type RecommendationsItemsType = {
     icon: string;
     title: string;
     price: string;
     image: string;
 };
-export interface DepartureArrivalTime {
+export type DepartureArrivalTime = {
     time: string;
     location: string;
     note?: string;
 }
-export interface FlightOption {
+export type FlightOption = {
     id: string;
     details: {
         images: Array<string>;
@@ -96,7 +98,7 @@ export interface FlightOption {
         fareRules: string;
     };
 }
-export interface FlightData {
+export type FlightData = {
     images: Array<string>;
     stops: Array<{
         airline: string;
@@ -122,34 +124,27 @@ export interface FlightData {
         text: string;
     }>;
 };
-export interface FlightDataTwo {
+export type FlightDataTwo = {
     id: string;
     isActive: boolean;
     flightNumber: string;
     route: string;
     imgSrc: string;
 };
-export interface MealOne {
+export type MealOne = {
     id: string;
     imageSrc: string;
     description: string;
     price: string;
 };
-export interface BaggageOption {
+export type BaggageOption = {
     id: string;
     weight: string;
     description: string;
     price: string;
 };
 
-export interface DataState {
-    data: Array<any>; // data type should be mentioned based on the API response
-    loading: boolean;
-    error: string | null;
-    type: string;
-};
-
-export interface Hotel {
+export type Hotel = {
     image: string;
     name: string;
     location: string;
@@ -165,6 +160,22 @@ export interface Hotel {
     totalPrice: number;
     taxesAndCharges: number;
     availabilityMessage?: string;
-}
+};
+
+export type DataState = {
+    authData?: Partial<UserData>,
+    error: string | null,
+    type: string,
+};
 
 export type SagaGenerator<Y, R = void> = Generator<CallEffect<Y> | PutEffect | SelectEffect | TakeEffect, R, Y>;
+
+export type CommonResponse = {
+    statusCode: number,
+    message: string,
+    success: boolean,
+};
+
+export type ApiResponse<T> = CommonResponse & {
+    data?: T;
+};

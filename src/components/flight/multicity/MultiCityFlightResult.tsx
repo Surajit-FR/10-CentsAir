@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FlightOption, RecommendationsItemsType } from "../../../types/common";
-import CustomPagination from "../../../util/CustomPagination";
+import CustomPagination from "../../CustomPagination";
 import MultiCityFlightResultItem from "./MultiCityFlightResultItem";
 
 const MultiCityFlightResult = ({ recommendations }: { recommendations: Array<RecommendationsItemsType> }): JSX.Element => {

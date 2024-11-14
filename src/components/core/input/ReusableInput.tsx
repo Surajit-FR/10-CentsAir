@@ -10,6 +10,7 @@ const ReusableInput = ({
     touched,
     error,
     className,
+    component,
 }: ReusableInputProps) => {
     return (
         <div>
@@ -21,9 +22,12 @@ const ReusableInput = ({
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
-                style={{ border: touched && error ? "1px solid red" : "" }}
+                style={{ border: touched && error ? "2px solid red" : "" }}
             />
-            {touched && error && <div style={{ marginLeft: "10px", color: "red", fontSize: "14px" }}>{error}</div>}
+            {component !== "signup" && (<>
+                {touched && error && <div style={{ marginLeft: "10px", color: "red", fontSize: "14px" }}>{error}</div>}
+            </>)}
+
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CustomPagination from "../../../util/CustomPagination";
+import CustomPagination from "../../CustomPagination";
 import { useState } from "react";
 import OneWayFlightResultItem from "./OneWayFlightResultItem";
 import { FlightItemsType, RecommendationsItemsType } from "../../../types/common";
