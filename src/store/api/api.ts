@@ -18,6 +18,6 @@ export const SIGNUP = (data: SignUpFormValues) => API.post("/auth/signup", data)
 // Social login
 export const SOCIALLOGIN = (data: TSocialLoginValues) => API.post("/auth/user/social", data);
 // Login
-export const LOGIN = (data: LoginFormValues) => API.post("/auth/login", data);
+export const LOGIN = (data: LoginFormValues) => API.post("/auth/signin", data);
 // Logout
 export const LOGOUT = () => API.post("/auth/logout");
