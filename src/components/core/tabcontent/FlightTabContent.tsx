@@ -11,9 +11,43 @@ const FlightTabContent = (): JSX.Element => {
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
     const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
     const [searchQuery, setsearchQuery] = useState<string>('');
+    const [isSourceVisible, setIsSourceVisible] = useState(false)
+    const [isDestinationVisible, setIsDestinationVisible] = useState(false)
+    const [sourceocation, setSourceLocation] = useState({
+        sourceName: '',
+        sourceCode: '',
+        sourceStateName: '',
+        sourceStateCity: '',
+    })
+    const handleSourcePicking = (name: string, code: string, state: string, city: string) => {
+        setSourceLocation({
+            sourceName: name,
+            sourceCode: code,
+            sourceStateName: state,
+            sourceStateCity: city,
+        })
+        setIsSourceVisible(false)
+        setIsDestinationVisible(false)
+    }
+    const [destinationLocation, setdestinationLocation] = useState({
+        sourceName: '',
+        sourceCode: '',
+        sourceStateName: '',
+        sourceStateCity: '',
+    })
+    const handleDestinatioPicking = (name: string, code: string, state: string, city: string) => {
+        setdestinationLocation({
+            sourceName: name,
+            sourceCode: code,
+            sourceStateName: state,
+            sourceStateCity: city,
+        })
+        setIsSourceVisible(false)
+        setIsDestinationVisible(false)
+    }
     const dispatch: AppDispatch = useDispatch();
     const navigate: NavigateFunction = useNavigate();
-    const {data}= useSelector((state: RootState)=> state.sabreGeolocationSlice)
+    const { data } = useSelector((state: RootState) => state.sabreGeolocationSlice)
 
     const fareTypes: Array<string> = [
         'Regular',
@@ -36,22 +70,22 @@ const FlightTabContent = (): JSX.Element => {
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
-    let timer: any=0
+    let timer: any = 0
 
-function debounce(val: string) {
-  clearTimeout(timer)
-  timer = setTimeout(() => {
-    // setsearchQuery(val)
-    dispatch(SabreSerchGeoLocation({ query: val, }))
-  }, 1000)
-}
-useEffect(()=>{
-    if(searchQuery.length>3){
-        dispatch(SabreSerchGeoLocation({ query: searchQuery, }));
-        // debounce(searchQuery)    
+    function debounce(val: string) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            // setsearchQuery(val)
+            dispatch(SabreSerchGeoLocation({ query: val, }))
+        }, 1000)
     }
-},[searchQuery])
-console.log({data})
+    useEffect(() => {
+        if (searchQuery.length > 3) {
+            dispatch(SabreSerchGeoLocation({ query: searchQuery, }));
+            // debounce(searchQuery)    
+        }
+    }, [searchQuery])
+    console.log({ data })
     return (
         <>
             <form>
@@ -74,51 +108,96 @@ console.log({data})
                             <h5 className="book_1">Book International and Domestic Flights</h5>
                         </div>
 
-                        
+
                     </div>
                     <ul className="form_and_to">
                         <li className="same_wdth_1">
                             <div className="from_text">
                                 <h5>From</h5>
-                                <div className="set_secarh_box">
-                                    <input className="s_text1" type="text" value={searchQuery} onChange={(e)=>setsearchQuery(e.target.value)}/>
-                                    <div className='date_box clearfix'>
-                                        {data && data.doclist && data.doclist.docs && data.doclist.docs.length>0 && data.doclist.docs.map((airPorts:any)=>(
-                                            <div className='air_text' key={airPorts.id}>
-                                                <i className="fi fi-rr-plane"></i>
-                                                <h5 className='m_left'>
-                                                    <span className='f_text com_text'>{airPorts.city},</span>
-                                                    <span className='s_text com_text'>{airPorts.stateName}</span>
-                                                    <span className='l_text'>{airPorts.name}</span>
-                                                </h5>
-                                                <span className='ind_text'>{airPorts.iataCityCode}</span>
-                                            </div>
-                                        )
-                                        )}
+                                {!isSourceVisible && (
+                                    <div onClick={() => {
+                                        setIsSourceVisible(true)
+                                        setIsDestinationVisible(false)
+                                        setsearchQuery("")
+                                    }}>
+                                        <h1>{sourceocation.sourceCode}</h1>
+                                        <h5 >{sourceocation.sourceName}</h5>
                                     </div>
-                                </div>
+
+                                )}
+
+
+                                {isSourceVisible && (
+                                    <div className="set_secarh_box">
+                                        <input className="s_text1" type="text" value={searchQuery} onChange={(e) => setsearchQuery(e.target.value)} />
+                                        <div className='date_box clearfix'>
+                                            {data && data.doclist && data.doclist.docs && data.doclist.docs.length > 0 && data.doclist.docs.map((airPorts: any) => (
+                                                <div className='air_text' key={airPorts.id} onClick={() => {
+                                                    // if (isSourceVisible) {
+                                                        handleSourcePicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city)
+
+                                                    // }
+                                                    // if (isDestinationVisible) {
+                                                    //     handleDestinatioPicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city)
+                                                    // }
+
+
+                                                }
+
+
+                                                }>
+                                                    <i className="fi fi-rr-plane"></i>
+                                                    <h5 className='m_left'>
+                                                        <span className='f_text com_text'>{airPorts.city},</span>
+                                                        <span className='s_text com_text'>{airPorts.stateName}</span>
+                                                        <span className='l_text'>{airPorts.name}</span>
+                                                    </h5>
+                                                    <span className='ind_text'>{airPorts.iataCityCode}</span>
+                                                </div>
+                                            )
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
                             </div>
                         </li>
                         <li className="same_wdth_1 second_1">
                             <div className="from_text">
                                 <h5>To</h5>
-                                <div className="set_secarh_box">
-                                    <input className="s_text1" type="text" value={searchQuery} onChange={(e)=>setsearchQuery(e.target.value)}/>
-                                    <div className='date_box clearfix'>
-                                        {data && data.doclist && data.doclist.docs && data.doclist.docs.length>0 && data.doclist.docs.map((airPorts:any)=>(
-                                            <div className='air_text' key={airPorts.id}>
-                                                <i className="fi fi-rr-plane"></i>
-                                                <h5 className='m_left'>
-                                                    <span className='f_text com_text'>{airPorts.city},</span>
-                                                    <span className='s_text com_text'>{airPorts.stateName}</span>
-                                                    <span className='l_text'>{airPorts.name}</span>
-                                                </h5>
-                                                <span className='ind_text'>{airPorts.iataCityCode}</span>
-                                            </div>
-                                        )
-                                        )}
+                                {!isDestinationVisible && (
+                                    <div onClick={() => {
+                                        setIsDestinationVisible(true)
+                                        setIsSourceVisible(false)
+                                        setsearchQuery("")
+                                    }}>
+                                        <h1>{destinationLocation.sourceCode}</h1>
+                                        <h5 >{destinationLocation.sourceName}</h5>
                                     </div>
-                                </div>
+
+                                )}
+                                {
+                                    isDestinationVisible && (
+                                        <div className="set_secarh_box">
+                                            <input className="s_text1" type="text" value={searchQuery} onChange={(e) => setsearchQuery(e.target.value)} />
+                                            <div className='date_box clearfix'>
+                                                {data && data.doclist && data.doclist.docs && data.doclist.docs.length > 0 && data.doclist.docs.map((airPorts: any) => (
+                                                    <div className='air_text' key={airPorts.id} onClick={()=>{handleDestinatioPicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city)}}>
+                                                        <i className="fi fi-rr-plane"></i>
+                                                        <h5 className='m_left'>
+                                                            <span className='f_text com_text'>{airPorts.city},</span>
+                                                            <span className='s_text com_text'>{airPorts.stateName}</span>
+                                                            <span className='l_text'>{airPorts.name}</span>
+                                                        </h5>
+                                                        <span className='ind_text'>{airPorts.iataCityCode}</span>
+                                                    </div>
+                                                )
+                                                )}
+                                            </div>
+                                        </div>
+                                    )
+                                }
+
                             </div>
                             <div className="exchanges">
                                 <Link to="#">
