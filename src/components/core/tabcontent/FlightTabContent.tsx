@@ -4,6 +4,9 @@ import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../../store/Store';
 import { SabreSerchGeoLocation } from '../../../store/reducers/SabreSearchReducers';
 
+import "@flaticon/flaticon-uicons/css/all/all.css";
+
+
 const FlightTabContent = (): JSX.Element => {
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
     const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
@@ -70,27 +73,52 @@ console.log({data})
                         <div className="col-md-5">
                             <h5 className="book_1">Book International and Domestic Flights</h5>
                         </div>
-                        <input type="text" value={searchQuery} onChange={(e)=>setsearchQuery(e.target.value)}/>
-                        <div>{data && data.doclist && data.doclist.docs && data.doclist.docs.length>0 && data.doclist.docs.map((airPorts:any)=>(
-                            <div key={airPorts.id}>
-                                {airPorts.name}, <span>{airPorts.iataCityCode}</span>
-                            </div>
-                        )
-                        )}</div>
+
+                        
                     </div>
                     <ul className="form_and_to">
                         <li className="same_wdth_1">
                             <div className="from_text">
                                 <h5>From</h5>
-                                <h4>DAC</h4>
-                                <p>Dhaka <span className="b1">Bangladesh</span></p>
+                                <div className="set_secarh_box">
+                                    <input className="s_text1" type="text" value={searchQuery} onChange={(e)=>setsearchQuery(e.target.value)}/>
+                                    <div className='date_box clearfix'>
+                                        {data && data.doclist && data.doclist.docs && data.doclist.docs.length>0 && data.doclist.docs.map((airPorts:any)=>(
+                                            <div className='air_text' key={airPorts.id}>
+                                                <i className="fi fi-rr-plane"></i>
+                                                <h5 className='m_left'>
+                                                    <span className='f_text com_text'>{airPorts.city},</span>
+                                                    <span className='s_text com_text'>{airPorts.stateName}</span>
+                                                    <span className='l_text'>{airPorts.name}</span>
+                                                </h5>
+                                                <span className='ind_text'>{airPorts.iataCityCode}</span>
+                                            </div>
+                                        )
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         </li>
                         <li className="same_wdth_1 second_1">
                             <div className="from_text">
                                 <h5>To</h5>
-                                <h4>Destination</h4>
-                                <p>Dhaka <span className="b1">Bangladesh</span></p>
+                                <div className="set_secarh_box">
+                                    <input className="s_text1" type="text" value={searchQuery} onChange={(e)=>setsearchQuery(e.target.value)}/>
+                                    <div className='date_box clearfix'>
+                                        {data && data.doclist && data.doclist.docs && data.doclist.docs.length>0 && data.doclist.docs.map((airPorts:any)=>(
+                                            <div className='air_text' key={airPorts.id}>
+                                                <i className="fi fi-rr-plane"></i>
+                                                <h5 className='m_left'>
+                                                    <span className='f_text com_text'>{airPorts.city},</span>
+                                                    <span className='s_text com_text'>{airPorts.stateName}</span>
+                                                    <span className='l_text'>{airPorts.name}</span>
+                                                </h5>
+                                                <span className='ind_text'>{airPorts.iataCityCode}</span>
+                                            </div>
+                                        )
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                             <div className="exchanges">
                                 <Link to="#">

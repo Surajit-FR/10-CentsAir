@@ -60,7 +60,7 @@ type BannerTabProps = {
 const BannerTab = ({ activeTab, onTabClick }: BannerTabProps): JSX.Element => {
     return (
         <>
-            <div className="banner_tabs">
+            <div className="banner_tabs" >
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
