@@ -80,6 +80,7 @@ const Home = (): JSX.Element => {
         setActiveTab(tabId);
     };
 
+    
     return (
         <>
             {/* banner_tabs */}

@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
+import { AppDispatch, RootState } from '../../../store/Store';
+import { SabreSerchGeoLocation } from '../../../store/reducers/SabreSearchReducers';
 
 const FlightTabContent = (): JSX.Element => {
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
     const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
+    const [searchQuery, setsearchQuery] = useState<string>('');
+    const dispatch: AppDispatch = useDispatch();
     const navigate: NavigateFunction = useNavigate();
+    const {data}= useSelector((state: RootState)=> state.sabreGeolocationSlice)
 
     const fareTypes: Array<string> = [
         'Regular',
@@ -27,7 +33,22 @@ const FlightTabContent = (): JSX.Element => {
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
+    let timer: any=0
 
+function debounce(val: string) {
+  clearTimeout(timer)
+  timer = setTimeout(() => {
+    // setsearchQuery(val)
+    dispatch(SabreSerchGeoLocation({ query: val, }))
+  }, 1000)
+}
+useEffect(()=>{
+    if(searchQuery.length>3){
+        dispatch(SabreSerchGeoLocation({ query: searchQuery, }));
+        // debounce(searchQuery)    
+    }
+},[searchQuery])
+console.log({data})
     return (
         <>
             <form>
@@ -49,6 +70,13 @@ const FlightTabContent = (): JSX.Element => {
                         <div className="col-md-5">
                             <h5 className="book_1">Book International and Domestic Flights</h5>
                         </div>
+                        <input type="text" value={searchQuery} onChange={(e)=>setsearchQuery(e.target.value)}/>
+                        <div>{data && data.doclist && data.doclist.docs && data.doclist.docs.length>0 && data.doclist.docs.map((airPorts:any)=>(
+                            <div key={airPorts.id}>
+                                {airPorts.name}, <span>{airPorts.iataCityCode}</span>
+                            </div>
+                        )
+                        )}</div>
                     </div>
                     <ul className="form_and_to">
                         <li className="same_wdth_1">
@@ -76,6 +104,7 @@ const FlightTabContent = (): JSX.Element => {
                                 <h4 className="tr_1">21 <em>Dec'23</em></h4>
                                 <p className="satu1">Saturday</p>
                             </div>
+
                         </li>
                         <li className="same_wdth_2">
                             <div className="from_text">
