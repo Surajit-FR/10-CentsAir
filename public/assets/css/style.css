@@ -425,6 +425,9 @@ ul.tabs li.current .flig_text:after{
 	border-right: 1px solid #D8D8D8;
 	min-height: 112px;
 }
+.form_and_to li.active{
+	background: #EAF5FF;
+}
 .form_and_to li:last-child{
 	border-right: 0px;
 	background: #EAF5FF;
@@ -437,7 +440,7 @@ ul.tabs li.current .flig_text:after{
 	position: relative;
 }
 .form_and_to .second_1 .from_text{
-	padding-left:20px;
+	padding-left:15px;
 }
 .form_and_to .exchanges{
   position: absolute;
@@ -475,13 +478,13 @@ ul.tabs li.current .flig_text:after{
 .form_and_to .same_wdth_3{
 	width:20%;
 }
-.from_text h5{
+.from_text_12 .from_text h5{
 	font-family: "Nunito Sans", sans-serif;
 	font-size:14px;
 	color:#707070;
 	line-height:19.1px;
 	font-weight:400;
-	padding: 0 0 10px 0;
+	padding: 0 0 0px 0;
 	margin: 0;
 }
 .from_text h5 i{
