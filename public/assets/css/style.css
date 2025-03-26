@@ -6331,8 +6331,21 @@ display: block;
 	display: block;
 	font-size: 12px;
 }
-
-
+.from_text .h1_text h1{
+	font-family: "Nunito Sans", sans-serif;
+	font-size: 30px;
+	color: #000;
+	font-weight: 700;
+	padding: 0;
+	margin: 0;
+}
+.from_text .h1_text .h5_text{
+	font-size: 14px;
+	color: #494949;
+	line-height:normal;
+	padding:0;
+	margin: 0;
+}
 /*----dhaka_box-08-08-24--*/
 
 

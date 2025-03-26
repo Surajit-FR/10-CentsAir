@@ -115,15 +115,14 @@ const FlightTabContent = (): JSX.Element => {
                             <div className="from_text">
                                 <h5>From</h5>
                                 {!isSourceVisible && (
-                                    <div onClick={() => {
+                                    <div className='h1_text' onClick={() => {
                                         setIsSourceVisible(true)
                                         setIsDestinationVisible(false)
                                         setsearchQuery("")
                                     }}>
                                         <h1>{sourceocation.sourceCode}</h1>
-                                        <h5 >{sourceocation.sourceName}</h5>
+                                        <h5 className='h5_text'>{sourceocation.sourceName}</h5>
                                     </div>
-
                                 )}
 
 
@@ -135,16 +134,11 @@ const FlightTabContent = (): JSX.Element => {
                                                 <div className='air_text' key={airPorts.id} onClick={() => {
                                                     // if (isSourceVisible) {
                                                         handleSourcePicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city)
-
                                                     // }
                                                     // if (isDestinationVisible) {
                                                     //     handleDestinatioPicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city)
                                                     // }
-
-
                                                 }
-
-
                                                 }>
                                                     <i className="fi fi-rr-plane"></i>
                                                     <h5 className='m_left'>
