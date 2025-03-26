@@ -437,7 +437,7 @@ ul.tabs li.current .flig_text:after{
 	position: relative;
 }
 .form_and_to .second_1 .from_text{
-	padding-left:25px;
+	padding-left:20px;
 }
 .form_and_to .exchanges{
   position: absolute;
@@ -6343,6 +6343,9 @@ display: block;
 	font-size: 14px;
 	color: #494949;
 	line-height:normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 	padding:0;
 	margin: 0;
 }

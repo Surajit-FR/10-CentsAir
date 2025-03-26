@@ -5,6 +5,15 @@ import { AppDispatch, RootState } from '../../../store/Store';
 import { SabreSerchGeoLocation } from '../../../store/reducers/SabreSearchReducers';
 
 import "@flaticon/flaticon-uicons/css/all/all.css";
+import {
+    Button,
+    Container,
+    Typography,
+    Box,
+    TextField,
+  } from "@mui/material";
+
+
 
 
 const FlightTabContent = (): JSX.Element => {
@@ -160,13 +169,13 @@ const FlightTabContent = (): JSX.Element => {
                             <div className="from_text">
                                 <h5>To</h5>
                                 {!isDestinationVisible && (
-                                    <div onClick={() => {
+                                    <div className='h1_text' onClick={() => {
                                         setIsDestinationVisible(true)
                                         setIsSourceVisible(false)
                                         setsearchQuery("DEL")
                                     }}>
                                         <h1>{destinationLocation.sourceCode}</h1>
-                                        <h5 >{destinationLocation.sourceName}</h5>
+                                        <h5 className='h5_text'>{destinationLocation.sourceName}</h5>
                                     </div>
 
                                 )}
@@ -202,8 +211,9 @@ const FlightTabContent = (): JSX.Element => {
                         <li className="same_wdth_2">
                             <div className="from_text">
                                 <h5 className="de1">Departure <i className="fa-regular fa-angle-down"></i></h5>
-                                <h4 className="tr_1">21 <em>Dec'23</em></h4>
-                                <p className="satu1">Saturday</p>
+                                {/* <h4 className="tr_1">21 <em>Dec'23</em></h4>
+                                <p className="satu1">Saturday</p> */}
+                                 
                             </div>
 
                         </li>
