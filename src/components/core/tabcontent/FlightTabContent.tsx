@@ -3,13 +3,6 @@ import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 
 
 import "@flaticon/flaticon-uicons/css/all/all.css";
-import {
-    Button,
-    Container,
-    Typography,
-    Box,
-    TextField,
-  } from "@mui/material";
 
 
 import DestinationPicker from '../../shared/DestinationPicker';
@@ -101,14 +94,14 @@ const FlightTabContent = (): JSX.Element => {
 
                     </div>
                     <ul className="form_and_to">
-                        <li className="same_wdth_1 active">
+                        <li className={`same_wdth_1 ${isSourceVisible ? "active": ''}`}>
                             <div className="from_text_12">
                                 <DestinationPicker headerText={"From"} destinationCode={sourceocation.sourceCode} destinationName={sourceocation.sourceName} inputPlaceHolder='From' isVisible={isSourceVisible}
                                     setIsVisible={setIsSourceVisible}
                                     handleDestinationPicking={handleSourcePicking} />
                             </div>
                         </li>
-                        <li className="same_wdth_1 second_1">
+                        <li className={`same_wdth_1 second_1 ${isDestinationVisible ? "active": ''}`}>
                             <div className="from_text_12">
                                 <DestinationPicker headerText={"To"} destinationCode={destinationLocation.sourceCode} destinationName={destinationLocation.sourceName} inputPlaceHolder='To' isVisible={isDestinationVisible}
                                     setIsVisible={setIsDestinationVisible}
