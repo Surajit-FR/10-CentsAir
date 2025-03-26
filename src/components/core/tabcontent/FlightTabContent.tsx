@@ -14,10 +14,10 @@ const FlightTabContent = (): JSX.Element => {
     const [isSourceVisible, setIsSourceVisible] = useState(false)
     const [isDestinationVisible, setIsDestinationVisible] = useState(false)
     const [sourceocation, setSourceLocation] = useState({
-        sourceName: '',
-        sourceCode: '',
-        sourceStateName: '',
-        sourceStateCity: '',
+        sourceName: 'Subhas Chandra Bose',
+        sourceCode: 'CCU',
+        sourceStateName: 'WB',
+        sourceStateCity: 'Kolkata',
     })
     const handleSourcePicking = (name: string, code: string, state: string, city: string) => {
         setSourceLocation({
@@ -30,10 +30,10 @@ const FlightTabContent = (): JSX.Element => {
         setIsDestinationVisible(false)
     }
     const [destinationLocation, setdestinationLocation] = useState({
-        sourceName: '',
-        sourceCode: '',
-        sourceStateName: '',
-        sourceStateCity: '',
+        sourceName: 'Indira Gandhi International',
+        sourceCode: 'DEL',
+        sourceStateName: 'Delhi',
+        sourceStateCity: 'Delhi',
     })
     const handleDestinatioPicking = (name: string, code: string, state: string, city: string) => {
         setdestinationLocation({
@@ -80,12 +80,12 @@ const FlightTabContent = (): JSX.Element => {
         }, 1000)
     }
     useEffect(() => {
-        if (searchQuery.length > 3) {
+        if (searchQuery.length > 2) {
             dispatch(SabreSerchGeoLocation({ query: searchQuery, }));
             // debounce(searchQuery)    
         }
-    }, [searchQuery])
-    console.log({ data })
+    }, [searchQuery, dispatch])
+
     return (
         <>
             <form>
@@ -118,7 +118,7 @@ const FlightTabContent = (): JSX.Element => {
                                     <div onClick={() => {
                                         setIsSourceVisible(true)
                                         setIsDestinationVisible(false)
-                                        setsearchQuery("")
+                                        setsearchQuery("CCU")
                                     }}>
                                         <h1>{sourceocation.sourceCode}</h1>
                                         <h5 >{sourceocation.sourceName}</h5>
@@ -169,7 +169,7 @@ const FlightTabContent = (): JSX.Element => {
                                     <div onClick={() => {
                                         setIsDestinationVisible(true)
                                         setIsSourceVisible(false)
-                                        setsearchQuery("")
+                                        setsearchQuery("DEL")
                                     }}>
                                         <h1>{destinationLocation.sourceCode}</h1>
                                         <h5 >{destinationLocation.sourceName}</h5>
