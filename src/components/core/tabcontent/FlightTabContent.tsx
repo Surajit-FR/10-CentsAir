@@ -13,6 +13,7 @@ import {
 
 
 import DestinationPicker from '../../shared/DestinationPicker';
+import PassengerPicker from '../others/PassengerPicker';
 
 
 const FlightTabContent = (): JSX.Element => {
@@ -137,13 +138,16 @@ const FlightTabContent = (): JSX.Element => {
                                 <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
                             </div>
                         </li>
+                        
                         <li className="same_wdth_3">
                             <div className="from_text">
                                 <h5 className="de1">Travellers & Class <i className="fa-regular fa-angle-down"></i></h5>
                                 <h4 className="tr_1">1 <em>Traveller</em></h4>
                                 <p className="economy">Economy/Premium Economy</p>
                             </div>
+                            <PassengerPicker/>
                         </li>
+                        
                     </ul>
                     <ul className="fare_type">
                         <li><em>Select A <br /> Fare Type:</em></li>
