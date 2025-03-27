@@ -1,28 +1,47 @@
 import { useState } from 'react';
-import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
-
-
+import { Link, NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import "@flaticon/flaticon-uicons/css/all/all.css";
-import {
-    Button,
-    Container,
-    Typography,
-    Box,
-    TextField,
-  } from "@mui/material";
-
-
-import DestinationPicker from '../../shared/DestinationPicker';
 import PassengerPicker from '../others/PassengerPicker';
+import CloseOnClickOutside from '../../shared/CloseOnClickOutside';
+import DestinationPickerWrapper from './DestinationPickerWrapper';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../store/Store';
+import { InstaFlightSearch } from '../../../store/reducers/InstaFlightSearchReducer';
 
+interface Props {
+    sourceLocation?: any
+    destination?: any
+    departuredate?: any,
+    passengercount?: any,
+    enabletagging?: true
+}
 
-const FlightTabContent = (): JSX.Element => {
+const FlightTabContent = ({
+    sourceLocation,
+    destination,
+    departuredate,
+    passengercount,
+    enabletagging
+}: Props): JSX.Element => {
+    const dispatch = useDispatch<AppDispatch>()
+    const locationHook = useLocation()
+    // const searchObj = JSON.parse(localStorage.getItem("flightParams")|| '')
+    const { data } = useSelector((state: RootState) => state.instaFlightSearchSlice)
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
     const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
-
+    const [showPassengerModal, setShowPassengerModal] = useState(false)
     const [isSourceVisible, setIsSourceVisible] = useState(false)
     const [isDestinationVisible, setIsDestinationVisible] = useState(false)
-    const [sourceocation, setSourceLocation] = useState({
+    const [departureDate, setDepartureDate] = useState('2025-04-12')
+    const [passenger, setPassenger] = useState( {
+        Adult: 1,
+        Child: 0,
+        infant: 0
+    })
+    console.log(data)
+    const navigate: NavigateFunction = useNavigate();
+
+    const [sourceocation, setSourceLocation] = useState( {
         sourceName: 'Subhas Chandra Bose',
         sourceCode: 'CCU',
         sourceStateName: 'WB',
@@ -38,7 +57,7 @@ const FlightTabContent = (): JSX.Element => {
         setIsSourceVisible(false)
         setIsDestinationVisible(false)
     }
-    const [destinationLocation, setdestinationLocation] = useState({
+    const [destinationLocation, setdestinationLocation] = useState( {
         sourceName: 'Indira Gandhi International',
         sourceCode: 'DEL',
         sourceStateName: 'Delhi',
@@ -54,14 +73,13 @@ const FlightTabContent = (): JSX.Element => {
         setIsSourceVisible(false)
         setIsDestinationVisible(false)
     }
-    const navigate: NavigateFunction = useNavigate();
 
     const fareTypes: Array<string> = [
         'Regular',
-        'Senior Citizen',
+        // 'Senior Citizen',
         'Student',
-        'Armed Forces',
-        'Doctors & Nurses'
+        // 'Armed Forces',
+        // 'Doctors & Nurses'
     ];
 
     const tripTypes: Array<string> = [
@@ -77,7 +95,20 @@ const FlightTabContent = (): JSX.Element => {
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
-
+    const onClickSearch = (e: React.MouseEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        localStorage.setItem("flightParams", JSON.stringify({
+            sourceLocation: sourceocation,
+            destination: destinationLocation,
+            departuredate: departureDate,
+            passengercount: passenger,
+            enabletagging: true
+        }))
+        console.log(locationHook.pathname)
+        if(locationHook.pathname !== "/flights-search-result"){
+            navigate('/flights-search-result')
+        }
+    }
     return (
         <>
             <form>
@@ -102,20 +133,28 @@ const FlightTabContent = (): JSX.Element => {
 
                     </div>
                     <ul className="form_and_to">
-                        <li className="same_wdth_1 active">
+                        <li className={`same_wdth_1 ${isSourceVisible ? "active" : ''}`}>
                             <div className="from_text_12">
-                                <DestinationPicker headerText={"From"} destinationCode={sourceocation.sourceCode} destinationName={sourceocation.sourceName} inputPlaceHolder='From' isVisible={isSourceVisible}
+                                <DestinationPickerWrapper
+                                    isVisible={isSourceVisible}
                                     setIsVisible={setIsSourceVisible}
-                                    handleDestinationPicking={handleSourcePicking} />
+                                    locationCode={sourceocation.sourceCode}
+                                    locationName={sourceocation.sourceName}
+                                    handleLocationPick={handleSourcePicking}
+                                    inputPlaceHolder={"From"}
+                                />
                             </div>
                         </li>
-                        <li className="same_wdth_1 second_1">
+                        <li className={`same_wdth_1 second_1 ${isDestinationVisible ? "active" : ''}`}>
                             <div className="from_text_12">
-                                <DestinationPicker headerText={"To"} destinationCode={destinationLocation.sourceCode} destinationName={destinationLocation.sourceName} inputPlaceHolder='To' isVisible={isDestinationVisible}
+                                <DestinationPickerWrapper
+                                    isVisible={isDestinationVisible}
                                     setIsVisible={setIsDestinationVisible}
-                                    handleDestinationPicking={handleDestinatioPicking}
+                                    locationCode={destinationLocation.sourceCode}
+                                    locationName={destinationLocation.sourceName}
+                                    handleLocationPick={handleDestinatioPicking}
+                                    inputPlaceHolder={"To"}
                                 />
-
                             </div>
                             <div className="exchanges">
                                 <Link to="#">
@@ -123,31 +162,43 @@ const FlightTabContent = (): JSX.Element => {
                                 </Link>
                             </div>
                         </li>
+                        
+                        
                         <li className="same_wdth_2">
                             <div className="from_text">
                                 <h5 className="de1">Departure <i className="fa-regular fa-angle-down"></i></h5>
-                                {/* <h4 className="tr_1">21 <em>Dec'23</em></h4>
-                                <p className="satu1">Saturday</p> */}
-                                 
+                                <h4 className="tr_1">12 <em>Apr'25</em></h4>
+                                <p className="satu1">Saturday</p>
+
                             </div>
 
                         </li>
-                        <li className="same_wdth_2">
-                            <div className="from_text">
-                                <h5 className="de1">Return <i className="fa-regular fa-angle-down"></i></h5>
-                                <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
-                            </div>
-                        </li>
-                        
-                        <li className="same_wdth_3">
-                            <div className="from_text">
+                        {selectedTripType === 'Round-trip' && (
+                            <li className="same_wdth_2">
+                                <div className="from_text">
+                                    <h5 className="de1">Return <i className="fa-regular fa-angle-down"></i></h5>
+                                    <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
+                                </div>
+                            </li>
+                        )}
+
+
+                        <li className={`same_wdth_3 ${showPassengerModal ? "active" : ''}`}>
+                            <div
+                                className={`from_text ${showPassengerModal ? "pointer_events" : ''} `}
+                                onClick={() => setShowPassengerModal(!showPassengerModal)}>
                                 <h5 className="de1">Travellers & Class <i className="fa-regular fa-angle-down"></i></h5>
-                                <h4 className="tr_1">1 <em>Traveller</em></h4>
+                                <h4 className="tr_1">{passenger.Adult + passenger.Child + passenger.infant} <em>
+
+                                    {(passenger.Adult + passenger.Child + passenger.infant) > 1 ? 'Travellers' : 'Traveller'}
+                                </em></h4>
                                 <p className="economy">Economy/Premium Economy</p>
                             </div>
-                            {/* <PassengerPicker/> */}
+                            <CloseOnClickOutside show={showPassengerModal} setShow={setShowPassengerModal}>
+                                <PassengerPicker passenger={passenger} setPassenger={setPassenger} showModal={setShowPassengerModal} />
+                            </CloseOnClickOutside>
                         </li>
-                        
+
                     </ul>
                     <ul className="fare_type">
                         <li><em>Select A <br /> Fare Type:</em></li>
@@ -161,7 +212,8 @@ const FlightTabContent = (): JSX.Element => {
                             </li>
                         ))}
                     </ul>
-                    <ul className="search_return">
+
+                    {/* <ul className="search_return">
                         <li>
                             <input className="input-elevated" type="text" placeholder="Search Preferred Airline" />
                         </li>
@@ -178,9 +230,16 @@ const FlightTabContent = (): JSX.Element => {
                             </div>
                         </li>
                     </ul>
+                     */}
                 </div>
                 <div className="text-center mt_top">
-                    <input className="search_bt" type="submit" value="Search" onClick={() => navigate('/flights-search-result')} />
+                    <input className="search_bt" type="submit" value="Search" onClick={(e) => onClickSearch(e)
+
+                        // navigate('/flights-search-result')
+
+                    }
+
+                    />
                 </div>
             </form>
         </>

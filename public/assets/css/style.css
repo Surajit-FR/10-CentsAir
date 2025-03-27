@@ -415,6 +415,7 @@ ul.tabs li.current .flig_text:after{
 	border:1px solid #D8D8D8;
 	border-right:0;
 	border-radius: 10px;
+	justify-content: space-between;
 }
 .form_and_to li{
 	display: block;
@@ -429,9 +430,11 @@ ul.tabs li.current .flig_text:after{
 	background: #EAF5FF;
 }
 .form_and_to li:last-child{
-	border-right: 0px;
-	background: #EAF5FF;
+	/* border-right: 0px; */
 	border-radius: 0px 10px 10px 0px;
+}
+.pointer_events{
+	pointer-events: none;
 }
 .form_and_to .same_wdth_1{
 	width:25%;
@@ -757,7 +760,7 @@ ul.tabs li.current .flig_text:after{
 	display: flex;
 	align-items: center;
 	padding: 0;
-	margin: 0;
+	margin: 0 0 0 40px;
 }
 .search_return li{
 	display:inline-block;
@@ -2815,6 +2818,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 }
 .stops_t2{
 	display: flex;
+	align-items: center;
 	padding:0 20px;
 	margin: 0 0 0 0;
 }
@@ -2832,10 +2836,9 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 .stops_t2 .fd_1{width: 7%;}
 .stops_t2 .fd_2{width: 10%;}
 .stops_t2 .fd_3{width: 7%;}
-.stops_t2 .fd_4{width: 40%;}
+.stops_t2 .fd_4{width: 35%;}
 .stops_t2 .fd_5{width: 15%;}
 .stops_t2 .fd_6{width: 25%;}
-
 
 .stops_t3 .fd_1{width:10%;}
 .stops_t3 .fd_2{width: 15%;}
@@ -2965,16 +2968,16 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 	margin: 0;
 }
 .dac_box12{
-  padding:0;
+  padding:0 0 10px 0;
   margin: 0;
   float: left;
   text-align: right;
 }
 .dac_box12 h6{
 	font-family: "Nunito Sans", sans-serif;
-	font-size: 16px;
+	font-size: 11px;
 	color:#232020;
-	line-height:18px;
+	line-height:13px;
 	font-weight:400;
 	padding: 0;
 	margin: 0;
@@ -2982,9 +2985,9 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 .dac_box12 .dac_1{
   font-family: "Nunito Sans", sans-serif;
   display: block;
-  font-size: 14px;
+  font-size: 10px;
   color: #232020;
-  line-height: 16px;
+  line-height: 12px;
   font-weight: 400;
   text-align: right;
   padding: 0;
@@ -2992,7 +2995,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 }
 .dac_box12 p{
 	font-family: "Nunito Sans", sans-serif;
-	font-size: 11px;
+	font-size: 10px;
 	color:#7F5F01;
 	line-height:14px;
 	font-weight:400;
@@ -3092,48 +3095,48 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 }
 .bom_1{
   position: relative;
-  height: 2px;
+  height:1px;
   width: 95%;
   background: #707070;
   display: block;
   margin: 0 auto;
 }
 .bom_1:after{
-  content: "BOM";
-  position: absolute;
-  top: -23px;
-  left: -42px;
-  font-size: 11px;
-  color: #707070;
-  line-height: 10px;
-  right: 0;
-  text-transform:uppercase;
+	content: "BOM";
+	position: absolute;
+	top: -20px;
+	left: -37px;
+	font-size: 11px;
+	color: #707070;
+	line-height: 10px;
+	right: 0;
+	text-transform: uppercase;
 }
 .bom_1:before{
-  content: "lhr";
-  position: absolute;
-  bottom:-23px;
-  left: 0;
-  font-size: 11px;
-  color: #707070;
-  line-height: 10px;
-  right:-42px;
-  text-transform:uppercase;
+	content: "lhr";
+	position: absolute;
+	bottom: -19px;
+	left: 0;
+	font-size: 11px;
+	color: #707070;
+	line-height: 10px;
+	right: -36px;
+	text-transform: uppercase;
 }
 
 .rhombues1{
-  position: relative;
-  top: -12px;
-  font-size: 14px;
-  color: #707070;
-  left: -13px;
+	position: relative;
+	top: -13px;
+	font-size: 12px;
+	color: #707070;
+	left: -13px;
 }
 .rhombues2{
-  position: relative;
-  top: -12px;
-  font-size: 14px;
-  color: #707070;
-  right: -13px;
+	position: relative;
+	top: -13px;
+	font-size: 12px;
+	color: #707070;
+	right: -13px;
 }
 .fl_bg_box{
   border-top:1px dashed #a9a9a9;

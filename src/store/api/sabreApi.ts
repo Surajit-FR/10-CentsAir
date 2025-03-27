@@ -16,4 +16,20 @@ export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
   });
 }
 
+export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {return  SABREAPI({
+    method: 'get',
+    url: `v1/shop/flights`,
+    params:{
+      origin: data?.origin,
+      destination:data?.destination,
+      departuredate: data?.departuredate,
+      returnDate: data?.returnDate,
+      sortby:'totalfare',
+      order:'asc',
+      passengercount:data?.passengers,
+      enabletagging: true
+    },
+  });
+}
+
     // SABREAPI.get("/v2/geo/autocomplete", data);

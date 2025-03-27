@@ -39,6 +39,38 @@ const OneWayFlightItem = ({ flight }: { flight: FlightItemsType }) => {
                             </div>
                             <div className="clearfix"></div>
                         </div>
+                        <div className="time_b1">
+                            <div className="dac_box12">
+                                <h6>{flight?.departureTime} <span className="dac_1">{flight?.departureAirport}</span></h6>
+                            </div>
+                            <div className="bom">
+                                <span className="bom_1">
+                                    <em className="rhombues1"><i className="fa-solid fa-rhombus"></i></em>
+                                    <em className="rhombues2"><i className="fa-solid fa-rhombus"></i></em>
+                                </span>
+                            </div>
+                            <div className="dac_box12">
+                                <p>next day</p>
+                                <h6>{flight?.arrivalTime}<span className="dac_1">{flight?.arrivalAirport}</span></h6>
+                            </div>
+                            <div className="clearfix"></div>
+                        </div>
+                        <div className="time_b1">
+                            <div className="dac_box12">
+                                <h6>{flight?.departureTime} <span className="dac_1">{flight?.departureAirport}</span></h6>
+                            </div>
+                            <div className="bom">
+                                <span className="bom_1">
+                                    <em className="rhombues1"><i className="fa-solid fa-rhombus"></i></em>
+                                    <em className="rhombues2"><i className="fa-solid fa-rhombus"></i></em>
+                                </span>
+                            </div>
+                            <div className="dac_box12">
+                                <p>next day</p>
+                                <h6>{flight?.arrivalTime}<span className="dac_1">{flight?.arrivalAirport}</span></h6>
+                            </div>
+                            <div className="clearfix"></div>
+                        </div>
                     </li>
                     <li className="fd_5">
                         <div className="fl_tr">
