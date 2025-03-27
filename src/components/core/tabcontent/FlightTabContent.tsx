@@ -145,7 +145,7 @@ const FlightTabContent = (): JSX.Element => {
                                 <h4 className="tr_1">1 <em>Traveller</em></h4>
                                 <p className="economy">Economy/Premium Economy</p>
                             </div>
-                            <PassengerPicker/>
+                            {/* <PassengerPicker/> */}
                         </li>
                         
                     </ul>
