@@ -415,6 +415,7 @@ ul.tabs li.current .flig_text:after{
 	border:1px solid #D8D8D8;
 	border-right:0;
 	border-radius: 10px;
+	justify-content: space-between;
 }
 .form_and_to li{
 	display: block;
@@ -430,8 +431,10 @@ ul.tabs li.current .flig_text:after{
 }
 .form_and_to li:last-child{
 	border-right: 0px;
-	background: #EAF5FF;
 	border-radius: 0px 10px 10px 0px;
+}
+.pointer_events{
+	pointer-events: none;
 }
 .form_and_to .same_wdth_1{
 	width:25%;
@@ -757,7 +760,7 @@ ul.tabs li.current .flig_text:after{
 	display: flex;
 	align-items: center;
 	padding: 0;
-	margin: 0;
+	margin: 0 0 0 40px;
 }
 .search_return li{
 	display:inline-block;

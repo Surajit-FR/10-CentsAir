@@ -111,3 +111,21 @@ export interface InstaFlightResultObject {
     AirItineraryPricingInfo: AirItineraryPricingInfo
     TicketingInfo: TicketingInfo
 }
+
+
+export interface InstaFlightSearchParamstypes{
+    origin: string,
+    destination:string,
+    departuredate: Date,
+    returnDate?: Date,
+    sortby?:'totalfare',
+    order?:'asc' | 'desc',
+    passengercount:number,
+    enabletagging: boolean
+}
+
+export interface InstaSearchState {
+    data: InstaFlightResultObject[]
+    type: string
+    error: string | null
+}

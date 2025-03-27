@@ -14,7 +14,6 @@ const SabreSearchLocation = createSlice({
             state.type = type;
         },
         SabreSerchGeoLocationSuccess: (state, { payload, type }) => {
-            console.log({payload})
             state.type = type;
             state.data = payload
         },

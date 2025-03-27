@@ -424,7 +424,6 @@ ul.tabs li.current .flig_text:after{
 }
 .form_and_to li:last-child{
 	border-right: 0px;
-	background: #EAF5FF;
 	border-radius: 0px 10px 10px 0px;
 }
 .form_and_to .same_wdth_1{
@@ -466,6 +465,7 @@ ul.tabs li.current .flig_text:after{
 	text-align: center;
 	margin: 0 auto;
 }
+
 .form_and_to .same_wdth_2{
 	width:15%;
 }
