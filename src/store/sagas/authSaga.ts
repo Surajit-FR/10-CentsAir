@@ -81,15 +81,15 @@ export function* loginSaga({ payload, type }: { payload: { data: LoginFormValues
 // logoutSaga generator function
 export function* logoutSaga({ payload, type }: { payload: { navigate: NavigateFunction }, type: string }): SagaGenerator<{ data: ApiResponse<UserData> }> {
     try {
-        const resp = yield call(LOGOUT);
-        const result: ApiResponse<UserData> = resp?.data;
-        if (result?.success) {
+        // const resp = yield call(LOGOUT);
+        // const result: ApiResponse<UserData> = resp?.data;
+        // if (result?.success) {
             payload.navigate("/");
             window.localStorage.removeItem("accessToken");
             window.localStorage.removeItem("refreshToken");
-            showToast({ message: result?.message || 'Logout Successfully.', type: 'success', durationTime: 3500, position: "top-center" });
-            yield put(AuthLogoutSuccess(result));
-        };
+            showToast({ message: 'Logout Successfully.', type: 'success', durationTime: 3500, position: "top-center" });
+            // yield put(AuthLogoutSuccess(result));
+        // };
     } catch (error: any) {
         yield put(AuthLogoutFailure(error?.response?.data?.message));
         showToast({ message: error?.response?.data?.message || 'Logout failed.', type: 'error', durationTime: 3500, position: "bottom-center" });

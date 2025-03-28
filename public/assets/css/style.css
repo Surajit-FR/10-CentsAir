@@ -415,6 +415,7 @@ ul.tabs li.current .flig_text:after{
 	border:1px solid #D8D8D8;
 	border-right:0;
 	border-radius: 10px;
+	justify-content: space-between;
 }
 .form_and_to li{
 	display: block;
@@ -424,14 +425,17 @@ ul.tabs li.current .flig_text:after{
 	cursor: pointer;
 	border-right: 1px solid #D8D8D8;
 	min-height: 112px;
+	position: relative;
 }
 .form_and_to li.active{
 	background: #EAF5FF;
 }
 .form_and_to li:last-child{
 	border-right: 0px;
-	background: #EAF5FF;
 	border-radius: 0px 10px 10px 0px;
+}
+.pointer_events{
+	pointer-events: none;
 }
 .form_and_to .same_wdth_1{
 	width:25%;
@@ -757,7 +761,7 @@ ul.tabs li.current .flig_text:after{
 	display: flex;
 	align-items: center;
 	padding: 0;
-	margin: 0;
+	margin: 0 0 0 40px;
 }
 .search_return li{
 	display:inline-block;
@@ -2833,7 +2837,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 .stops_t2 .fd_2{width: 10%;}
 .stops_t2 .fd_3{width: 7%;}
 .stops_t2 .fd_4{width: 40%;}
-.stops_t2 .fd_5{width: 15%;}
+.stops_t2 .fd_5{width: 15%; padding-left:15px;}
 .stops_t2 .fd_6{width: 25%;}
 
 
@@ -2976,6 +2980,14 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 	color:#232020;
 	line-height:18px;
 	font-weight:400;
+	padding: 0 0 15px 0;
+	margin: 0;
+}
+.dac_box12 h6 span{
+	font-size: 10px;
+	display: block;
+	line-height: 13px;
+	font-weight: 700;
 	padding: 0;
 	margin: 0;
 }
@@ -3011,15 +3023,15 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 	border:1px solid #D8D8D8;
 	text-decoration:none;
 	list-style:none;
-	padding:8px 18px;
+	padding:8px 10px;
 	margin: 0;
 }
 .fl_tr .sl_14 img{
 	width:15px;
-	margin: 0 10px 0 0;
+	margin: 0 8px 0 0;
 }
 .book_t1{
-	padding:0 0 0 20px;
+	padding:0 0 0 15px;
 	margin: 0;
 	text-align: center;
 }
@@ -3098,7 +3110,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   display: block;
   margin: 0 auto;
 }
-.bom_1:after{
+/* .bom_1:after{
   content: "BOM";
   position: absolute;
   top: -23px;
@@ -3119,8 +3131,22 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   line-height: 10px;
   right:-42px;
   text-transform:uppercase;
-}
-
+} */
+ .react-calendar__tile--active{
+	background: #21B4E2;
+ }
+ .react-calendar__month-view__weekdays__weekday {
+	padding: 0;
+ }
+ .react-calendar__month-view__weekdays__weekday abbr{
+	text-decoration: none;
+ }
+ .react-calendar__tile{
+	border-radius: 5px;
+ }
+ .react-calendar__tile--now{
+	background: red
+ }
 .rhombues1{
   position: relative;
   top: -12px;
@@ -3128,12 +3154,26 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   color: #707070;
   left: -13px;
 }
+.rhombues1 span{
+	position: absolute;
+	top: -15px;
+	left: -3px;
+	font-size: 10px;
+	font-weight:700;
+}
 .rhombues2{
   position: relative;
   top: -12px;
   font-size: 14px;
   color: #707070;
   right: -13px;
+}
+.rhombues2 span{
+	position: absolute;
+	bottom: -15px;
+	left: -6px;
+	font-size: 10px;
+	font-weight:700;
 }
 .fl_bg_box{
   border-top:1px dashed #a9a9a9;
@@ -6476,6 +6516,67 @@ display: block;
 	padding:0;
 	margin: 0;
 }
+.custom-cal{
+	position: absolute;
+	top: 35px;
+	right: 0;
+	z-index: 2;
+	margin: 0 auto;
+}
+.custom-cal .react-calendar__navigation {
+	background-color: #fff;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 4px 4px 0 0;
+	margin-bottom:0px;
+  }
+  .custom-cal .react-calendar{
+	width: 500px;
+	border:none;
+	border-radius: 4px;
+	background-color: #ffffff;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+  .custom-cal .react-calendar__month-view__weekdays__weekday {
+	padding: 15px 10px 15px 10px;
+	font-size: 15px;
+	color: #696c6c;
+	font-weight: 400;
+	text-transform: capitalize;
+  }
+  .custom-cal .react-calendar__tile--active{
+	background: #36c6ed;
+  }
+  .custom-cal .react-calendar__tile {
+	font-size: 16px;
+  }
+  .custom-cal .react-calendar__tile--now {
+	background: #21b4e2;
+	color: #fff;
+  }
+  .custom-cal .react-calendar__tile--now:enabled:hover, .react-calendar__tile--now:enabled:focus {
+	background: #21b4e2;
+	color: #fff;
+  }
+  .custom-cal .react-calendar__navigation button {
+	font-weight: 700;
+	font-size: 20px;
+  }
+  .custom-cal .react-calendar__tile--active:enabled:hover{
+	background: #0e7894;
+	color:#fff;
+  }
+  .custom-cal .react-calendar__tile--active:enabled:focus {
+	background: #0e7894;
+	color:#fff;
+  }
+  .custom-cal .react-calendar__tile:enabled:hover{
+	background-color: #eeeeee;
+	color:#000;
+  }
+  /* .custom-cal .react-calendar__viewContainer{
+	
+  } */
+
 /*----dhaka_box-08-08-24--*/
 
 

@@ -424,7 +424,6 @@ ul.tabs li.current .flig_text:after{
 }
 .form_and_to li:last-child{
 	border-right: 0px;
-	background: #EAF5FF;
 	border-radius: 0px 10px 10px 0px;
 }
 .form_and_to .same_wdth_1{
@@ -466,6 +465,7 @@ ul.tabs li.current .flig_text:after{
 	text-align: center;
 	margin: 0 auto;
 }
+
 .form_and_to .same_wdth_2{
 	width:15%;
 }
@@ -2968,7 +2968,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   display: block;
   margin: 0 auto;
 }
-.bom_1:after{
+/* .bom_1:after{
   content: "BOM";
   position: absolute;
   top: -23px;
@@ -2989,7 +2989,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   line-height: 10px;
   right:-42px;
   text-transform:uppercase;
-}
+} */
 
 .rhombues1{
   position: relative;
