@@ -3101,7 +3101,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   display: block;
   margin: 0 auto;
 }
-.bom_1:after{
+/* .bom_1:after{
   content: "BOM";
   position: absolute;
   top: -23px;
@@ -3122,8 +3122,22 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
   line-height: 10px;
   right:-42px;
   text-transform:uppercase;
-}
-
+} */
+ .react-calendar__tile--active{
+	background: #21B4E2;
+ }
+ .react-calendar__month-view__weekdays__weekday {
+	padding: 0;
+ }
+ .react-calendar__month-view__weekdays__weekday abbr{
+	text-decoration: none;
+ }
+ .react-calendar__tile{
+	border-radius: 5px;
+ }
+ .react-calendar__tile--now{
+	background: red
+ }
 .rhombues1{
   position: relative;
   top: -12px;

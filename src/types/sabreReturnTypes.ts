@@ -1,5 +1,37 @@
+export interface FlightSegmentData {
+    ArrivalAirport: {
+        LocationCode: string
+    }
+    ArrivalDateTime: Date
+    DepartureAirport: {
+        LocationCode: string
+    }
+    DepartureDateTime: Date
+    DepartureTimeZone: {
+        GMTOffset: number
+    }
+    DisclosureAirline: { Code: 'AA' }
+    ElapsedTime: number
+    Equipment: { AirEquipType: number }
+    FlightNumber: number
+    MarketingAirline: { Code: string }
+    MarriageGrp:
+    string
+    OperatingAirline: { FlightNumber: number, Code: string }
+    ResBookDesigCode: string
+    StopQuantity: number
+}
+export interface Option{
+    ElapsedTime: number
+        FlightSegment: FlightSegmentData[]
+}
+export interface OriginDestinationOptionsData {
+    OriginDestinationOption:Option[]
+    
+}
+
 export interface AirItinerary {
-    OriginDestinationOptions: {}
+    OriginDestinationOptions: OriginDestinationOptionsData
     DirectionInd: string
 }
 export interface TicketingInfo {
@@ -95,13 +127,13 @@ export interface AirItineraryPricingInfo {
         }
     }
     ItinTotalFare: {
-        FareConstruction:FareConstruction
-        TotalFare:FareConstruction
-        Taxes:{
-            Tax:Tax[]
+        FareConstruction: FareConstruction
+        TotalFare: FareConstruction
+        Taxes: {
+            Tax: Tax[]
         }
-        BaseFare:FareConstruction
-        EquivFare:FareConstruction
+        BaseFare: FareConstruction
+        EquivFare: FareConstruction
     }
 }
 export interface InstaFlightResultObject {
@@ -113,19 +145,24 @@ export interface InstaFlightResultObject {
 }
 
 
-export interface InstaFlightSearchParamstypes{
+export interface InstaFlightSearchParamstypes {
     origin: string,
-    destination:string,
+    destination: string,
     departuredate: Date,
     returnDate?: Date,
-    sortby?:'totalfare',
-    order?:'asc' | 'desc',
-    passengercount:number,
+    sortby?: 'totalfare',
+    order?: 'asc' | 'desc',
+    passengercount: number,
     enabletagging: boolean
 }
-
+export interface InstaSearchResult {
+    PricedItineraries: InstaFlightResultObject[]
+    DepartureDateTime: Date
+    DestinationLocation: string
+    OriginLocation: string
+}
 export interface InstaSearchState {
-    data: InstaFlightResultObject[]
+    data: InstaSearchResult
     type: string
     error: string | null
 }

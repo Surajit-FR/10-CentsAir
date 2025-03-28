@@ -6,41 +6,31 @@ import CloseOnClickOutside from '../../shared/CloseOnClickOutside';
 import DestinationPickerWrapper from './DestinationPickerWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/Store';
-import { InstaFlightSearch } from '../../../store/reducers/InstaFlightSearchReducer';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
-interface Props {
-    sourceLocation?: any
-    destination?: any
-    departuredate?: any,
-    passengercount?: any,
-    enabletagging?: true
-}
+type ValuePiece = Date | null;
 
-const FlightTabContent = ({
-    sourceLocation,
-    destination,
-    departuredate,
-    passengercount,
-    enabletagging
-}: Props): JSX.Element => {
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+const FlightTabContent = (): JSX.Element => {
     const dispatch = useDispatch<AppDispatch>()
     const locationHook = useLocation()
-    const searchObj = JSON.parse(localStorage.getItem("flightParams")|| '')
+    const searchObjParams = localStorage.getItem("flightParams")
+    const searchObj = searchObjParams ? JSON.parse(searchObjParams) : ''
     const { data } = useSelector((state: RootState) => state.instaFlightSearchSlice)
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
     const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
     const [showPassengerModal, setShowPassengerModal] = useState(false)
     const [isSourceVisible, setIsSourceVisible] = useState(false)
     const [isDestinationVisible, setIsDestinationVisible] = useState(false)
-    const [departureDate, setDepartureDate] = useState('2025-04-12')
+    const [departureDate, setDepartureDate] = useState<Value>(new Date('2025-04-02'))
     const [passenger, setPassenger] = useState(searchObj.passengercount || {
         Adult: 1,
         Child: 0,
         infant: 0
     })
-    console.log(data)
+    console.log(departureDate)
     const navigate: NavigateFunction = useNavigate();
-
     const [sourceocation, setSourceLocation] = useState(searchObj.sourceLocation  || {
         sourceName: 'Subhas Chandra Bose',
         sourceCode: 'CCU',
@@ -104,7 +94,6 @@ const FlightTabContent = ({
             passengercount: passenger,
             enabletagging: true
         }))
-        console.log(locationHook.pathname)
         if(locationHook.pathname !== "/flights-search-result"){
             navigate('/flights-search-result')
         }
@@ -156,18 +145,21 @@ const FlightTabContent = ({
                                     inputPlaceHolder={"To"}
                                 />
                             </div>
-                            <div className="exchanges">
-                                <Link to="#">
-                                    <i className="fa-solid fa-arrow-right-arrow-left"></i>
-                                </Link>
-                            </div>
+                            {selectedTripType === 'Round-trip' && (
+                           <div className="exchanges">
+                           <Link to="#">
+                               <i className="fa-solid fa-arrow-right-arrow-left"></i>
+                           </Link>
+                       </div>
+                        )}
+                            
                         </li>
                         <li className="same_wdth_2">
                             <div className="from_text">
                                 <h5 className="de1">Departure <i className="fa-regular fa-angle-down"></i></h5>
                                 <h4 className="tr_1">12 <em>Apr'25</em></h4>
                                 <p className="satu1">Saturday</p>
-
+                                
                             </div>
 
                         </li>
@@ -210,7 +202,9 @@ const FlightTabContent = ({
                             </li>
                         ))}
                     </ul>
-
+                    <div className='custom-cal'>
+                                <Calendar onChange={setDepartureDate} value={departureDate} />
+                                </div>
                     {/* <ul className="search_return">
                         <li>
                             <input className="input-elevated" type="text" placeholder="Search Preferred Airline" />

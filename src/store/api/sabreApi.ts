@@ -27,7 +27,8 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {return  SABREAPI({
       sortby:'totalfare',
       order:'asc',
       passengercount:data?.passengers,
-      enabletagging: true
+      enabletagging: true,
+      limit:5
     },
   });
 }

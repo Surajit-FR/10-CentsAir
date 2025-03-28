@@ -4,7 +4,12 @@ import { InstaSearchState } from "../../types/sabreReturnTypes";
 
 
 const initialState: InstaSearchState = {
-    data:[],
+    data:{
+        PricedItineraries:[],
+            DepartureDateTime: new Date(),
+            DestinationLocation: '',
+            OriginLocation: ''
+    },
     type:'',
     error: null
 }
