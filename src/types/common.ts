@@ -174,6 +174,7 @@ export type CommonResponse = {
     statusCode: number,
     message: string,
     success: boolean,
+    access_token?: string
 };
 
 export type ApiResponse<T> = CommonResponse & {

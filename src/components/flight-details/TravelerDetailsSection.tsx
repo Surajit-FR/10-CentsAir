@@ -11,7 +11,7 @@ const TravelerDetailsSection = ({ handleStepClick }: { handleStepClick: Function
     return (
         <>
             <div className="found_box mb-5">
-                <h6 className="skip_1">Skip</h6>
+                {/* <h6 className="skip_1">Skip</h6> */}
                 <div className="f_light123">
                     <div className="row">
                         <div className="col-md-8">

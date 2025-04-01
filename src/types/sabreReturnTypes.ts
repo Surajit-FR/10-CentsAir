@@ -10,20 +10,20 @@ export interface FlightSegmentData {
     DepartureTimeZone: {
         GMTOffset: number
     }
-    DisclosureAirline: { Code: 'AA' }
+    DisclosureAirline: { Code: string }
     ElapsedTime: number
     Equipment: { AirEquipType: number }
     FlightNumber: number
     MarketingAirline: { Code: string }
     MarriageGrp:
     string
-    OperatingAirline: { FlightNumber: number, Code: string }
+    OperatingAirline: { FlightNumber: number, Code: string, CompanyShortName: string }
     ResBookDesigCode: string
     StopQuantity: number
 }
 export interface Option{
     ElapsedTime: number
-        FlightSegment: FlightSegmentData[]
+    FlightSegment: FlightSegmentData[]
 }
 export interface OriginDestinationOptionsData {
     OriginDestinationOption:Option[]
@@ -163,6 +163,7 @@ export interface InstaSearchResult {
 }
 export interface InstaSearchState {
     data: InstaSearchResult
+    singleSearchData: InstaFlightResultObject
     type: string
     error: string | null
 }

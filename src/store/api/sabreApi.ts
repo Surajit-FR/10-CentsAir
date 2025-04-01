@@ -3,6 +3,14 @@ import { REACT_APP_SABRE_API_BASE_URL } from "../../config/Api.config";
 import { setupInterceptors } from "./sabreInterceptor";
 
 export const SABREAPI = axios.create({ baseURL: REACT_APP_SABRE_API_BASE_URL, withCredentials: true });
+
+export const GETACCESSTOKEN = ()=>  axios({
+  url:'https://api.platform.sabre.com/v2/auth/token',
+  method: 'post',
+  headers:{Authorization:'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEkwTlRnPQ==',"Content-Type":'application/x-www-form-urlencoded'},
+  data:{grant_type: 'client_credentials'}
+})
+
 setupInterceptors()
 
 export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
@@ -16,7 +24,9 @@ export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
   });
 }
 
-export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {return  SABREAPI({
+export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
+  console.log("insta params", data)
+  return  SABREAPI({
     method: 'get',
     url: `v1/shop/flights`,
     params:{
@@ -26,10 +36,15 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {return  SABREAPI({
       returnDate: data?.returnDate,
       sortby:'totalfare',
       order:'asc',
-      passengercount:data?.passengers,
+      passengercount:data?.passengercount,
       enabletagging: true,
       limit:5
     },
+  });
+}
+export const INSTAFLIGHTSEARCHRESULTSBYTAG = (tagId: string) => {return  SABREAPI({
+    method: 'get',
+    url: `v1/shop/flights/tags/${tagId}`,
   });
 }
 

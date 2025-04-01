@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/Store";
 import { InstaFlightSearch } from "../../store/reducers/InstaFlightSearchReducer";
 import FlightTabContent from "../../components/core/tabcontent/FlightTabContent";
+import GlowLoader from "../../components/shared/GlowLoader";
+import { ParseDate } from "../../helper/DateHelper";
 
 type carousel_OneItemType = {
     image: string,
@@ -51,8 +53,10 @@ const recommendations: Array<RecommendationsItemsType> = [
 
 const Flights = (): JSX.Element => {
     const flightParams = localStorage.getItem("flightParams") || ''
+
     const dispatch = useDispatch<AppDispatch>()
-    const { data } = useSelector((state: RootState) => state.instaFlightSearchSlice)
+    const { data, type } = useSelector((state: RootState) => state.instaFlightSearchSlice)
+    const [persistData, setPersistData] = useState<any>({})
 
     const carouselOneItems: Array<carousel_OneItemType> = [
         { image: "1.png", airline: "Vistara", price: "USD 1,937.99", stops: "1+ Stops" },
@@ -103,68 +107,7 @@ const Flights = (): JSX.Element => {
         }
         return <OneWayFlightResult recommendations={recommendations} />
     };
-    console.log(data)
-    useEffect(() => {
-        // (window as any).$ = (window as any).jQuery = require('jquery');
-        // require('owl.carousel');
 
-        // (window as any).$('#show-all-fares').owlCarousel({
-        //     autoplay: false,
-        //     rewind: false,
-        //     loop: true,
-        //     responsiveClass: true,
-        //     autoHeight: true,
-        //     autoplayTimeout: 7000,
-        //     smartSpeed: 800,
-        //     nav: true,
-        //     navText: [
-        //         '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        //         '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        //     ],
-        //     responsive: {
-        //         0: {
-        //             items: 1
-        //         },
-        //         600: {
-        //             items: 4
-        //         },
-        //         1024: {
-        //             items: 7
-        //         },
-        //         1366: {
-        //             items: 9
-        //         }
-        //     }
-        // });
-        // (window as any).$('#dce_calder').owlCarousel({
-        //     autoplay: false,
-        //     rewind: false,
-        //     loop: true,
-        //     responsiveClass: true,
-        //     autoHeight: true,
-        //     autoplayTimeout: 7000,
-        //     smartSpeed: 800,
-        //     nav: true,
-        //     navText: [
-        //         '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        //         '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        //     ],
-        //     responsive: {
-        //         0: {
-        //             items: 1
-        //         },
-        //         600: {
-        //             items: 4
-        //         },
-        //         1024: {
-        //             items: 7
-        //         },
-        //         1366: {
-        //             items: 15
-        //         }
-        //     }
-        // });
-    }, []);
     useEffect(() => {
         if (flightParams) {
             const paramDataObject = JSON.parse(flightParams)
@@ -233,7 +176,8 @@ const Flights = (): JSX.Element => {
                                     <h4>
                                         <i className="fa-solid fa-calendar-day"></i>
                                         <br />
-                                        Dec
+                                        {/* Dec */}
+                                        {ParseDate(new Date(),"getMonth")}
                                     </h4>
                                 </div>
                                 <div id="dce_calder" className="owl-carousel">
@@ -253,18 +197,20 @@ const Flights = (): JSX.Element => {
                     </div>
 
                     <div className="filter_box">
-                        <div className="row">
-                            {/* Flight Filter */}
-                            <FlightFilter />
+                        {type === 'instaFlightSearchSlice/InstaFlightSearch' ? <GlowLoader /> : (
+                            <>
+                                <div className="row">
+                                    {/* Flight Filter */}
+                                    <FlightFilter />
+                                    {data && data.PricedItineraries && data.PricedItineraries.length > 0 ? (
 
-                            {/* Render the specific component based on selected trip type */}
-                            {/* {renderFlightResultComponent()} */}
-                            {data && data.PricedItineraries && data.PricedItineraries.length> 0 && (
+                                        <OneWayFlightResult recommendations={data.PricedItineraries} />
 
-                                <OneWayFlightResult recommendations={data.PricedItineraries} />
+                                    ) : (<div>No Results Found....</div>)}
+                                </div>
+                            </>
+                        )}
 
-                            )}                          
-                        </div>
                     </div>
                 </div>
             </div>

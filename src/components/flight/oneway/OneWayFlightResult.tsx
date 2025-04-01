@@ -83,9 +83,9 @@ console.log(recommendations)
         <>
             <div className="col-md-4 col-lg-9">
                 <div className="stoy_by_box">
-                    <div className="t_sory">
+                    {/* <div className="t_sory">
                         <h3>Sort by</h3>
-                    </div>
+                    </div> */}
                     {/* <ul className="stoy_list">
                         {recommendations?.map((rec, index) => (
                             <li key={index}>

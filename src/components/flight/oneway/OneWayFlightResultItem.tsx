@@ -1,11 +1,21 @@
-import { Link } from 'react-router-dom';
-import { FlightItemsType } from '../../../types/common';
+import { Link, useNavigate } from 'react-router-dom';
+// import { FlightItemsType } from '../../../types/common';
 import { InstaFlightResultObject } from '../../../types/sabreReturnTypes';
-import { getTimeDifference, ParseDate } from '../../../helper/DateHelper';
+import { diffIntimeByElapsedTime, getTimeDifference, ParseDate } from '../../../helper/DateHelper';
+// import { useDispatch } from 'react-redux';
+// import { AppDispatch } from '../../../store/Store';
+// import { InstaFlightSearchByTag } from '../../../store/reducers/InstaFlightSearchReducer';
 
 const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
+    // const dispatch= useDispatch<AppDispatch>()
     console.log(flight)
-    console.log("options",flight?.AirItinerary.OriginDestinationOptions)
+    console.log("options", flight?.AirItinerary.OriginDestinationOptions)
+    const navigate= useNavigate()
+    const onClickBookButton = (flightTagId:string)=>{
+        localStorage.setItem('bookedFlightId',flightTagId)
+        // dispatch(InstaFlightSearchByTag({tagId:flightTagId, navigate}))
+        navigate('/booked-flight-details')
+    }
     return (
         <>
             <div className="bg_bcolor">
@@ -17,68 +27,53 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                     </li>
                     <li className="fd_2">
                         <div className="n_text1">
-                            <h5>{"Stopages"}</h5>
-                            <p>{"Airline name"} <span className="q_1">(with others)</span></p>
+                            <h5>{flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.length} Stops</h5>
+                            <p>{flight?.TPA_Extensions?.ValidatingCarrier?.Code} <span className="q_1">(with others)</span></p>
                         </div>
                     </li>
                     <li className="fd_3">
                         <div className="m_1">
-                            <h6>{getTimeDifference(flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime,flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.length-1].ArrivalDateTime)}</h6>
+                            {diffIntimeByElapsedTime(flight?.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].ElapsedTime)}
                         </div>
                     </li>
                     <div className="column-style">
-                    {/* {flight?.AirItinerary?.OriginDestinationOptions && flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.length>0 &&
-                    flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.map((dataToShow, inde)=>(
-                        <li className="fd_4" key={inde}>
-                            
-                        <div className="time_b1">
-                            <div className="dac_box12">
-                                <h6>{dataToShow.DepartureDateTime.toString()} <span className="dac_1">{dataToShow.DepartureAirport.LocationCode}</span></h6>
-                            </div>
-                            <div className="bom">
-                                <span className="bom_1">
-                                    <em className="rhombues1"><i className="fa-solid fa-rhombus"></i></em>
-                                    <em className="rhombues2"><i className="fa-solid fa-rhombus"></i></em>
-                                </span>
-                            </div>
-                            <div className="dac_box12">
-                                <p>next day</p>
-                                <h6>{dataToShow.ArrivalDateTime.toString()}<span className="dac_1">{dataToShow.ArrivalAirport.LocationCode}</span></h6>
-                            </div>
-                            <div className="clearfix"></div>
-                        </div>
-                    </li>
-                    ))
-                 
-                    
-                    } */}
 
-                    {flight?.AirItinerary?.OriginDestinationOptions && flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.length>0 &&
-                    flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.map(((dataToShow,i)=>(
+                        {flight?.AirItinerary?.OriginDestinationOptions && flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.length > 0 &&
+                            flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.map(((dataToShow, i) => (
 
-                        <div className="time_b1" key={i}>
-                        <div className="dac_box12">
-                            <h6>{ParseDate(new Date(dataToShow.DepartureDateTime))} <span className="dac_1">{dataToShow.DepartureAirport.LocationCode}</span></h6>
-                        </div>
-                        <div className="bom">
-                            <span className="bom_1">
-                                <em className="rhombues1"><i className="fa-solid fa-rhombus"></i><span>{dataToShow.DepartureAirport.LocationCode}</span></em>
-                                <em className="rhombues2"><i className="fa-solid fa-rhombus"></i>{dataToShow.ArrivalAirport.LocationCode}</em>
-                            </span>
-                        </div>
-                        <div className="dac_box12">
-                            {/* <p>next day</p> */}
-                            <h6>{ParseDate(new Date(dataToShow.ArrivalDateTime))}<span className="dac_1">{dataToShow.ArrivalAirport.LocationCode}</span></h6>
-                        </div>
-                        <div className="clearfix"></div>
+                                <div className="time_b1" key={i}>
+                                    <div className="dac_box12">
+                                        <h6>
+                                            <span>{ParseDate(new Date(dataToShow.DepartureDateTime))}</span>
+                                            <span>{new Date(dataToShow.DepartureDateTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
+                                            <span>{dataToShow.DepartureAirport.LocationCode}</span>
+                                        </h6>
+                                    </div>
+                                    <div className="bom">
+                                        <span className="bom_1">
+                                            <em className="rhombues1">
+                                                <i className="fa-solid fa-rhombus"></i>
+                                                <span>{dataToShow.DepartureAirport.LocationCode}</span>
+                                            </em>
+                                            <em className="rhombues2">
+                                                <i className="fa-solid fa-rhombus"></i>
+                                                <span>{dataToShow.ArrivalAirport.LocationCode}</span>
+                                            </em>
+                                        </span>
+                                    </div>
+                                    <div className="dac_box12">
+                                        <h6>
+                                            <span>{ParseDate(new Date(dataToShow.ArrivalDateTime))}</span>
+                                            <span>{new Date(dataToShow.ArrivalDateTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
+                                            <span>{dataToShow.ArrivalAirport.LocationCode}</span>
+                                        </h6>
+                                    </div>
+                                    <div className="clearfix"></div>
+                                </div>
+                            )))
+                        }
+
                     </div>
-                    )))
-                    
-                    
-                    
-                    }
-                         
-                  </div>
                     <li className="fd_5">
                         <div className="fl_tr">
                             <Link className="sl_14" to="#">
@@ -89,11 +84,11 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                     </li>
                     <li className="fd_6">
                         <div className="book_t1">
-                            <Link className="book_t2" to="/booked-flight-details">BOOK</Link>
+                            <button className="book_t2" onClick={()=>onClickBookButton(flight?.TPA_Extensions?.TagID)}>BOOK</button>
                             <h5>
                                 {flight?.AirItineraryPricingInfo.ItinTotalFare.TotalFare.CurrencyCode + ' '}{String(flight?.AirItineraryPricingInfo.ItinTotalFare.TotalFare.Amount.toFixed(2)).split('.')[0]}
-                                <em>{String(flight?.AirItineraryPricingInfo.ItinTotalFare.TotalFare.Amount.toFixed(2)).split('.')[1]}</em>
-                                </h5>
+                                <em>.{String(flight?.AirItineraryPricingInfo.ItinTotalFare.TotalFare.Amount.toFixed(2)).split('.')[1]}</em>
+                            </h5>
                             <p>Price per person (incl. taxes & fees)</p>
                         </div>
                     </li>
