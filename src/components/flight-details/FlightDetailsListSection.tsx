@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import BaggageInfoSection from "./BaggageInfoSection";
+import { useEffect, useState } from "react";
+// import BaggageInfoSection from "./BaggageInfoSection";
 import FareRulesSection from "./FareRulesSection";
-import FlexibleTicketFlightWatcherSection from "./FlexibleTicketFlightWatcherSection";
+// import FlexibleTicketFlightWatcherSection from "./FlexibleTicketFlightWatcherSection";
 import ListedFlightSection from "./ListedFlightSection";
 import TravelerDetailsSection from "./TravelerDetailsSection";
-import TravelProtectionSection from "./TravelProtectionSection";
+// import TravelProtectionSection from "./TravelProtectionSection";
 import { InstaFlightResultObject } from "../../types/sabreReturnTypes";
 
 interface DetailListProps {
@@ -15,11 +15,12 @@ const FlightDetailsListSection = ({ handleStepClick,data }: DetailListProps): JS
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
-
+const [dataToDispatch, setDataToDispatch] = useState<any>({})
+console.log({dataToDispatch})
     return (
         <>
             {/* ListedFlightSection */}
-            <ListedFlightSection flightsdata={data}/>
+            <ListedFlightSection flightsdata={data} setData={setDataToDispatch}/>
 
             {/* FareRulesSection */}
             <FareRulesSection />
@@ -36,6 +37,8 @@ const FlightDetailsListSection = ({ handleStepClick,data }: DetailListProps): JS
             {/* TravelerDetailsSection */}
             <TravelerDetailsSection
                 handleStepClick={handleStepClick}
+                setData = {setDataToDispatch}
+                flightsdata={data}
             />
         </>
     );

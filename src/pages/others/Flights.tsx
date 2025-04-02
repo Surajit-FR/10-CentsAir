@@ -88,18 +88,18 @@ const Flights = (): JSX.Element => {
         { price: "$430", date: "25, Thu", className: "fri_10" },
         { price: "$430", date: "26, Thu", className: "fri_10" },
     ];
-    const [selectedTravelType] = useState<string>('one-way');
+    const [selectedTravelType, setSelectedTravelType] = useState<string>('one-way');
 
-    // const handleTravelTypeChange = (type: string) => {
-    //     setSelectedTravelType(type);
-    // };
+    const handleTravelTypeChange = (type: string) => {
+        setSelectedTravelType(type);
+    };
 
 
 
     // Function to Return the Specific Component based on selected tab
     const renderFlightResultComponent = (): JSX.Element => {
         if (selectedTravelType === "one-way") {
-            return <OneWayFlightResult recommendations={recommendations} />
+            // return <OneWayFlightResult recommendations={recommendations} />
         } else if (selectedTravelType === "round-trip") {
             return <RoundTripFlightResult recommendations={recommendations} />
         } else if (selectedTravelType === "multi-city") {
@@ -117,6 +117,7 @@ const Flights = (): JSX.Element => {
                     destination: paramDataObject.destination.sourceCode,
                     departuredate: paramDataObject.departuredate,
                     passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
+                    returndate: paramDataObject.returnDate,
                     enabletagging: true
                 }
             }))
@@ -177,7 +178,7 @@ const Flights = (): JSX.Element => {
                                         <i className="fa-solid fa-calendar-day"></i>
                                         <br />
                                         {/* Dec */}
-                                        {ParseDate(new Date(),"getMonth")}
+                                        {ParseDate(new Date(), "getMonth")}
                                     </h4>
                                 </div>
                                 <div id="dce_calder" className="owl-carousel">
@@ -195,21 +196,29 @@ const Flights = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
-
                     <div className="filter_box">
-                        {type === 'instaFlightSearchSlice/InstaFlightSearch' ? <GlowLoader /> : (
-                            <>
-                                <div className="row">
-                                    {/* Flight Filter */}
-                                    <FlightFilter />
-                                    {data && data.PricedItineraries && data.PricedItineraries.length > 0 ? (
+                        {
+                            type === 'instaFlightSearchSlice/InstaFlightSearch' ?
+                                <GlowLoader /> :
+                                (
+                                    <>
+                                        <div className="row">
+                                            {/* Flight Filter */}
+                                            <FlightFilter />
+                                            {
+                                                data && data.PricedItineraries && data.PricedItineraries.length > 0
+                                                    ?
+                                                    (
 
-                                        <OneWayFlightResult recommendations={data.PricedItineraries} />
+                                                        <OneWayFlightResult recommendations={data.PricedItineraries} />
 
-                                    ) : (<div>No Results Found....</div>)}
-                                </div>
-                            </>
-                        )}
+                                                    )
+                                                    :
+                                                    (<div>No Results Found....</div>)}
+                                        </div>
+                                    </>
+                                )
+                        }
 
                     </div>
                 </div>

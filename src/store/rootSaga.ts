@@ -3,6 +3,7 @@ import watchAuth from "./sagas/authSaga";
 import watchSabreSearch from "./sagas/sabreSearchSaga";
 import watchInstaFlightSearch from "./sagas/instaFlightSearchSaga";
 import watchSabreAuth from "./sagas/sabreAuthSaga";
+import watchSabreSeatMap from "./sagas/getSeatMapDetailsSaga";
 
 
 export default function* rootSaga() {
@@ -10,6 +11,7 @@ export default function* rootSaga() {
         watchAuth(),
         watchSabreSearch(),
         watchInstaFlightSearch(),
-        watchSabreAuth()
+        watchSabreAuth(),
+        watchSabreSeatMap(),
     ])
 }

@@ -4,8 +4,14 @@ import "@flaticon/flaticon-uicons/css/all/all.css";
 import PassengerPicker from '../others/PassengerPicker';
 import CloseOnClickOutside from '../../shared/CloseOnClickOutside';
 import DestinationPickerWrapper from './DestinationPickerWrapper';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../store/Store';
+import {
+    useDispatch,
+    // useSelector 
+} from 'react-redux';
+import {
+    AppDispatch,
+    // RootState
+} from '../../../store/Store';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { ParseDate } from '../../../helper/DateHelper';
@@ -20,14 +26,16 @@ const FlightTabContent = (): JSX.Element => {
     const locationHook = useLocation()
     const searchObjParams = localStorage.getItem("flightParams")
     const searchObj = searchObjParams ? JSON.parse(searchObjParams) : ''
-    const { data } = useSelector((state: RootState) => state.instaFlightSearchSlice)
+    // const { data } = useSelector((state: RootState) => state.instaFlightSearchSlice)
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
-    const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
+    const [selectedTripType, setSelectedTripType] = useState<string>(searchObj.tripType ? searchObj.tripType : 'One-way');
     const [showPassengerModal, setShowPassengerModal] = useState(false)
     const [isSourceVisible, setIsSourceVisible] = useState(false)
     const [isDestinationVisible, setIsDestinationVisible] = useState(false)
     const [isDepModalVisible, setIsdepModalVisible] = useState(false)
+    const [isReturnModalVisible, setIsReturnModalVisible] = useState(false)
     const [departureDate, setDepartureDate] = useState<Value>(searchObj.departuredate ? new Date(searchObj.departuredate) : new Date())
+    const [returnDate, setReturnDate] = useState<Value>(searchObj.returnDate ? new Date(searchObj.returnDate) : new Date())
     const [passenger, setPassenger] = useState(searchObj.passengercount || {
         Adult: 1,
         Child: 0,
@@ -89,33 +97,47 @@ const FlightTabContent = (): JSX.Element => {
         setDepartureDate(val)
         setIsdepModalVisible(false)
     }
+    const handleReturnDateChange = (val: Value) => {
+        setReturnDate(val)
+        setIsReturnModalVisible(false)
+    }
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
-    const onClickSearch = useCallback((e: React.MouseEvent<HTMLInputElement>)=>{
+    const onClickSearch = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
         localStorage.setItem("flightParams", JSON.stringify({
             sourceLocation: sourceocation,
             destination: destinationLocation,
             departuredate: departureDate && ParseDate(departureDate as Date, "format"),
             passengercount: passenger,
-            enabletagging: true
+            enabletagging: true,
+            returnDate: returnDate && ParseDate(returnDate as Date, "format"),
+            tripType: selectedTripType,
         }))
+        const query = selectedTripType === 'Round-trip' ? {
+            origin: sourceocation.sourceCode,
+            destination: destinationLocation.sourceCode,
+            departuredate: departureDate && ParseDate(departureDate as Date, "format"),
+            passengercount: (passenger.Adult + passenger.Child + passenger.infant),
+            enabletagging: true,
+            returndate: selectedTripType === 'Round-trip' && returnDate && ParseDate(returnDate as Date, "format"),
+        } : {
+            origin: sourceocation.sourceCode,
+            destination: destinationLocation.sourceCode,
+            departuredate: departureDate && ParseDate(departureDate as Date, "format"),
+            passengercount: (passenger.Adult + passenger.Child + passenger.infant),
+            enabletagging: true,
+        }
         if (locationHook.pathname !== "/flights-search-result") {
             navigate('/flights-search-result')
         }
         if (locationHook.pathname === "/flights-search-result") {
             dispatch(InstaFlightSearch({
-                query: {
-                    origin: sourceocation.sourceCode,
-                    destination: destinationLocation.sourceCode,
-                    departuredate: departureDate && ParseDate(departureDate as Date, "format"),
-                    passengercount: (passenger.Adult + passenger.Child + passenger.infant),
-                    enabletagging: true
-                }
+                query: query
             }))
         }
-    },[locationHook,dispatch,sourceocation, departureDate,passenger,navigate])
+    }, [locationHook, dispatch, sourceocation, departureDate, passenger, navigate, destinationLocation, returnDate, selectedTripType])
     return (
         <>
             <form>
@@ -188,18 +210,31 @@ const FlightTabContent = (): JSX.Element => {
                                 <p className="satu1">{ParseDate(departureDate as Date, "getDay")}</p>
                                 <CloseOnClickOutside show={isDepModalVisible} setShow={setIsdepModalVisible}>
                                     <div className='custom-cal'>
-                                        <Calendar onChange={(val) => handleDepartureDateChange(val)} value={departureDate} />
+                                        <Calendar onChange={(val) => handleDepartureDateChange(val)} value={departureDate} minDate={new Date()} showDoubleView />
                                     </div>
                                 </CloseOnClickOutside>
                             </div>
 
                         </li>
                         {selectedTripType === 'Round-trip' && (
-                            <li className="same_wdth_2">
+                            // <li className="same_wdth_2">
+                            //     <div className="from_text">
+                            //         <h5 className="de1">Return <i className="fa-regular fa-angle-down"></i></h5>
+                            //         <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
+                            //     </div>
+                            // </li>
+                            <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''}`}>
                                 <div className="from_text">
-                                    <h5 className="de1">Return <i className="fa-regular fa-angle-down"></i></h5>
-                                    <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
+                                    <h5 className="de1" onClick={() => setIsReturnModalVisible(true)}>Return <i className="fa-regular fa-angle-down"></i></h5>
+                                    <h4 className="tr_1">{new Date(returnDate as Date).getDate()} <em>{ParseDate(returnDate as Date, 'getMonth')}'{new Date(returnDate as Date).getFullYear().toString().slice(-2)}</em></h4>
+                                    <p className="satu1">{ParseDate(returnDate as Date, "getDay")}</p>
+                                    <CloseOnClickOutside show={isReturnModalVisible} setShow={setIsReturnModalVisible}>
+                                        <div className='custom-cal'>
+                                            <Calendar onChange={(val) => handleReturnDateChange(val)} value={returnDate} minDate={new Date(departureDate as Date)} showDoubleView />
+                                        </div>
+                                    </CloseOnClickOutside>
                                 </div>
+
                             </li>
                         )}
 

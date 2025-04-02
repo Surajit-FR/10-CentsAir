@@ -5,6 +5,7 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
 import InstaFlightSearch  from "./reducers/InstaFlightSearchReducer";
 import SabreAuthSlice from './reducers/SabreAuthReducer'
+import SabreSeatMapSlice from './reducers/SeatMapReducers'
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -15,6 +16,7 @@ export const store = configureStore({
         sabreGeolocationSlice: SabreSearchReducer,
         instaFlightSearchSlice : InstaFlightSearch,
         sabreAuthSlice: SabreAuthSlice,
+        sabreSeatmapslice:SabreSeatMapSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(middleware),
 });

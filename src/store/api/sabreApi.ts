@@ -25,7 +25,7 @@ export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
 }
 
 export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
-  console.log("insta params", data)
+  // console.log("insta params", data)
   return  SABREAPI({
     method: 'get',
     url: `v1/shop/flights`,
@@ -33,7 +33,7 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
       origin: data?.origin,
       destination:data?.destination,
       departuredate: data?.departuredate,
-      returnDate: data?.returnDate,
+      returndate: data?.returndate,
       sortby:'totalfare',
       order:'asc',
       passengercount:data?.passengercount,
@@ -48,4 +48,16 @@ export const INSTAFLIGHTSEARCHRESULTSBYTAG = (tagId: string) => {return  SABREAP
   });
 }
 
+// needs v3 auth token
+export const GETSEATMAPDETAILS = (data: any) =>{
+  return SABREAPI({
+    method:'post',
+    url: '/v3/offers/getseats/byReservationPayload',
+    data:{
+      returnSeatMapsOnlyForSegmentRefs: data?.refs,
+      segments: data?.flightSegments,
+      passengers: data?.passengers
+    }
+  })
+}
     // SABREAPI.get("/v2/geo/autocomplete", data);

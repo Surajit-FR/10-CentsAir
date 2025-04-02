@@ -115,7 +115,6 @@ const InstaFlightSearchSlice = createSlice({
 
         InstaFlightSearch: (state, { payload, type }) => {
             state.type = type;
-            console.log(type)
         },
         InstaFlightSearchSuccess: (state, { payload, type }) => {
             state.type = type;

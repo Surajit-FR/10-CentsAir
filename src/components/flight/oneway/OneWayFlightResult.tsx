@@ -78,7 +78,7 @@ const OneWayFlightResult = ({ recommendations }: { recommendations: Array<any> }
     const changePage = ({ selected }: { selected: number }) => {
         setPageNumber(selected);
     };
-console.log(recommendations)
+
     return (
         <>
             <div className="col-md-4 col-lg-9">

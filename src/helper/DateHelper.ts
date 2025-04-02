@@ -14,11 +14,12 @@ const months = [
   ]
 const days= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",]
 const daysHort= ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
-  export const ParseDate =(value: Date, identifier?: string)=>{
+  export const ParseDate =(value: Date, identifier?: string, format?: string)=>{
     const day= value.getDate()
     const month = value.getMonth()
     const year = value.getFullYear()
     const timeString = value.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+    const t4hrs = `${value.getHours()<10? `0${value.getHours()}`:value.getHours()}:${value.getMinutes()<10 ? `0${value.getMinutes()}`:`${value.getMinutes()}`}`
     const fullday =value.getDay()
     if (!identifier){
         return `${day}-${months[month]}-${year}`
@@ -32,10 +33,13 @@ const daysHort= ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
     if(identifier === 'dayDate'){
       return `${daysHort[fullday]}, ${months[month]} ${day}`
     }
-    if(identifier === "timeOnly"){
+    if(identifier === "timeOnly" && !format){
       return timeString
     }
-    console.log("parsed date", `${year}-${month<9?`0${month+1}`:month+1}-${day}`)
+    if(format === '24hrs' && identifier === "timeOnly"  ){
+      // console.log("parsed date", t4hrs)
+      return t4hrs
+    }
     return `${year}-${month<9?`0${month+1}`:month+1}-${day<10?`0${day}`:day}`
   }
 
@@ -53,4 +57,9 @@ const daysHort= ["Sun","Mon","Tue","Wed","Thu","Fri","Sat",]
     const timeInHours =Math.floor(elapsedTime/60)
     const remainingMins = elapsedTime%60
     return `${timeInHours ? `${timeInHours} Hrs ` : ''}${remainingMins ? `${remainingMins} Mins ` : ''}`.trim()
+  }
+
+  export const parseTime24Hrs =(value: Date) =>{
+
+
   }
