@@ -4,7 +4,7 @@ import { useState } from "react";
 import OneWayFlightResultItem from "./OneWayFlightResultItem";
 import { FlightItemsType, RecommendationsItemsType } from "../../../types/common";
 
-const OneWayFlightResult = ({ recommendations }: { recommendations: Array<RecommendationsItemsType> }): JSX.Element => {
+const OneWayFlightResult = ({ recommendations }: { recommendations: Array<any> }): JSX.Element => {
     const flightDummyData: Array<FlightItemsType> = [
         {
             imageSrc: "assets/images/show/1.png",
@@ -78,15 +78,15 @@ const OneWayFlightResult = ({ recommendations }: { recommendations: Array<Recomm
     const changePage = ({ selected }: { selected: number }) => {
         setPageNumber(selected);
     };
-
+console.log(recommendations)
     return (
         <>
             <div className="col-md-4 col-lg-9">
                 <div className="stoy_by_box">
-                    <div className="t_sory">
+                    {/* <div className="t_sory">
                         <h3>Sort by</h3>
-                    </div>
-                    <ul className="stoy_list">
+                    </div> */}
+                    {/* <ul className="stoy_list">
                         {recommendations?.map((rec, index) => (
                             <li key={index}>
                                 <div className="recommended">
@@ -107,13 +107,13 @@ const OneWayFlightResult = ({ recommendations }: { recommendations: Array<Recomm
                                 </div>
                             </li>
                         ))}
-                    </ul>
+                    </ul> */}
 
-                    {flightDummyData?.map((flight, index) => (
+                    {/* {recommendations?.map((flight, index) => (
                         <OneWayFlightResultItem key={index} flight={flight} />
-                    )).slice(0, 4)}
+                    ))} */}
 
-                    <div className="instantly_box">
+                    {/* <div className="instantly_box">
                         <h4>
                             <img src="assets/images/show/ir.png" alt="" />
                             Save instantly on your trip <span>Get upto USD 15 OFF our fees.<Link to="#"> Learn
@@ -131,13 +131,13 @@ const OneWayFlightResult = ({ recommendations }: { recommendations: Array<Recomm
                         </form>
                         <p>By entering your email address you agree to 10 Cent Air’s <Link to="#"> Terms and
                             Conditions, Privacy Policy</Link> and to receive email marketing.</p>
-                    </div>
+                    </div> */}
 
-                    {flightDummyData?.map((flight, index) => (
+                    {recommendations?.map((flight, index) => (
                         <OneWayFlightResultItem key={index} flight={flight} />
-                    )).slice(4, 6)}
+                    ))}
 
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="col-md-9">
                             <div className="pagination_123">
                                 <CustomPagination
@@ -152,7 +152,7 @@ const OneWayFlightResult = ({ recommendations }: { recommendations: Array<Recomm
                                 <p>Show : 1-17</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

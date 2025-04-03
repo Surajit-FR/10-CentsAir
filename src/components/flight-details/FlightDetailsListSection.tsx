@@ -5,8 +5,13 @@ import FlexibleTicketFlightWatcherSection from "./FlexibleTicketFlightWatcherSec
 import ListedFlightSection from "./ListedFlightSection";
 import TravelerDetailsSection from "./TravelerDetailsSection";
 import TravelProtectionSection from "./TravelProtectionSection";
+import { InstaFlightResultObject } from "../../types/sabreReturnTypes";
 
-const FlightDetailsListSection = ({ handleStepClick }: { handleStepClick: Function }): JSX.Element => {
+interface DetailListProps {
+    handleStepClick: Function
+    data: InstaFlightResultObject
+}
+const FlightDetailsListSection = ({ handleStepClick,data }: DetailListProps): JSX.Element => {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
@@ -14,19 +19,19 @@ const FlightDetailsListSection = ({ handleStepClick }: { handleStepClick: Functi
     return (
         <>
             {/* ListedFlightSection */}
-            <ListedFlightSection />
+            <ListedFlightSection flightsdata={data}/>
 
             {/* FareRulesSection */}
             <FareRulesSection />
 
             {/* BaggageInfoSection */}
-            <BaggageInfoSection />
+            {/* <BaggageInfoSection /> */}
 
             {/* TravelProtectionSection */}
-            <TravelProtectionSection />
+            {/* <TravelProtectionSection /> */}
 
             {/* FlexibleTicketFlightWatcherSection */}
-            <FlexibleTicketFlightWatcherSection />
+            {/* <FlexibleTicketFlightWatcherSection /> */}
 
             {/* TravelerDetailsSection */}
             <TravelerDetailsSection
