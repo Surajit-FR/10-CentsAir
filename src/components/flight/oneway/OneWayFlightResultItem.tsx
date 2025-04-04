@@ -24,14 +24,17 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
 
                             <li className="fd_1">
                                 <div className="n_img">
-                                    <img src={getSingleAirline(item.FlightSegment[index].OperatingAirline.Code)?.logo} alt="" />
+                                    <img src={ getSingleAirline(flight?.TPA_Extensions?.ValidatingCarrier?.Code)?.logo
+                                        } alt="" />
+                                  
                                 </div>
                             </li>
                             <li className="fd_2">
                                 <div className="n_text1">
                                     <h5>{item.FlightSegment.length} Stops</h5>
-                                    <p>{getSingleAirline(item.FlightSegment[index].OperatingAirline.Code)?.name}
-                                        {/* {flight?.TPA_Extensions?.ValidatingCarrier?.Code}  */}
+                                    <p>
+                                        {/* {getSingleAirline(item.FlightSegment[index].OperatingAirline.Code)?.name} */}
+                                        {flight?.TPA_Extensions?.ValidatingCarrier?.Code} 
                                         <span className="q_1">(with others)</span></p>
                                 </div>
                             </li>
