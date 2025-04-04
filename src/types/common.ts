@@ -1,5 +1,5 @@
 import { CallEffect, PutEffect, SelectEffect, TakeEffect } from "redux-saga/effects";
-import { UserData } from "./authTypes";
+import { UserData, User } from "./authTypes";
 
 export type ReusableInputProps = {
     type: string;
@@ -166,6 +166,7 @@ export type DataState = {
     authData?: Partial<UserData>,
     error: string | null,
     type: string,
+    singleUserData?: Partial<User>;
 };
 
 export type SagaGenerator<Y, R = void> = Generator<CallEffect<Y> | PutEffect | SelectEffect | TakeEffect, R, Y>;

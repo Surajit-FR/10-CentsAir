@@ -4,7 +4,8 @@ import { DataState } from "../../types/common";
 const initialState: DataState = {
     authData: {},
     error: null,
-    type: ''
+    type: '',
+    singleUserData:{},
 };
 
 const AuthSlice = createSlice({
@@ -58,6 +59,18 @@ const AuthSlice = createSlice({
             state.type = type;
             state.error = payload;
         },
+          // Get Single User
+          GetSingleUserRequest: (state, { payload, type }) => {
+            state.type = type;
+        },
+        GetSingleUserSuccess: (state, { payload, type }) => {
+            state.type = type;
+            state.singleUserData = payload?.data;
+        },
+        GetSingleUserFailure: (state, { payload, type }) => {
+            state.type = type;
+            state.error = payload;
+        },
     }
 });
 
@@ -77,6 +90,10 @@ export const {
     AuthLogoutRequest,
     AuthLogoutSuccess,
     AuthLogoutFailure,
+
+    GetSingleUserRequest,
+    GetSingleUserSuccess,
+    GetSingleUserFailure,
 } = AuthSlice.actions;
 
 export default AuthSlice.reducer;
