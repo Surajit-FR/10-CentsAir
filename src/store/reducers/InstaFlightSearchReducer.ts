@@ -123,6 +123,7 @@ const InstaFlightSearchSlice = createSlice({
         InstaFlightSearchFailure: (state, { payload, type }) => {
             state.type = type;
             state.error = payload;
+            state.data=initialState.data
         },
         InstaFlightSearchByTag: (state, { payload, type }) => {
             state.type = type;
@@ -134,6 +135,7 @@ const InstaFlightSearchSlice = createSlice({
         InstaFlightSearchByTagFailure: (state, { payload, type }) => {
             state.type = type;
             state.error = payload;
+            state.singleSearchData=initialState.singleSearchData;
         },
 
     }

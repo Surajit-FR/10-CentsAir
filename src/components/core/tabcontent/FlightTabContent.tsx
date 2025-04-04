@@ -112,6 +112,10 @@ const FlightTabContent = (): JSX.Element => {
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
+    const onClickRevert =()=>{
+        setSourceLocation(destinationLocation)
+        setdestinationLocation(sourceocation)
+    }
     const onClickSearch = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
         localStorage.setItem("flightParams", JSON.stringify({
@@ -170,7 +174,7 @@ const FlightTabContent = (): JSX.Element => {
 
                     </div>
                     <ul className={`form_and_to ${locationHook.pathname !== '/' ? "get_one12" : ''}`}>
-                        <li className={`same_wdth_1 second_1 ${isSourceVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''}`}>
+                        <li className={`same_wdth_1 second_1 ${isSourceVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''} home-search-hover`}>
                             <div className="from_text_12">
                                 <DestinationPickerWrapper
                                     isVisible={isSourceVisible}
@@ -182,7 +186,7 @@ const FlightTabContent = (): JSX.Element => {
                                 />
                             </div>
                         </li>
-                        <li className={`same_wdth_1 second_1 ${isDestinationVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''}`}>
+                        <li className={`same_wdth_1 second_1 ${isDestinationVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''} home-search-hover`}>
                             <div className="from_text_12">
                                 <DestinationPickerWrapper
                                     isVisible={isDestinationVisible}
@@ -193,14 +197,15 @@ const FlightTabContent = (): JSX.Element => {
                                     inputPlaceHolder={"To"}
                                 />
                             </div>
-                            {selectedTripType === 'Round-trip' && (
-                                <div className="exchanges">
+                            
+
+                        {selectedTripType === 'Round-trip' && (
+                                <div className="exchanges" onClick={()=>onClickRevert()}>
                                     <Link to="#">
                                         <i className="fa-solid fa-arrow-right-arrow-left"></i>
                                     </Link>
                                 </div>
                             )}
-
                         </li>
                         {/* <li className="same_wdth_2">
                             <div className="from_text">
@@ -211,7 +216,7 @@ const FlightTabContent = (): JSX.Element => {
                             </div>
 
                         </li> */}
-                        <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''}`}>
+                        <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''} ${isDepModalVisible ? "active" : ''} home-search-hover`}>
                             <div className="from_text">
                                 <h5 className="de1" onClick={() => setIsdepModalVisible(true)}>Departure <i className="fa-regular fa-angle-down"></i></h5>
                                 <h4 className="tr_1"
@@ -235,7 +240,7 @@ const FlightTabContent = (): JSX.Element => {
                             //         <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
                             //     </div>
                             // </li>
-                            <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''}`}>
+                            <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''} ${isReturnModalVisible ? "active" : ''} home-search-hover`}>
                                 <div className="from_text">
                                     <h5 className="de1" onClick={() => setIsReturnModalVisible(true)}>Return <i className="fa-regular fa-angle-down"></i></h5>
                                     <h4 className="tr_1"
@@ -255,7 +260,7 @@ const FlightTabContent = (): JSX.Element => {
                         )}
 
 
-                        <li className={`same_wdth_3 ${showPassengerModal ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_passenger_wrapper" : ''}`}>
+                        <li className={`same_wdth_3 ${showPassengerModal ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_passenger_wrapper" : ''} home-search-hover`}>
                             <div
                                 className={`from_text ${showPassengerModal ? "pointer_events" : ''} `}
                                 onClick={() => setShowPassengerModal(!showPassengerModal)}>

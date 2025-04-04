@@ -14,7 +14,9 @@ export function* InstaFlightSearchSaga({ payload, type }: { payload: { query: In
         const result: any = resp?.data;
         // if (result?.grouped?.["category:AIR"].doclist.docs && result?.grouped?.["category:AIR"].doclist.docs.length > 0) {
         //     showToast({ message: result?.message || 'Logout Successfully.', type: 'success', durationTime: 3500, position: "top-center" });
+        if(result.DepartureDateTime){
             yield put(InstaFlightSearchSuccess(result));
+        }
         // };
     } catch (error: any) {
         yield put(InstaFlightSearchFailure(error?.response?.data?.message));

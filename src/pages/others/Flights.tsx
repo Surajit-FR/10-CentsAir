@@ -107,7 +107,7 @@ const Flights = (): JSX.Element => {
         }
         return <OneWayFlightResult recommendations={recommendations} />
     };
-
+console.log("data",data.PricedItineraries)
     useEffect(() => {
         if (flightParams) {
             const paramDataObject = JSON.parse(flightParams)
@@ -126,7 +126,7 @@ const Flights = (): JSX.Element => {
                 enabletagging: true,
             }
             dispatch(InstaFlightSearch({
-                query:query
+                query: query
             }))
         }
     }, [dispatch, flightParams])
@@ -211,17 +211,17 @@ const Flights = (): JSX.Element => {
                                     <>
                                         <div className="row">
                                             {/* Flight Filter */}
-                                            <FlightFilter />
                                             {
                                                 data && data.PricedItineraries && data.PricedItineraries.length > 0
                                                     ?
                                                     (
-
-                                                        <OneWayFlightResult recommendations={data.PricedItineraries} />
-
+                                                        <>
+                                                            <FlightFilter />
+                                                            <OneWayFlightResult recommendations={data.PricedItineraries} />
+                                                        </>
                                                     )
                                                     :
-                                                    (<div>No Results Found....</div>)}
+                                                    (<div className="no-results">No Results Found....</div>)}
                                         </div>
                                     </>
                                 )

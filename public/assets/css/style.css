@@ -494,13 +494,23 @@ ul.tabs li.current .flig_text:after{
    pointer-events: none;
 }
 .form_and_to .same_wdth_1{
-   width:25%;
+   flex-grow: 1;
 }
 .form_and_to .second_1{
    position: relative;
+   flex-grow: 1;
 }
 .form_and_to .second_1 .from_text{
    padding-left:15px;
+}
+.form_and_to .home-search-hover:hover{
+   background: #EAF5FF;
+}
+.no-results{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 160px;
 }
 .form_and_to .exchanges{
  position: absolute;
@@ -533,10 +543,11 @@ ul.tabs li.current .flig_text:after{
    margin: 0 auto;
 }
 .form_and_to .same_wdth_2{
-   width:15%;
+   /* width:15%; */
+   flex-grow: 1;
 }
 .form_and_to .same_wdth_3{
-   width:20%;
+   flex-grow: 1;
    position: relative;
 }
 .economy_premium{
