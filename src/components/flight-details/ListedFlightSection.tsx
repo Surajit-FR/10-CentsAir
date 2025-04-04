@@ -52,104 +52,118 @@ const ListedFlightSection = ({ flightsdata }: ListedFlightProps): JSX.Element =>
                     <li>Depart  {ParseDate(new Date(flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime), 'dayDate')}</li>
                     {/* <li><Link to="#">This is an alternate date itinerary.</Link></li> */}
                 </ul>
-                {flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.map((val, index) => (
-                    val.FlightSegment.map((flight, index) => (
-                        <div className="mi_bov_142" key={index}>
-                            <ul className="stops_t2 stops_t3">
-                                <li className="fd_1">
-                                    <div className="n_img">
-                                        <img src={getSingleAirline(flight?.OperatingAirline.Code).logo} alt="" />
-                                    </div>
-                                </li>
-                                <li className="fd_2">
-                                    <div className="n_text1">
-                                        <h5>{getSingleAirline(flight.OperatingAirline.Code).name} </h5>
-                                        <p>Flight {flight.FlightNumber} <span className="q_1">Aircraft {flight.Equipment.AirEquipType}</span></p>
-                                    </div>
-                                </li>
-                                <li className="fd_3">
-                                    <div className="m_1">
-                                        <h6 className="fri_dec12 h_3">{ParseDate(new Date(flight?.DepartureDateTime), 'dayDate')}</h6>
-                                    </div>
-                                </li>
-                                <li className="fd_5">
-                                    <div className="dac_box12">
-                                        <h6>{ParseDate(new Date(flight?.DepartureDateTime), 'timeOnly')}<span className="dac_1">{flight?.DepartureAirport.LocationCode}</span></h6>
-                                    </div>
-                                </li>
-                                <li className="fd_5">
-                                    <div className="dac_box12">
-                                        <h6>{ParseDate(new Date(flight?.ArrivalDateTime), 'timeOnly')}<span className="dac_1">{flight?.ArrivalAirport.LocationCode}</span></h6>
-                                    </div>
-                                </li>
-                                <li className="fd_3">
-                                    <div className="m_1">
-                                        <h6 className="h_3">{ParseDate(new Date(flight?.ArrivalDateTime), 'dayDate')}</h6>
-                                    </div>
-                                </li>
-                                <li className="fd_6">
-                                    <div className="book_t1 text-start">
-                                        <p className="cabin_12">Cabin: {flightsdata?.AirItineraryPricingInfo?.FareInfos.FareInfo[index].TPA_Extensions.Cabin.Cabin}</p>
-                                        {/* <p className="cabin_12">Brand Name: Flex</p> */}
-                                    </div>
-                                </li>
-                            </ul>
-                            {index !== flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.length - 1 && (
+                {flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.map((val, index) =>
 
-                                <div className="lay_box">
-                                    <div className="lay_1">
-                                        <h3 className="">Layover: {getTimeDifference(new Date(flight?.ArrivalDateTime), new Date(val.FlightSegment[index + 1].DepartureDateTime)
-                                        )
-                                        }</h3>
-                                    </div>
+                (
+                    <div className="single-trip-details">
+                        {
+                            val.FlightSegment.map((flight, index) => (
+                                <div className="mi_bov_142" key={index}>
+                                    <ul className="stops_t2 stops_t3">
+                                        <li className="fd_1">
+                                            <div className="n_img">
+                                                <img src={getSingleAirline(flight?.OperatingAirline.Code).logo} alt="" />
+                                            </div>
+                                        </li>
+                                        <li className="fd_2">
+                                            <div className="n_text1">
+                                                <h5>{getSingleAirline(flight.OperatingAirline.Code).name} </h5>
+                                                <p>Flight {flight.FlightNumber} <span className="q_1">Aircraft {flight.Equipment.AirEquipType}</span></p>
+                                            </div>
+                                        </li>
+                                        <li className="fd_3">
+                                            <div className="m_1">
+                                                <h6 className="fri_dec12 h_3">{ParseDate(new Date(flight?.DepartureDateTime), 'dayDate')}</h6>
+                                            </div>
+                                        </li>
+                                        <li className="fd_5">
+                                            <div className="dac_box12">
+                                                <h6>{ParseDate(new Date(flight?.DepartureDateTime), 'timeOnly')}<span className="dac_1">{flight?.DepartureAirport.LocationCode}</span></h6>
+                                            </div>
+                                        </li>
+                                        <li className="fd_5">
+                                            <div className="dac_box12">
+                                                <h6>{ParseDate(new Date(flight?.ArrivalDateTime), 'timeOnly')}<span className="dac_1">{flight?.ArrivalAirport.LocationCode}</span></h6>
+                                            </div>
+                                        </li>
+                                        <li className="fd_3">
+                                            <div className="m_1">
+                                                <h6 className="h_3">{ParseDate(new Date(flight?.ArrivalDateTime), 'dayDate')}</h6>
+                                            </div>
+                                        </li>
+                                        <li className="fd_6">
+                                            <div className="book_t1 text-start">
+                                                <p className="cabin_12">Cabin: {flightsdata?.AirItineraryPricingInfo?.FareInfos.FareInfo[index].TPA_Extensions.Cabin.Cabin}</p>
+                                                {/* <p className="cabin_12">Brand Name: Flex</p> */}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    {index !== flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.length - 1 && (
+
+                                        <div className="lay_box">
+                                            <div className="lay_1">
+                                                <h3 className="">Layover: {getTimeDifference(new Date(flight?.ArrivalDateTime), new Date(val.FlightSegment[index + 1].DepartureDateTime)
+                                                )
+                                                }</h3>
+                                            </div>
+                                        </div>
+
+                                    )}
+
                                 </div>
-
-                            )}
-                            
-                        </div>
-                    )
-                    ))
-
-
-
-
-                )}
-                <div className="row">
-                    <div className="col-md-5">
-                        <h4 className="tatal_112">Total Trip Duration : {diffIntimeByElapsedTime(flightsdata?.AirItinerary?.OriginDestinationOptions?.OriginDestinationOption[0].ElapsedTime)}</h4>
+                            )
+                            )
+                        }
+                        {
+                            <div className="row">
+                                <div className="col-md-5">
+                                    <h4 className="tatal_112">Total Trip Duration : {diffIntimeByElapsedTime(val.ElapsedTime)}</h4>
+                                </div>
+                                <div className="col-md-7">
+                                    {/* <ul className="per_123">
+              <li>
+                  <div className="bg">
+                      <span><i className="fa-regular fa-suitcase-rolling"></i></span>
+                      1 Personal Item
+                  </div>
+              </li>
+              <li>
+                  <div className="bg">
+                      <span><i className="fa-regular fa-suitcase-rolling"></i></span>
+                      1 Carry-on bag
+                  </div>
+              </li>
+              <li>
+                  <div className="bg">
+                      <span><i className="fa-regular fa-suitcase-rolling"></i></span>
+                      2 Checked Bags
+                  </div>
+              </li>
+          </ul> */}
+                                    <ul className="non_reff">
+                                        <li>{flightsdata?.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.Endorsements.NonRefundableIndicator ? "NON-REFUNDABLE" : <div style={{ color: 'green' }}>REFUND-ELIGIBLE</div>}</li>
+                                        <li>
+                                            <Link to="#">{getSingleAirline(flightsdata?.TPA_Extensions.ValidatingCarrier.Code).name}</Link>
+                                        </li>
+                                        {/* <li>
+                  <Link to="#">Baggage Policy</Link>
+              </li> */}
+                                    </ul>
+                                </div>
+                            </div>
+                        }
                     </div>
-                    <div className="col-md-7">
-                        {/* <ul className="per_123">
-                            <li>
-                                <div className="bg">
-                                    <span><i className="fa-regular fa-suitcase-rolling"></i></span>
-                                    1 Personal Item
-                                </div>
-                            </li>
-                            <li>
-                                <div className="bg">
-                                    <span><i className="fa-regular fa-suitcase-rolling"></i></span>
-                                    1 Carry-on bag
-                                </div>
-                            </li>
-                            <li>
-                                <div className="bg">
-                                    <span><i className="fa-regular fa-suitcase-rolling"></i></span>
-                                    2 Checked Bags
-                                </div>
-                            </li>
-                        </ul> */}
-                        <ul className="non_reff">
-                            <li>{flightsdata?.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.Endorsements.NonRefundableIndicator ? "NON-REFUNDABLE" : <div style={{ color: 'green' }}>REFUND-ELIGIBLE</div>}</li>
-                            <li>
-                                <Link to="#">{getSingleAirline(flightsdata?.TPA_Extensions.ValidatingCarrier.Code).name}</Link>
-                            </li>
-                            {/* <li>
-                                <Link to="#">Baggage Policy</Link>
-                            </li> */}
-                        </ul>
-                    </div>
-                </div>
+
+                )
+
+
+
+
+                )
+
+
+                }
+
             </div>
         </>
     );
