@@ -57,7 +57,7 @@ const FlightTabContent = (): JSX.Element => {
             sourceStateCity: city,
         })
         setIsSourceVisible(false)
-        setIsDestinationVisible(false)
+        setIsDestinationVisible(true)
     }
     const [destinationLocation, setdestinationLocation] = useState(searchObj.destination || {
         sourceName: 'Indira Gandhi International',
@@ -74,6 +74,7 @@ const FlightTabContent = (): JSX.Element => {
         })
         setIsSourceVisible(false)
         setIsDestinationVisible(false)
+        setIsdepModalVisible(true)
     }
 
     const fareTypes: Array<string> = [
@@ -96,10 +97,17 @@ const FlightTabContent = (): JSX.Element => {
     const handleDepartureDateChange = (val: Value) => {
         setDepartureDate(val)
         setIsdepModalVisible(false)
+        if(selectedTripType === 'Round-trip'){
+            setIsReturnModalVisible(true)
+        }
+        if(selectedTripType === 'One-way'){
+            setShowPassengerModal(true)
+        }
     }
     const handleReturnDateChange = (val: Value) => {
         setReturnDate(val)
         setIsReturnModalVisible(false)
+        setShowPassengerModal(true)
     }
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
@@ -141,7 +149,7 @@ const FlightTabContent = (): JSX.Element => {
     return (
         <>
             <form>
-                <div className="tabs_bg_color">
+                <div className={`tabs_bg_color ${locationHook.pathname !== '/' ? "bc_bgcolor_scond" : ''}`}>
                     <div className="row">
                         <div className="col-md-7">
                             <ul className="one_way">
@@ -161,8 +169,8 @@ const FlightTabContent = (): JSX.Element => {
                         </div>
 
                     </div>
-                    <ul className="form_and_to">
-                        <li className={`same_wdth_1 ${isSourceVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''}`}>
+                    <ul className={`form_and_to ${locationHook.pathname !== '/' ? "get_one12" : ''}`}>
+                        <li className={`same_wdth_1 second_1 ${isSourceVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''}`}>
                             <div className="from_text_12">
                                 <DestinationPickerWrapper
                                     isVisible={isSourceVisible}
@@ -206,11 +214,15 @@ const FlightTabContent = (): JSX.Element => {
                         <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''}`}>
                             <div className="from_text">
                                 <h5 className="de1" onClick={() => setIsdepModalVisible(true)}>Departure <i className="fa-regular fa-angle-down"></i></h5>
-                                <h4 className="tr_1">{new Date(departureDate as Date).getDate()} <em>{ParseDate(departureDate as Date, 'getMonth')}'{new Date(departureDate as Date).getFullYear().toString().slice(-2)}</em></h4>
+                                <h4 className="tr_1"
+                                onClick={() => setIsdepModalVisible(true)}
+                                >{new Date(departureDate as Date).getDate()} <em>{ParseDate(departureDate as Date, 'getMonth')}'{new Date(departureDate as Date).getFullYear().toString().slice(-2)}</em></h4>
                                 <p className="satu1">{ParseDate(departureDate as Date, "getDay")}</p>
                                 <CloseOnClickOutside show={isDepModalVisible} setShow={setIsdepModalVisible}>
                                     <div className='custom-cal'>
-                                        <Calendar onChange={(val) => handleDepartureDateChange(val)} value={departureDate} minDate={new Date()} showDoubleView />
+                                        <Calendar onChange={(val) => handleDepartureDateChange(val)} value={departureDate} minDate={new Date()} 
+                                        maxDate={new Date(new Date().getTime()+(160*24*60*60*1000))}
+                                        showDoubleView />
                                     </div>
                                 </CloseOnClickOutside>
                             </div>
@@ -226,11 +238,15 @@ const FlightTabContent = (): JSX.Element => {
                             <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''}`}>
                                 <div className="from_text">
                                     <h5 className="de1" onClick={() => setIsReturnModalVisible(true)}>Return <i className="fa-regular fa-angle-down"></i></h5>
-                                    <h4 className="tr_1">{new Date(returnDate as Date).getDate()} <em>{ParseDate(returnDate as Date, 'getMonth')}'{new Date(returnDate as Date).getFullYear().toString().slice(-2)}</em></h4>
+                                    <h4 className="tr_1"
+                                    onClick={() => setIsReturnModalVisible(true)}
+                                    >{new Date(returnDate as Date).getDate()} <em>{ParseDate(returnDate as Date, 'getMonth')}'{new Date(returnDate as Date).getFullYear().toString().slice(-2)}</em></h4>
                                     <p className="satu1">{ParseDate(returnDate as Date, "getDay")}</p>
                                     <CloseOnClickOutside show={isReturnModalVisible} setShow={setIsReturnModalVisible}>
                                         <div className='custom-cal'>
-                                            <Calendar onChange={(val) => handleReturnDateChange(val)} value={returnDate} minDate={new Date(departureDate as Date)} showDoubleView />
+                                            <Calendar onChange={(val) => handleReturnDateChange(val)} value={returnDate} minDate={new Date(departureDate as Date)} 
+                                            maxDate={new Date(new Date(departureDate as Date).getTime()+(10*24*60*60*1000))}
+                                            showDoubleView />
                                         </div>
                                     </CloseOnClickOutside>
                                 </div>
