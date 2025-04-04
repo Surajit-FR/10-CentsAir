@@ -48,13 +48,16 @@ const FlightTabContent = (): JSX.Element => {
         sourceCode: 'CCU',
         sourceStateName: 'WB',
         sourceStateCity: 'Kolkata',
+        sourceCountry: 'IN',
     })
-    const handleSourcePicking = (name: string, code: string, state: string, city: string) => {
+    const handleSourcePicking = (name: string, code: string, state: string, city: string, country: string) => {
+
         setSourceLocation({
             sourceName: name,
             sourceCode: code,
             sourceStateName: state,
             sourceStateCity: city,
+            sourceCountry: country,
         })
         setIsSourceVisible(false)
         setIsDestinationVisible(true)
@@ -65,12 +68,13 @@ const FlightTabContent = (): JSX.Element => {
         sourceStateName: 'Delhi',
         sourceStateCity: 'Delhi',
     })
-    const handleDestinatioPicking = (name: string, code: string, state: string, city: string) => {
+    const handleDestinatioPicking = (name: string, code: string, state: string, city: string, country: string) => {
         setdestinationLocation({
             sourceName: name,
             sourceCode: code,
             sourceStateName: state,
             sourceStateCity: city,
+            sourceCountry: country,
         })
         setIsSourceVisible(false)
         setIsDestinationVisible(false)
@@ -116,6 +120,7 @@ const FlightTabContent = (): JSX.Element => {
         setSourceLocation(destinationLocation)
         setdestinationLocation(sourceocation)
     }
+
     const onClickSearch = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
         localStorage.setItem("flightParams", JSON.stringify({
@@ -126,6 +131,7 @@ const FlightTabContent = (): JSX.Element => {
             enabletagging: true,
             returnDate: returnDate && ParseDate(returnDate as Date, "format"),
             tripType: selectedTripType,
+            pontOfSaleCountry: sourceocation.sourceCountry,
         }))
         const query = selectedTripType === 'Round-trip' ? {
             origin: sourceocation.sourceCode,
@@ -133,12 +139,14 @@ const FlightTabContent = (): JSX.Element => {
             departuredate: departureDate && ParseDate(departureDate as Date, "format"),
             passengercount: (passenger.Adult + passenger.Child + passenger.infant),
             enabletagging: true,
+            pointofsalecountry: sourceocation.sourceCountry,
             returndate: selectedTripType === 'Round-trip' && returnDate && ParseDate(returnDate as Date, "format"),
         } : {
             origin: sourceocation.sourceCode,
             destination: destinationLocation.sourceCode,
             departuredate: departureDate && ParseDate(departureDate as Date, "format"),
             passengercount: (passenger.Adult + passenger.Child + passenger.infant),
+            pointofsalecountry: sourceocation.sourceCountry,
             enabletagging: true,
         }
         if (locationHook.pathname !== "/flights-search-result") {

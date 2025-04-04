@@ -1,0 +1,354 @@
+
+ [
+        {
+            "CountryCode": "AR",
+            "CountryName": "Argentina",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=AR&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "AU",
+            "CountryName": "Australia",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=AU&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "BE",
+            "CountryName": "Belgium",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=BE&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "BR",
+            "CountryName": "Brazil",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=BR&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "CA",
+            "CountryName": "Canada",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=CA&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "CL",
+            "CountryName": "Chile",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=CL&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "CO",
+            "CountryName": "Colombia",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=CO&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "DE",
+            "CountryName": "Germany",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=DE&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "DK",
+            "CountryName": "Denmark",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=DK&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "FI",
+            "CountryName": "Finland",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=FI&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "FR",
+            "CountryName": "France",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=FR&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "GB",
+            "CountryName": "Great Britain",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=GB&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "GR",
+            "CountryName": "Greece",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=GR&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "HK",
+            "CountryName": "Hong Kong",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=HK&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "ID",
+            "CountryName": "Indonesia",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=ID&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=IN&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "IT",
+            "CountryName": "Italy",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=IT&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "JP",
+            "CountryName": "Japan",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=JP&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "KR",
+            "CountryName": "South Korea",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=KR&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "MX",
+            "CountryName": "Mexico",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=MX&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "MY",
+            "CountryName": "Malaysia",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=MY&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "NL",
+            "CountryName": "Netherlands",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=NL&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "NO",
+            "CountryName": "Norway",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=NO&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "NZ",
+            "CountryName": "New Zealand",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=NZ&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "PE",
+            "CountryName": "Peru",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=PE&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "PH",
+            "CountryName": "Philippines",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=PH&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "PT",
+            "CountryName": "Portugal",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=PT&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "RU",
+            "CountryName": "Russia",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=RU&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "SE",
+            "CountryName": "Sweden",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=SE&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "SG",
+            "CountryName": "Singapore",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=SG&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "TH",
+            "CountryName": "Thailand",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=TH&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "TR",
+            "CountryName": "Turkey",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=TR&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "TW",
+            "CountryName": "Taiwan",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=TW&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "US",
+            "CountryName": "United States",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=US&triptype=<triptype>"
+                }
+            ]
+        },
+        {
+            "CountryCode": "ZA",
+            "CountryName": "South Africa",
+            "Links": [
+                {
+                    "rel": "cityPairsLookup",
+                    "href": "https://api.cert.platform.sabre.com/v1/lists/supported/shop/flights/origins-destinations?destinationregion=<destinationregion>&originregion=<originregion>&destinationcountry=<destinationcountry>&origincountry=<origincountry>&pointofsalecountry=ZA&triptype=<triptype>"
+                }
+            ]
+        }
+    ]
+  

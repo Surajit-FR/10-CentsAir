@@ -6,7 +6,7 @@ interface Props {
     setIsVisible:React.Dispatch<SetStateAction<boolean>>
     locationCode: string
     locationName: string
-    handleLocationPick:(name: string, code: string, state: string, city: string)=>void
+    handleLocationPick:(name: string, code: string, state: string, city: string, country: string)=>void
     inputPlaceHolder: string
 }
 

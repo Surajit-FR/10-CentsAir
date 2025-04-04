@@ -25,7 +25,7 @@ export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
 }
 
 export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
-  // console.log("insta params", data)
+  console.log("insta params", data)
   return  SABREAPI({
     method: 'get',
     url: `v1/shop/flights`,
@@ -38,7 +38,8 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
       order:'asc',
       passengercount:data?.passengercount,
       enabletagging: true,
-      limit:50
+      limit:50,
+      pointofsalecountry: data?.pointofsalecountry,
     },
   });
 }

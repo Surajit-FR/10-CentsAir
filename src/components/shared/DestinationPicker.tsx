@@ -8,7 +8,7 @@ interface Props {
     destinationCode: string
     inputPlaceHolder: string
     setIsVisible: React.Dispatch<SetStateAction<boolean>>
-    handleDestinationPicking?: (name: string, code: string, state: string, city: string) => void
+    handleDestinationPicking?: (name: string, code: string, state: string, city: string, country: string) => void
     customTrigger?: boolean
 }
 const DestinationPicker = ({ isVisible, destinationCode, inputPlaceHolder, handleDestinationPicking, customTrigger }: Props) => {
@@ -17,7 +17,7 @@ const DestinationPicker = ({ isVisible, destinationCode, inputPlaceHolder, handl
     const { data, type } = useSelector((state: RootState) => state.sabreGeolocationSlice)
     const inputRef = useRef<any>()
 
-    console.log(type)
+
     useEffect(() => {
         if (query.length > 2) {
             dispatch(SabreSerchGeoLocation({ query, }));
@@ -45,7 +45,7 @@ const DestinationPicker = ({ isVisible, destinationCode, inputPlaceHolder, handl
                             <>
                                 {data && data.doclist && data.doclist.docs && data.doclist.docs.length > 0 && data.doclist.docs.map((airPorts: any) => (
                                     <div className='air_text' key={airPorts.id} onClick={() => {
-                                        handleDestinationPicking && handleDestinationPicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city)
+                                        handleDestinationPicking && handleDestinationPicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city, airPorts.country)
                                     }
                                     }>
                                         <i className="fi fi-rr-plane"></i>

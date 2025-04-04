@@ -107,7 +107,7 @@ const Flights = (): JSX.Element => {
         }
         return <OneWayFlightResult recommendations={recommendations} />
     };
-console.log("data",data.PricedItineraries)
+
     useEffect(() => {
         if (flightParams) {
             const paramDataObject = JSON.parse(flightParams)
@@ -117,12 +117,14 @@ console.log("data",data.PricedItineraries)
                 departuredate: paramDataObject.departuredate,
                 passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
                 returndate: paramDataObject.returnDate,
+                pointofsalecountry: paramDataObject.pontOfSaleCountry,
                 enabletagging: true,
             } : {
                 origin: paramDataObject.sourceLocation.sourceCode,
                 destination: paramDataObject.destination.sourceCode,
                 passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
                 departuredate: paramDataObject.departuredate,
+                pointofsalecountry: paramDataObject.pontOfSaleCountry,
                 enabletagging: true,
             }
             dispatch(InstaFlightSearch({
