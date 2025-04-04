@@ -64,7 +64,7 @@ a{
  background: #90A8C0;
  padding: 83px;
  margin: 0;
- border-radius: 60px 0 0 60px;
+ border-radius: 8px 0 0 8px;
  min-height:907px;
  display:flex;
  align-items: center;
@@ -116,20 +116,20 @@ a{
    margin: 0;
 }
 .sign_social li a{
- display: block;
- background: #fff;
- font-size: 24px;
- color: #333333;
- line-height: 32.78px;
- border: 1px solid #333333;
- border-radius: 40px;
- padding: 19px 0;
- margin: 0;
- list-style: none;
- text-decoration: none;
- text-align: center;
- min-height: 72px;
- box-sizing: border-box;
+   display: block;
+   background: #fff;
+   font-size: 24px;
+   color: #333333;
+   line-height: 32.78px;
+   border: 1px solid #333333;
+   border-radius: 8px;
+   padding: 16px 0;
+   margin: 0;
+   list-style: none;
+   text-decoration: none;
+   text-align: center;
+   /* min-height: 72px; */
+   box-sizing: border-box;  
 }
 .sign_social li a span{
  display: inline-block;
@@ -179,7 +179,7 @@ a{
    color: #FFFFFF;
    line-height:27px;
    border: none;
-   border-radius: 40px;
+   border-radius: 8px;
    min-height:56px;
    padding:19px 0;
    margin:10px 0 25px 0;
@@ -213,12 +213,13 @@ a{
 .sign_img{
    padding: 0;
    margin: 0;
+   border-radius: 0px 8px 8px 0px;
 }
 .sign_img img{
  width: 100%;
  height: 907px;
  object-fit: cover;
- border-radius: 0px 60px 60px 0px;
+ border-radius: 0px 8px 8px 0px;
 }
 
 .email_tr{
@@ -256,21 +257,65 @@ a{
    margin: 0;
 }
 .email_tr .email_1{
- width: 100%;
- display: block;
- background: #fff;
- font-size: 20px;
- color: #333333;
- line-height: 25px;
- border: 1px solid #333333;
- border-radius: 40px;
- height: 72px;
- padding: 10px 20px;
- margin: 0;
- text-align: left;
- box-sizing: border-box;
- outline: none;
+   width: 100%;
+   display: block;
+   background: #fff;
+   font-size: 18px;
+   color: #333333;
+   line-height: 25px;
+   border: 1px solid #333333;
+   border-radius: 8px;
+   height: 60px;
+   padding: 10px;
+   margin: 0;
+   text-align: left;
+   box-sizing: border-box;
+   outline: none;
 }
+.signup_box .react-tel-input .form-control{
+   width: 100% !important;
+   display: block !important;
+   background: #fff !important;
+   font-size: 18px !important;
+   color: #333333 !important;
+   line-height: 25px !important;
+   border: 1px solid #333333 !important;
+   border-radius: 8px !important;
+   height: 60px !important;
+   padding:10px 10px 10px 60px !important;
+   margin: 0 !important;
+   text-align: left !important;
+   box-sizing: border-box !important;
+   outline: none !important;
+}
+.signup_box .react-tel-input {
+   border: none;
+   border-radius: 0px !important;
+ }
+.signup_box .react-tel-input .flag-dropdown {
+   border-radius: 8px !important;
+   padding: 13px !important;
+   background: #fff !important;
+   border: none !important;
+ }
+ .signup_box .react-tel-input .selected-flag {
+   outline: none;
+   position: relative;
+   width: 30px;
+   height: 100%;
+   padding: 0;
+   border-radius: 0px;
+ }
+ .signup_box .form-control:focus {
+   color: var(--bs-body-color);
+   background-color: var(--bs-body-bg);
+   border-color: #86b7fe;
+   outline: 0;
+   box-shadow: 0 0 0 .0rem rgba(13, 110, 253, .25);
+   border: 2px solid red !important;
+ }
+
+
 .forgot{
    display: block;
    font-size:14px;
@@ -285,7 +330,7 @@ a{
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   padding:70px 0 90px 0;
+   padding:70px 0 70px 0;
    margin: 0;
    position: relative;
 }
@@ -302,7 +347,7 @@ ul.tabs{
 ul.tabs li{
 /*	font-family: 'LondonMM';*/
    background: none;
-   font-size:16px;
+   font-size:14px;
    color:#435970;
    font-weight:500;
    line-height:20px;
@@ -315,12 +360,12 @@ ul.tabs li{
 ul.tabs li .tans_img{
    display: block;
    text-align: center;
-   margin: 0 0 10px 0;
+   margin: 0 0 0 0;
    padding: 0;
 }
 ul.tabs li .tans_img img{
    max-width: 100%;
-   height: 60px;
+   height:45px;
    object-fit: contain;
    margin: 0 auto;
    text-align: center;
@@ -339,11 +384,11 @@ ul.tabs li.current .back_img{
 }
 
 ul.tabs li em{
-   display:block;
+   display:inline-block;
    font-style:normal;
 }
 ul.tabs li .flig_text{
-   padding:0 0 15px 0;
+   padding:0 0 8px 0;
    display: inline-block;
 }
 ul.tabs li.current .flig_text{
@@ -366,13 +411,16 @@ ul.tabs li.current .flig_text:after{
 .tab-content{
  display: none;
  border: 1px dashed #a9a9a9;
- margin: 30px 0 0 0;
+ margin: 20px 0 0 0;
  border-radius:4px;
 }
 .tabs_bg_color{
    background:#fff;
    border-radius:4px;
-   padding:60px 20px;
+   padding:20px;
+}
+.bc_bgcolor_scond{
+   background:#f0fbff;
 }
 .tab-content.current{
    display: inherit;
@@ -417,6 +465,10 @@ ul.tabs li.current .flig_text:after{
    border-radius: 10px;
    justify-content: space-between;
 }
+.get_one12{
+   background: #fff;
+   border: 1px solid #fff;
+}
 .form_and_to li{
    display: block;
    align-items: center;
@@ -424,8 +476,12 @@ ul.tabs li.current .flig_text:after{
    margin: 0;
    cursor: pointer;
    border-right: 1px solid #D8D8D8;
-   min-height: 112px;
    position: relative;
+}
+.form_and_to li h1{
+   margin: 0;
+   color: #224263;
+   font-size: 30px;
 }
 .form_and_to li.active{
    background: #EAF5FF;
@@ -619,7 +675,13 @@ ul.tabs li.current .flig_text:after{
    padding-left:5px;
 }
 .from_text .de1{
-   color:#232020;
+   font-family: "Nunito Sans", sans-serif;
+   font-size: 14px;
+   color: #707070;
+   line-height: 19.1px;
+   font-weight: 400;
+   padding: 0 0 5px 0;
+   margin: 0;
 }
 .from_text h4{
    font-family: "Nunito Sans", sans-serif;
@@ -632,11 +694,13 @@ ul.tabs li.current .flig_text:after{
 }
 .from_text .tr_1{
    line-height:30px;
+   color: #224263;
+   font-size: 30px;
 }
 .from_text h4 em{
  font-size: 20px;
  line-height: 36px;
- color: #232020;
+ color: #224263;
  list-style: none;
  font-style: normal;
 }
@@ -651,7 +715,7 @@ ul.tabs li.current .flig_text:after{
 }
 .from_text .satu1{
    font-size:14px;
-   color:#232020;
+   color:#707070;
    line-height:19px;
 }
 .from_text .tap1{
@@ -750,7 +814,7 @@ ul.tabs li.current .flig_text:after{
    font-weight:700;
    border:none;
    text-transform:uppercase;
-   border-radius:40px;
+   border-radius:8px;
    padding:14px 58px;
    margin: 0;
    box-shadow: 0px 0px 64px -12px rgba(0,0,0,0.23);
@@ -6484,6 +6548,7 @@ display: block;
    float: left;
    padding: 0;
    margin: 0;
+   width: 80%;
 }
 .ind_text{
    font-weight: 600;
@@ -6504,6 +6569,7 @@ display: block;
 .air_text .l_text{
    display: block;
    font-size: 12px;
+   line-height: 14px;
 }
 .from_text .h1_text h1{
    font-family: "Nunito Sans", sans-serif;
@@ -6537,6 +6603,7 @@ display: block;
    margin-bottom:0px;
  }
  .custom-cal .react-calendar{
+   width: 500px;
    border:none;
    border-radius: 4px;
    background-color: #ffffff;
@@ -6578,10 +6645,30 @@ display: block;
    background-color: #eeeeee;
    color:#000;
  }
- /* .custom-cal .react-calendar__viewContainer{
-   
- } */
-
+ .form_and_to li.detail_search_wrapper{
+   min-height: auto;
+ }
+ .form_and_to li.detail_calender_wrapper{
+   min-height: auto;
+ }
+ .form_and_to li.detail_passenger_wrapper{
+   min-height: auto;
+ }
+ .form_and_to .detail_search_wrapper h1{
+   font-size: 28px;
+   margin: 0;
+ }
+ .form_and_to .detail_search_wrapper .tr_1{
+   font-size: 28px;
+   margin: 0;
+ }
+ .form_and_to .detail_search_wrapper h5{
+   font-size: 14px;
+   color: #707070;
+   line-height: 19.1px;
+   font-weight: 400;
+ 
+}
 /*----dhaka_box-08-08-24--*/
 
 
