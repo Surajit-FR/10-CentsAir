@@ -38,7 +38,7 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
       order:'asc',
       passengercount:data?.passengercount,
       enabletagging: true,
-      limit:5
+      limit:50
     },
   });
 }

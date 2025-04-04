@@ -15,7 +15,7 @@ interface Props {
 const DestinationPickerWrapper = ({isVisible,setIsVisible,locationCode,locationName,handleLocationPick, inputPlaceHolder}:Props) => {
   return (
     <div className="from_text">
-    <h5>To</h5>
+    <h5>{inputPlaceHolder}</h5>
     {!isVisible && (
         <div onClick={() => {
             setIsVisible(true)

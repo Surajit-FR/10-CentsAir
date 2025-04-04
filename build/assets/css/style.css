@@ -281,7 +281,10 @@ a{
 }
 /*------banner-------*/
 .banner_tabs{
-   background-image: linear-gradient(to bottom, #111b25, #1a3753, #265486, #3d73bc, #5e91f4);
+   background-image: url('../images/banner/banner.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
    padding:70px 0 90px 0;
    margin: 0;
    position: relative;
@@ -412,19 +415,27 @@ ul.tabs li.current .flig_text:after{
    border:1px solid #D8D8D8;
    border-right:0;
    border-radius: 10px;
+   justify-content: space-between;
 }
 .form_and_to li{
-   display: flex;
+   display: block;
    align-items: center;
    padding: 8px 15px;
    margin: 0;
    cursor: pointer;
    border-right: 1px solid #D8D8D8;
    min-height: 112px;
+   position: relative;
+}
+.form_and_to li.active{
+   background: #EAF5FF;
 }
 .form_and_to li:last-child{
    border-right: 0px;
    border-radius: 0px 10px 10px 0px;
+}
+.pointer_events{
+   pointer-events: none;
 }
 .form_and_to .same_wdth_1{
    width:25%;
@@ -433,7 +444,7 @@ ul.tabs li.current .flig_text:after{
    position: relative;
 }
 .form_and_to .second_1 .from_text{
-   padding-left:25px;
+   padding-left:15px;
 }
 .form_and_to .exchanges{
  position: absolute;
@@ -444,7 +455,7 @@ ul.tabs li.current .flig_text:after{
  height: 100%;
  display: flex;
  align-items: center;
- z-index:9;
+ z-index:1;
 }
 .form_and_to .exchanges a{
    width:40px;
@@ -465,20 +476,143 @@ ul.tabs li.current .flig_text:after{
    text-align: center;
    margin: 0 auto;
 }
-
 .form_and_to .same_wdth_2{
    width:15%;
 }
 .form_and_to .same_wdth_3{
    width:20%;
+   position: relative;
 }
-.from_text h5{
+.economy_premium{
+   position: absolute;
+   top:35px;
+   right: 0;
+   border-radius: 4px;
+   box-sizing: border-box;
+   background-color: #ffffff;
+   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+   width:680px;
+   padding:25px 25px 0 25px;
+   z-index:2;
+   cursor: auto;
+}
+.adults_box{
+   margin:0 0 25px 0;
+}
+.economy_premium h4{
+   font-family: "Nunito Sans", sans-serif;
+   font-size: 13px;
+   color: #333;
+   line-height: 15px;
+   font-weight: 500;
+   padding: 0;
+   margin: 0;
+}
+.economy_premium p{
+   font-family: "Nunito Sans", sans-serif;
+   font-size:12px;
+   color: #707070;
+   line-height: 19.1px;
+   font-weight: 400;
+   padding: 0 0 0px 0;
+   margin: 0;
+}
+.economy_premium .adults_list{
+   display: inline-flex;
+   border-radius: 4px;
+   background-color: #ffffff;
+   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+   margin:10px 0 0 0;
+   padding: 0;
+   align-items: center;
+   position: relative;
+}
+.economy_premium .adults_list li{
+   padding: 0;
+   margin: 0;
+   min-height: auto;
+   border: none;
+   background: none;
+   border-radius: 0;
+}
+.economy_premium .adults_list li:last-child{
+   position: absolute;
+   right: -44px;
+   border-radius: 4px;
+   background-color: #ffffff;
+   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+.economy_premium .adults_list li button{
+   font-family: "Nunito Sans", sans-serif;
+   font-size: 14px;
+   color: #707070;
+   width: 36px;
+   height: 36px;
+   background: none;
+   border: none;
+   position: relative;
+   display: flex;
+   align-items: center;
+   border-radius: 4px;
+   padding: 0;
+   margin: 0;
+}
+.economy_premium .last_business li button{
+   width:auto;
+   padding:0 10px;
+}
+.economy_premium .last_business li:last-child{
+   position: relative;
+   right: 0;
+   box-shadow: 0 0 6px 0 rgb(0 0 0 / 0%);
+}
+.economy_premium .adults_list li button span{
+   text-align: center;
+   margin: 0 auto;
+}
+.economy_premium .adults_list li button span i{
+   font-size: 10px;
+   line-height: 12px;
+   padding: 0;
+   margin: 0;
+}
+.economy_premium .adults_list li.active button:after{
+   width: 100%;
+   height: 36px;
+   position: absolute;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   content: '';
+   background:#21B4E2;
+   border-radius: 4px;
+   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+.economy_premium .adults_list li:hover button{
+   background:#f2f2f2;
+}
+.economy_premium .adults_box .pushRight{
+   background: linear-gradient(270deg, rgba(33, 180, 226, 1) 0%, rgb(255 177 0) 100%);
+   font-size: 16px;
+   color: #ffffff;
+   line-height: 18px;
+   font-weight: 600;
+   padding: 10px 30px;
+   border-radius: 20px;
+   border: none;
+}
+.economy_premium .adults_list li.active button span{
+   color: #fff;
+   position: relative;
+   z-index: 1;
+}
+.from_text_12 .from_text h5{
    font-family: "Nunito Sans", sans-serif;
    font-size:14px;
    color:#707070;
    line-height:19.1px;
    font-weight:400;
-   padding: 0 0 10px 0;
+   padding: 0 0 0px 0;
    margin: 0;
 }
 .from_text h5 i{
@@ -627,7 +761,7 @@ ul.tabs li.current .flig_text:after{
    display: flex;
    align-items: center;
    padding: 0;
-   margin: 0;
+   margin: 0 0 0 40px;
 }
 .search_return li{
    display:inline-block;
@@ -2703,7 +2837,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 .stops_t2 .fd_2{width: 10%;}
 .stops_t2 .fd_3{width: 7%;}
 .stops_t2 .fd_4{width: 40%;}
-.stops_t2 .fd_5{width: 15%;}
+.stops_t2 .fd_5{width: 15%; padding-left:15px;}
 .stops_t2 .fd_6{width: 25%;}
 
 
@@ -2846,9 +2980,24 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
    color:#232020;
    line-height:18px;
    font-weight:400;
+   padding: 0 0 15px 0;
+   margin: 0;
+}
+.dac_box12 h6 span{
+   font-size: 10px;
+   display: block;
+   line-height: 13px;
+   font-weight: 700;
    padding: 0;
    margin: 0;
 }
+.dac_box12 h6 span:last-child{
+	display: block;
+	line-height: 15px;
+	font-weight: 700;
+	color:#cd6f2a;
+	font-size: 13px;
+ }
 .dac_box12 .dac_1{
  font-family: "Nunito Sans", sans-serif;
  display: block;
@@ -2881,15 +3030,15 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
    border:1px solid #D8D8D8;
    text-decoration:none;
    list-style:none;
-   padding:8px 18px;
+   padding:8px 10px;
    margin: 0;
 }
 .fl_tr .sl_14 img{
    width:15px;
-   margin: 0 10px 0 0;
+   margin: 0 8px 0 0;
 }
 .book_t1{
-   padding:0 0 0 20px;
+   padding:0 0 0 15px;
    margin: 0;
    text-align: center;
 }
@@ -2990,7 +3139,21 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
  right:-42px;
  text-transform:uppercase;
 } */
-
+.react-calendar__tile--active{
+   background: #21B4E2;
+}
+.react-calendar__month-view__weekdays__weekday {
+   padding: 0;
+}
+.react-calendar__month-view__weekdays__weekday abbr{
+   text-decoration: none;
+}
+.react-calendar__tile{
+   border-radius: 5px;
+}
+.react-calendar__tile--now{
+   background: red
+}
 .rhombues1{
  position: relative;
  top: -12px;
@@ -2998,12 +3161,26 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
  color: #707070;
  left: -13px;
 }
+.rhombues1 span{
+   position: absolute;
+   top: -15px;
+   left: -3px;
+   font-size: 10px;
+   font-weight:700;
+}
 .rhombues2{
  position: relative;
  top: -12px;
  font-size: 14px;
  color: #707070;
  right: -13px;
+}
+.rhombues2 span{
+   position: absolute;
+   bottom: -15px;
+   left: -6px;
+   font-size: 10px;
+   font-weight:700;
 }
 .fl_bg_box{
  border-top:1px dashed #a9a9a9;
@@ -6243,6 +6420,168 @@ display: block;
    padding: 0;
    margin: 0;
 }
+.set_secarh_box{
+   padding: 0;
+   margin: 0;
+   position: relative;
+}
+.set_secarh_box .s_text1{
+   display: inline-block;
+   font-size:16px;
+   color: #707070;
+   line-height: 20px;
+   font-weight: 600;
+   width:100%;
+   border: 1px solid #DEDEDE;
+   border-radius: 4px;
+   box-sizing: border-box;
+   cursor: pointer;
+   outline: none;
+   padding:10px 10px;
+   margin:0;
+   transition: all 500ms ease-in-out;
+}
+.date_box{
+   background: #fff;
+   max-height: 270px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+   border-radius: 0 5px 5px 5px;
+   cursor: pointer;
+   box-sizing: border-box;
+   margin: 0 auto;
+   padding:5px;
+   position: absolute;
+   top: 40px;
+   left: 0;
+   z-index:2;
+   width:100%;
+   right: 0;
+}
+.air_text{
+   font-size: 15px;
+   color: #3e3a3a;
+   line-height: 20px;
+   font-weight: 400;
+   border-radius: 5px;
+   padding: 6px 5px;
+   margin: 0;
+   transition: all 500ms ease-in-out;
+   float: left;
+   width: 100%;
+}
+.air_text:hover{
+   background:#f5f5f5;
+}
+.air_text i{
+   padding: 0 5px 0 0;
+   font-size: 12px;
+   color: #3e3a3a;
+   float: left;
+}
+.air_text .m_left{
+   float: left;
+   padding: 0;
+   margin: 0;
+}
+.ind_text{
+   font-weight: 600;
+   font-size:12px;
+   float: right;
+}
+.air_text .com_text{
+   font-size: 15px;
+   color: #333;
+   line-height:18px;
+   font-weight: 400;
+   padding: 0;
+   margin: 0;
+}
+.air_text  .s_text{
+   padding:0 0 0 2px;
+}
+.air_text .l_text{
+   display: block;
+   font-size: 12px;
+}
+.from_text .h1_text h1{
+   font-family: "Nunito Sans", sans-serif;
+   font-size: 30px;
+   color: #000;
+   font-weight: 700;
+   padding: 0;
+   margin: 0;
+}
+.from_text .h1_text .h5_text{
+   font-size: 14px;
+   color: #494949;
+   line-height:normal;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+   padding:0;
+   margin: 0;
+}
+.custom-cal{
+   position: absolute;
+   top: 35px;
+   right: 0;
+   z-index: 2;
+   margin: 0 auto;
+}
+.custom-cal .react-calendar__navigation {
+   background-color: #fff;
+   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+   border-radius: 4px 4px 0 0;
+   margin-bottom:0px;
+ }
+ .custom-cal .react-calendar{
+   border:none;
+   border-radius: 4px;
+   background-color: #ffffff;
+   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+ }
+ .custom-cal .react-calendar__month-view__weekdays__weekday {
+   padding: 15px 10px 15px 10px;
+   font-size: 15px;
+   color: #696c6c;
+   font-weight: 400;
+   text-transform: capitalize;
+ }
+ .custom-cal .react-calendar__tile--active{
+   background: #36c6ed;
+ }
+ .custom-cal .react-calendar__tile {
+   font-size: 16px;
+ }
+ .custom-cal .react-calendar__tile--now {
+   background: #fff;
+ }
+ .custom-cal .react-calendar__tile--now:enabled:hover, .react-calendar__tile--now:enabled:focus {
+   background: #21b4e2;
+   color: #fff;
+ }
+ .custom-cal .react-calendar__navigation button {
+   font-weight: 700;
+   font-size: 20px;
+ }
+ .custom-cal .react-calendar__tile--active:enabled:hover{
+   background: #0e7894;
+   color:#fff;
+ }
+ .custom-cal .react-calendar__tile--active:enabled:focus {
+   background: #0e7894;
+   color:#fff;
+ }
+ .custom-cal .react-calendar__tile:enabled:hover{
+   background-color: #eeeeee;
+   color:#000;
+ }
+ /* .custom-cal .react-calendar__viewContainer{
+   
+ } */
+
 /*----dhaka_box-08-08-24--*/
 
 

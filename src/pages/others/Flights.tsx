@@ -111,15 +111,22 @@ const Flights = (): JSX.Element => {
     useEffect(() => {
         if (flightParams) {
             const paramDataObject = JSON.parse(flightParams)
+            const query = paramDataObject?.tripType === 'Round-trip' ? {
+                origin: paramDataObject.sourceLocation.sourceCode,
+                destination: paramDataObject.destination.sourceCode,
+                departuredate: paramDataObject.departuredate,
+                passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
+                returndate: paramDataObject.returnDate,
+                enabletagging: true,
+            } : {
+                origin: paramDataObject.sourceLocation.sourceCode,
+                destination: paramDataObject.destination.sourceCode,
+                passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
+                departuredate: paramDataObject.departuredate,
+                enabletagging: true,
+            }
             dispatch(InstaFlightSearch({
-                query: {
-                    origin: paramDataObject.sourceLocation.sourceCode,
-                    destination: paramDataObject.destination.sourceCode,
-                    departuredate: paramDataObject.departuredate,
-                    passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
-                    returndate: paramDataObject.returnDate,
-                    enabletagging: true
-                }
+                query:query
             }))
         }
     }, [dispatch, flightParams])
