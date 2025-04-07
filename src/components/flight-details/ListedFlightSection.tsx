@@ -15,9 +15,9 @@ const ListedFlightSection = ({ flightsdata }: ListedFlightProps): JSX.Element =>
         <>{flightsdata && flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.length > 0 &&(
             <div className="found_box mb-5">
             {/* <h6 className="skip_1">Skip</h6> */}
-            <div className="green_box_123">
+            {/* <div className="green_box_123">
                 <h4>This flight is on an alternate date. Please verify the dates.</h4>
-            </div>
+            </div> */}
             <div className="row">
                 <div className="col-md-6">
                     <div className="f_light123">
@@ -99,17 +99,17 @@ const ListedFlightSection = ({ flightsdata }: ListedFlightProps): JSX.Element =>
                                         </div>
                                     </li>
                                 </ul>
-                                {/* {index !== flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.length - 1 && (
+                                {index !== flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.length - 1 && (
 
                                     <div className="lay_box">
                                         <div className="lay_1">
-                                            <h3 className="">Layover: {getTimeDifference(new Date(flight?.ArrivalDateTime), new Date(val.FlightSegment[index + 1].DepartureDateTime)
+                                            <h3 className="">Layover: {getTimeDifference(new Date(flight?.ArrivalDateTime), new Date(val.FlightSegment[index+1]?.DepartureDateTime)
                                             )
                                             }</h3>
                                         </div>
                                     </div>
 
-                                )} */}
+                                )}
 
                             </div>
                         )

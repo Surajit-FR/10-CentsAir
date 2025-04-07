@@ -25,7 +25,7 @@ export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
 }
 
 export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
-  console.log("insta params", data)
+  // console.log("insta params", data)
   return  SABREAPI({
     method: 'get',
     url: `v1/shop/flights`,

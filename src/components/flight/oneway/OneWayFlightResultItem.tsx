@@ -1,7 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 // import { FlightItemsType } from '../../../types/common';
 import { InstaFlightResultObject } from '../../../types/sabreReturnTypes';
-import { diffIntimeByElapsedTime, getTimeDifference, ParseDate } from '../../../helper/DateHelper';
+import { diffIntimeByElapsedTime, 
+    // getTimeDifference,
+     ParseDate } from '../../../helper/DateHelper';
 import { getSingleAirline } from '../../../helper/GetAirlinesStatic';
 // import { useDispatch } from 'react-redux';
 // import { AppDispatch } from '../../../store/Store';
@@ -24,18 +26,19 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
 
                             <li className="fd_1">
                                 <div className="n_img">
-                                    <img src={ getSingleAirline(flight?.TPA_Extensions?.ValidatingCarrier?.Code)?.logo
+                                    <img src={ getSingleAirline(item?.FlightSegment[0].OperatingAirline.Code)?.logo
                                         } alt="" />
-                                  
+                                          
                                 </div>
                             </li>
                             <li className="fd_2">
                                 <div className="n_text1">
-                                    <h5>{item.FlightSegment.length} Stops</h5>
+                                    <h5>{item.FlightSegment.length >1 ?  `${item.FlightSegment.length} Stops`: `${item.FlightSegment.length} Stop`} </h5>
                                     <p>
-                                        {/* {getSingleAirline(item.FlightSegment[index].OperatingAirline.Code)?.name} */}
-                                        {flight?.TPA_Extensions?.ValidatingCarrier?.Code} 
-                                        <span className="q_1">(with others)</span></p>
+                                        {getSingleAirline(item?.FlightSegment[0].OperatingAirline.Code)?.name}
+                                         <br />
+                                        {/* <span className="q_1">(with others)</span> */}
+                                    </p>
                                 </div>
                             </li>
                             <li className="fd_3">
@@ -111,10 +114,10 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                 }
 
 
-                <div className="fl_bg_box">
-                    <div className="fl_left">
+                {/* <div className="fl_bg_box"> */}
+                    {/* <div className="fl_left">
                         <Link to="#">Flight Details <i className="fa-solid fa-angle-down"></i></Link>
-                    </div>
+                    </div> */}
                     {/* <div className="rt_right">
                         <ul>
                             <li><Link className="fare_1" to="#"> Fare Rules</Link></li>
@@ -134,7 +137,7 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                             </li>
                         </ul>
                     </div> */}
-                </div>
+                {/* </div> */}
                 <div className="clearfix"></div>
             </div>
         </>
