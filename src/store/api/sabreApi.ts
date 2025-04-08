@@ -40,6 +40,7 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
       enabletagging: true,
       limit:50,
       pointofsalecountry: data?.pointofsalecountry,
+      outbounddeparturewindow:"00000600",
     },
   });
 }
