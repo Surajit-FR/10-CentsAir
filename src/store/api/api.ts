@@ -21,3 +21,13 @@ export const SOCIALLOGIN = (data: TSocialLoginValues) => API.post("/auth/user/so
 export const LOGIN = (data: LoginFormValues) => API.post("/auth/signin", data);
 // Logout
 export const LOGOUT = () => API.post("/auth/logout");
+//single user
+export const GETSINGLEUSERDETAILS =(userId: string)=> {
+    return API({
+        url:'user/get-single-user',
+        method:'get',
+        params:{
+            userId,
+        }
+    })
+}

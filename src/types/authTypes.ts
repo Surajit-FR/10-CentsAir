@@ -25,10 +25,18 @@ export type SignUpFormValues = {
     navigate?: any;
 };
 
+
+export type UserData = {
+    user: User,
+    accessToken?: string,
+    refreshToken?: string,
+    _id?:string
+};
 export type User = {
     _id: string;
     firstName: string;
     lastName: string;
+    username: string;
     email: string;
     phone: string;
     avatar: string;
@@ -36,10 +44,14 @@ export type User = {
     userType: string;
     createdAt: string;
     updatedAt: string;
+    __v: number;
 };
-
-export type UserData = {
-    user: User,
-    accessToken?: string,
-    refreshToken?: string,
+export type Pagination = {
+    total: number;
+    page: number;
+    limit: number;
+};
+export type GetSingleUserResponse = {
+    userData: User;
+    pagination: Pagination;
 };

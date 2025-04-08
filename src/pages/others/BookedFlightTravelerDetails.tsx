@@ -2,19 +2,35 @@ import FlightsBottomBox from "../../components/common/BottomInfoBox";
 import PriceDetailsSection from "../../components/flight-details/PriceDetailsSection";
 import FlightDetailsListSection from "../../components/flight-details/FlightDetailsListSection";
 import SeatsSection from "../../components/seats/SeatsSection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaymentSection from "../../components/payment/PaymentSection";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/Store";
+import { InstaFlightSearchByTag } from "../../store/reducers/InstaFlightSearchReducer";
+import GlowLoader from "../../components/shared/GlowLoader";
 
 const BookedFlightTravelerDetails = (): JSX.Element => {
+    const dispatch = useDispatch<AppDispatch>()
     const [activeStep, setActiveStep] = useState<number>(1);
-
+    const booked_flight_id = localStorage.getItem("bookedFlightId")
+    // const {booked_flight_id} = useParams()
+    const { singleSearchData, type } = useSelector((state: RootState) => state.instaFlightSearchSlice)
     const handleStepClick = (step: number) => {
         setActiveStep(step);
     };
-
+    useEffect(() => {
+        if (booked_flight_id
+            // && 
+            // booked_flight_id !==singleSearchData.TPA_Extensions.TagID 
+        ) {
+            dispatch(InstaFlightSearchByTag({ tagId: booked_flight_id }))
+        }
+    }, [booked_flight_id,])
     return (
         <>
             <section className="elight-details_bet">
+
                 <div className="container t_top">
 
                     {/* Progressbar section */}
@@ -44,13 +60,18 @@ const BookedFlightTravelerDetails = (): JSX.Element => {
                     <div className="row">
 
                         <div className="col-md-4 col-lg-9">
-                            {activeStep === 1 && <FlightDetailsListSection handleStepClick={handleStepClick} />}
-                            {activeStep === 2 && <SeatsSection handleStepClick={handleStepClick} />}
-                            {activeStep === 3 && <PaymentSection />}
+                            {type === 'instaFlightSearchSlice/InstaFlightSearchByTag' ? <GlowLoader /> :
+                                <>
+                                    {activeStep === 1 && singleSearchData.TPA_Extensions.TagID && <FlightDetailsListSection handleStepClick={handleStepClick} data={singleSearchData}/>}
+                                    {activeStep === 2 && <SeatsSection handleStepClick={handleStepClick} />}
+                                    {activeStep === 3 && <PaymentSection />}
+                                </>}
+
+
                         </div>
 
                         {/* PriceDetailsSection */}
-                        <PriceDetailsSection />
+                        <PriceDetailsSection data={singleSearchData.AirItineraryPricingInfo}/>
                     </div>
                 </div>
             </section>

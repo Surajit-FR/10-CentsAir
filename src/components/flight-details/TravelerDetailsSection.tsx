@@ -1,17 +1,73 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { InstaFlightResultObject } from "../../types/sabreReturnTypes";
+import { ParseDate } from "../../helper/DateHelper";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/Store";
+import { GetFlightSeatMaprequest } from "../../store/reducers/SeatMapReducers";
 
-const TravelerDetailsSection = ({ handleStepClick }: { handleStepClick: Function }): JSX.Element => {
+const TravelerDetailsSection = ({ handleStepClick, setData, flightsdata }: { handleStepClick: Function, setData: Function, flightsdata?: InstaFlightResultObject }): JSX.Element => {
+    const dispatch = useDispatch<AppDispatch>()
     const [showOptionalRequests, setShowOptionalRequests] = useState<boolean>(false);
 
     const toggleOptionalRequests = (): void => {
         setShowOptionalRequests(!showOptionalRequests);
     };
+    const onClickNext = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        e.preventDefault()
+        setData({
+            returnSeatMapsOnlyForSegmentRefs: [flightsdata?.TPA_Extensions?.TagID],
+            segments: flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.map((segs, index) => {
+                return {
+                    id: flightsdata?.TPA_Extensions?.TagID,
+                    bookingAirlineCode: flightsdata?.TPA_Extensions?.ValidatingCarrier.Code,
+                    bookingFlightNumber: segs.FlightNumber,
+                    departureAirportCode: segs.DepartureAirport.LocationCode,
+                    arrivalAirportCode: segs.ArrivalAirport.LocationCode,
+                    bookingClassCode: flightsdata?.AirItineraryPricingInfo.FareInfos.FareInfo[index].TPA_Extensions.Cabin.Cabin,
+                    departureTime: ParseDate(new Date(segs.DepartureDateTime), "timeOnly", "24hrs"),
+                    arrivalDate: ParseDate(new Date(segs.ArrivalDateTime), "default"),
+                    departureDate: ParseDate(new Date(segs.DepartureDateTime), "default"),
+                    arrivalTime: ParseDate(new Date(segs.ArrivalDateTime), "timeOnly", "24hrs"),
+                    operatingAirlineCode: segs.OperatingAirline.Code,
+                    operatingFlightNumber: segs.OperatingAirline.FlightNumber,
+                    operatingBookingClassCode: flightsdata?.AirItineraryPricingInfo.FareInfos.FareInfo[index].TPA_Extensions.Cabin.Cabin,
+                }
+            }
+
+
+            )
+        })
+        dispatch(GetFlightSeatMaprequest({
+            data: {
+                refs: [flightsdata?.TPA_Extensions?.TagID],
+                segments: flightsdata?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment.map((segs, index) => {
+                    return {
+                        id: flightsdata?.TPA_Extensions?.TagID,
+                        bookingAirlineCode: flightsdata?.TPA_Extensions?.ValidatingCarrier.Code,
+                        bookingFlightNumber: segs.FlightNumber,
+                        departureAirportCode: segs.DepartureAirport.LocationCode,
+                        arrivalAirportCode: segs.ArrivalAirport.LocationCode,
+                        bookingClassCode: flightsdata?.AirItineraryPricingInfo.FareInfos.FareInfo[index].TPA_Extensions.Cabin.Cabin,
+                        departureTime: ParseDate(new Date(segs.DepartureDateTime), "timeOnly", "24hrs"),
+                        arrivalDate: ParseDate(new Date(segs.ArrivalDateTime), "default"),
+                        departureDate: ParseDate(new Date(segs.DepartureDateTime), "default"),
+                        arrivalTime: ParseDate(new Date(segs.ArrivalDateTime), "timeOnly", "24hrs"),
+                        operatingAirlineCode: segs.OperatingAirline.Code,
+                        operatingFlightNumber: segs.OperatingAirline.FlightNumber,
+                        operatingBookingClassCode: flightsdata?.AirItineraryPricingInfo.FareInfos.FareInfo[index].TPA_Extensions.Cabin.Cabin,
+                    }
+                }
+                )
+            }
+
+        }))
+    }
 
     return (
         <>
             <div className="found_box mb-5">
-                <h6 className="skip_1">Skip</h6>
+                {/* <h6 className="skip_1">Skip</h6> */}
                 <div className="f_light123">
                     <div className="row">
                         <div className="col-md-8">
@@ -184,7 +240,10 @@ const TravelerDetailsSection = ({ handleStepClick }: { handleStepClick: Function
                                 className="seats_123"
                                 type="submit"
                                 value="Continue to Seats"
-                                onClick={() => handleStepClick(2)}
+                                onClick={(e) =>
+                                    // handleStepClick(2)
+                                    onClickNext(e)
+                                }
                             />
                         </div>
                     </form>

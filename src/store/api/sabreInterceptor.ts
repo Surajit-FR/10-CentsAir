@@ -19,14 +19,10 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 export const setupInterceptors = () => {
     SABREAPI.interceptors.request.use(
         (config) => {
-            // Check if cookies have been cleared; if so, get tokens from localStorage
-            // const accessToken = localStorage.getItem("sabreAccessToken");
-
-            // Set Authorization header if accessToken is available from cookies or localStorage
-            // if (accessToken) {
-                // config.headers.Authorization = `Bearer ${"T1RLAQIcLlvKEEkWM1uayRoPs1TF6Cn4oLCYXEMNSypI/S63UhD6d/nTgSCecgVEYxYiw9nSAADggSheqWcApuxn44ClMxkMDFDszFA9KasMzs3/3dC9m3B7bEtd9KZeFT9HGS0JvvjnZlz3O5rmmj1XbJCrygYGIQNKQgbyZ+gBJcX9RtyyqaCvibWww+gu5AkMeZK943aCCSV0jhj/9Jf/mxAVYIQH8yfNBNJMb07rxCAj4XjIkuR119voww9lebcBtydURQQY+AMQ+493SPErdq+VKFy7kiPiepfWpo9JILGsEHGz0+W6ov2WQtC3hRFVow9HJqqN6hbNUmYIo1okuPgNRGvcq4UBvbhxSGy+GFPeKcgqJ/4*"}`;
-                config.headers.Authorization = `Bearer ${"T1RLAQJTXTTGpITNW8ZvHYddrg6bJK24OuHoT0KIrB49HTifgBCOlPiBZ3ksPCCI73gKPFCXAADQlesW6MJSTCrwmh1hulTfoO87Rlh8HSzHG8n843MaeawPolQbPcshiWVETcLO3nnbe7ha5uF9usej3Cnu3cdizcZs0jQRuiiUHvWllMwNtnydSWw8C8YSGjqT5dG/06DUs02FvQ14doSnTbMZYf4rsOjh3FoS22ZSgtxmHw+QkzKHPL4cr2uHFmYSTGlnUnzcAQF/FEeqLc7H2I/o/BH2Ic9fgotMvTa7QSaEmaIGm8irmMNnJ+6xeuzP1pTAVYfeQus0NfX/RO2ePj2y0pYctQ**"}`;
-            // }
+            const accessToken = localStorage.getItem("sabreAccessToken")
+            if (accessToken) {
+                config.headers.Authorization = `Bearer ${accessToken}`;
+            }
             return config;
         },
         (error) => Promise.reject(error)

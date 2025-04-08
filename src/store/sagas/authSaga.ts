@@ -8,15 +8,19 @@ import {
     AuthSignupSuccess,
     AuthSignupFailure,
     AuthSocialSuccess,
-    AuthSocialFailure
+    AuthSocialFailure,
+    GetSingleUserSuccess,
+    GetSingleUserFailure
 } from "../reducers/AuthReducers";
 import {
+    GETSINGLEUSERDETAILS,
     LOGIN,
     LOGOUT,
     SIGNUP,
     SOCIALLOGIN
 } from "../api/api";
 import {
+    GetSingleUserResponse,
     LoginFormValues,
     SignUpFormValues,
     TSocialLoginValues,
@@ -67,8 +71,9 @@ export function* loginSaga({ payload, type }: { payload: { data: LoginFormValues
         const result: ApiResponse<UserData> = resp?.data;
         if (result?.success) {
             payload.navigate("/");
-            window.localStorage.setItem("accessToken", result?.data?.accessToken as string);
-            window.localStorage.setItem("refreshToken", result?.data?.refreshToken as string);
+            // window.localStorage.setItem("accessToken", result?.data?.accessToken as string);
+            // window.localStorage.setItem("refreshToken", result?.data?.refreshToken as string);
+            window.localStorage.setItem("_id", result?.data?._id as string);
             showToast({ message: result?.message || 'Login Successfully.', type: 'success', durationTime: 3500, position: "top-center" });
             yield put(AuthLoginSuccess(result));
         };
@@ -81,18 +86,32 @@ export function* loginSaga({ payload, type }: { payload: { data: LoginFormValues
 // logoutSaga generator function
 export function* logoutSaga({ payload, type }: { payload: { navigate: NavigateFunction }, type: string }): SagaGenerator<{ data: ApiResponse<UserData> }> {
     try {
-        const resp = yield call(LOGOUT);
-        const result: ApiResponse<UserData> = resp?.data;
-        if (result?.success) {
+        // const resp = yield call(LOGOUT);
+        // const result: ApiResponse<UserData> = resp?.data;
+        // if (result?.success) {
             payload.navigate("/");
-            window.localStorage.removeItem("accessToken");
-            window.localStorage.removeItem("refreshToken");
-            showToast({ message: result?.message || 'Logout Successfully.', type: 'success', durationTime: 3500, position: "top-center" });
-            yield put(AuthLogoutSuccess(result));
-        };
+            // window.localStorage.removeItem("accessToken");
+            // window.localStorage.removeItem("refreshToken");
+            window.localStorage.removeItem("_id");
+            showToast({ message: 'Logout Successfully.', type: 'success', durationTime: 3500, position: "top-center" });
+            // yield put(AuthLogoutSuccess(result));
+        // };
     } catch (error: any) {
         yield put(AuthLogoutFailure(error?.response?.data?.message));
         showToast({ message: error?.response?.data?.message || 'Logout failed.', type: 'error', durationTime: 3500, position: "bottom-center" });
+    };
+};
+export function* getSingleUserSaga({ payload,type }: { payload:{userId: string},type: string }): SagaGenerator<{ data: ApiResponse<GetSingleUserResponse> }> {
+    try {
+        console.log({payload})
+        const resp = yield call(GETSINGLEUSERDETAILS, payload?.userId);
+
+        const result: ApiResponse<GetSingleUserResponse> = resp?.data;
+        if (result?.success) {
+            yield put(GetSingleUserSuccess(result));
+        };
+    } catch (error: any) {
+        yield put(GetSingleUserFailure(error?.response?.data?.message));
     };
 };
 
@@ -101,4 +120,5 @@ export default function* watchAuth() {
     yield takeLatest('authSlice/AuthSignupRequest', registerSaga);
     yield takeLatest('authSlice/AuthLoginRequest', loginSaga);
     yield takeLatest('authSlice/AuthLogoutRequest', logoutSaga);
+    yield takeLatest('authSlice/GetSingleUserRequest', getSingleUserSaga);
 };

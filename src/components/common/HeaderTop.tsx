@@ -1,19 +1,24 @@
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
-import { AppDispatch } from "../../store/Store";
-import { useDispatch } from "react-redux";
-import { AuthLogoutRequest } from "../../store/reducers/AuthReducers";
+import { AppDispatch, RootState } from "../../store/Store";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthLogoutRequest, GetSingleUserRequest } from "../../store/reducers/AuthReducers";
+import { useEffect } from "react";
 
 const HeaderTop = (): JSX.Element => {
-    const accessToken: string | null = window.localStorage.getItem("accessToken");
-    const refreshToken: string | null = window.localStorage.getItem("refreshToken");
+    const _id: string | null = window.localStorage.getItem("_id");
 
     const dispatch: AppDispatch = useDispatch();
+    const {singleUserData} = useSelector((state: RootState)=> state.authSlice)
     const navigate: NavigateFunction = useNavigate();
 
     const userLogout = () => {
         dispatch(AuthLogoutRequest({ navigate }));
     };
-
+    useEffect(()=>{
+        if(_id){
+            dispatch(GetSingleUserRequest({userId:_id}))
+        }
+    },[_id, dispatch])
     return (
         <>
             <div className="header_top">
@@ -52,22 +57,22 @@ const HeaderTop = (): JSX.Element => {
                                             </span>
                                         </button>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <select className="usd_123">
                                             <option value="US">USD $ / EN</option>
                                             <option value="US">USD $ / EN</option>
                                         </select>
+                                    </li> */}
+                                    {_id && (
+                                    <li className="usd_123">
+                                      Hello, {singleUserData?.firstName} {singleUserData?.lastName}
                                     </li>
-                                    <li>
-                                        <select className="usd_123">
-                                            <option value="Help">Help</option>
-                                            <option value="Help">Help</option>
-                                        </select>
-                                    </li>
+
+                                    )}
                                     <li>
                                         <span className="d_span">
                                             {
-                                                (accessToken && refreshToken) ?
+                                                (_id) ?
                                                     <Link to="#" onClick={userLogout}>Log Out</Link>
                                                     :
                                                     <>

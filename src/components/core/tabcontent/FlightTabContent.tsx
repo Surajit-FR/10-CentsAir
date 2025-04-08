@@ -1,67 +1,92 @@
-import { useState } from 'react';
-import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
-
-
+import { useCallback, useState } from 'react';
+import { Link, NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import "@flaticon/flaticon-uicons/css/all/all.css";
-import {
-    Button,
-    Container,
-    Typography,
-    Box,
-    TextField,
-  } from "@mui/material";
-
-
-import DestinationPicker from '../../shared/DestinationPicker';
 import PassengerPicker from '../others/PassengerPicker';
+import CloseOnClickOutside from '../../shared/CloseOnClickOutside';
+import DestinationPickerWrapper from './DestinationPickerWrapper';
+import {
+    useDispatch,
+    // useSelector 
+} from 'react-redux';
+import {
+    AppDispatch,
+    // RootState
+} from '../../../store/Store';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { ParseDate } from '../../../helper/DateHelper';
+import { InstaFlightSearch } from '../../../store/reducers/InstaFlightSearchReducer';
 
 
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 const FlightTabContent = (): JSX.Element => {
+    const dispatch = useDispatch<AppDispatch>()
+    const locationHook = useLocation()
+    const searchObjParams = localStorage.getItem("flightParams")
+    const searchObj = searchObjParams ? JSON.parse(searchObjParams) : ''
+    // const { data } = useSelector((state: RootState) => state.instaFlightSearchSlice)
     const [selectedFareType, setSelectedFareType] = useState<string>('Regular');
-    const [selectedTripType, setSelectedTripType] = useState<string>('One-way');
-
+    const [selectedTripType, setSelectedTripType] = useState<string>(searchObj.tripType ? searchObj.tripType : 'One-way');
+    const [showPassengerModal, setShowPassengerModal] = useState(false)
     const [isSourceVisible, setIsSourceVisible] = useState(false)
     const [isDestinationVisible, setIsDestinationVisible] = useState(false)
-    const [sourceocation, setSourceLocation] = useState({
+    const [isDepModalVisible, setIsdepModalVisible] = useState(false)
+    const [isReturnModalVisible, setIsReturnModalVisible] = useState(false)
+    const [departureDate, setDepartureDate] = useState<Value>(searchObj.departuredate ? new Date(searchObj.departuredate) : new Date())
+    const [returnDate, setReturnDate] = useState<Value>(searchObj.returnDate ? new Date(searchObj.returnDate) : new Date())
+    const [passenger, setPassenger] = useState(searchObj.passengercount || {
+        Adult: 1,
+        Child: 0,
+        infant: 0
+    })
+
+    const navigate: NavigateFunction = useNavigate();
+    const [sourceocation, setSourceLocation] = useState(searchObj.sourceLocation || {
         sourceName: 'Subhas Chandra Bose',
         sourceCode: 'CCU',
         sourceStateName: 'WB',
         sourceStateCity: 'Kolkata',
+        sourceCountry: 'IN',
     })
-    const handleSourcePicking = (name: string, code: string, state: string, city: string) => {
+    const handleSourcePicking = (name: string, code: string, state: string, city: string, country: string) => {
+
         setSourceLocation({
             sourceName: name,
             sourceCode: code,
             sourceStateName: state,
             sourceStateCity: city,
+            sourceCountry: country,
         })
         setIsSourceVisible(false)
-        setIsDestinationVisible(false)
+        setIsDestinationVisible(true)
     }
-    const [destinationLocation, setdestinationLocation] = useState({
+    const [destinationLocation, setdestinationLocation] = useState(searchObj.destination || {
         sourceName: 'Indira Gandhi International',
         sourceCode: 'DEL',
         sourceStateName: 'Delhi',
         sourceStateCity: 'Delhi',
     })
-    const handleDestinatioPicking = (name: string, code: string, state: string, city: string) => {
+    const handleDestinatioPicking = (name: string, code: string, state: string, city: string, country: string) => {
         setdestinationLocation({
             sourceName: name,
             sourceCode: code,
             sourceStateName: state,
             sourceStateCity: city,
+            sourceCountry: country,
         })
         setIsSourceVisible(false)
         setIsDestinationVisible(false)
+        setIsdepModalVisible(true)
     }
-    const navigate: NavigateFunction = useNavigate();
 
     const fareTypes: Array<string> = [
         'Regular',
-        'Senior Citizen',
+        // 'Senior Citizen',
         'Student',
-        'Armed Forces',
-        'Doctors & Nurses'
+        // 'Armed Forces',
+        // 'Doctors & Nurses'
     ];
 
     const tripTypes: Array<string> = [
@@ -73,15 +98,70 @@ const FlightTabContent = (): JSX.Element => {
     const handleFareTypeClick = (fareType: string) => {
         setSelectedFareType(fareType);
     };
-
+    const handleDepartureDateChange = (val: Value) => {
+        setDepartureDate(val)
+        setIsdepModalVisible(false)
+        if(selectedTripType === 'Round-trip'){
+            setIsReturnModalVisible(true)
+        }
+        if(selectedTripType === 'One-way'){
+            setShowPassengerModal(true)
+        }
+    }
+    const handleReturnDateChange = (val: Value) => {
+        setReturnDate(val)
+        setIsReturnModalVisible(false)
+        setShowPassengerModal(true)
+    }
     const handleTripTypeClick = (tripType: string) => {
         setSelectedTripType(tripType);
     };
+    const onClickRevert =()=>{
+        setSourceLocation(destinationLocation)
+        setdestinationLocation(sourceocation)
+    }
 
+    const onClickSearch = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        localStorage.setItem("flightParams", JSON.stringify({
+            sourceLocation: sourceocation,
+            destination: destinationLocation,
+            departuredate: departureDate && ParseDate(departureDate as Date, "format"),
+            passengercount: passenger,
+            enabletagging: true,
+            returnDate: returnDate && ParseDate(returnDate as Date, "format"),
+            tripType: selectedTripType,
+            pontOfSaleCountry: sourceocation.sourceCountry,
+        }))
+        const query = selectedTripType === 'Round-trip' ? {
+            origin: sourceocation.sourceCode,
+            destination: destinationLocation.sourceCode,
+            departuredate: departureDate && ParseDate(departureDate as Date, "format"),
+            passengercount: (passenger.Adult + passenger.Child + passenger.infant),
+            enabletagging: true,
+            pointofsalecountry: sourceocation.sourceCountry,
+            returndate: selectedTripType === 'Round-trip' && returnDate && ParseDate(returnDate as Date, "format"),
+        } : {
+            origin: sourceocation.sourceCode,
+            destination: destinationLocation.sourceCode,
+            departuredate: departureDate && ParseDate(departureDate as Date, "format"),
+            passengercount: (passenger.Adult + passenger.Child + passenger.infant),
+            pointofsalecountry: sourceocation.sourceCountry,
+            enabletagging: true,
+        }
+        if (locationHook.pathname !== "/flights-search-result") {
+            navigate('/flights-search-result')
+        }
+        if (locationHook.pathname === "/flights-search-result") {
+            dispatch(InstaFlightSearch({
+                query: query
+            }))
+        }
+    }, [locationHook, dispatch, sourceocation, departureDate, passenger, navigate, destinationLocation, returnDate, selectedTripType])
     return (
         <>
             <form>
-                <div className="tabs_bg_color">
+                <div className={`tabs_bg_color ${locationHook.pathname !== '/' ? "bc_bgcolor_scond" : ''}`}>
                     <div className="row">
                         <div className="col-md-7">
                             <ul className="one_way">
@@ -101,53 +181,109 @@ const FlightTabContent = (): JSX.Element => {
                         </div>
 
                     </div>
-                    <ul className="form_and_to">
-                        <li className="same_wdth_1 active">
+                    <ul className={`form_and_to ${locationHook.pathname !== '/' ? "get_one12" : ''}`}>
+                        <li className={`same_wdth_1 second_1 ${isSourceVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''} home-search-hover`}>
                             <div className="from_text_12">
-                                <DestinationPicker headerText={"From"} destinationCode={sourceocation.sourceCode} destinationName={sourceocation.sourceName} inputPlaceHolder='From' isVisible={isSourceVisible}
+                                <DestinationPickerWrapper
+                                    isVisible={isSourceVisible}
                                     setIsVisible={setIsSourceVisible}
-                                    handleDestinationPicking={handleSourcePicking} />
-                            </div>
-                        </li>
-                        <li className="same_wdth_1 second_1">
-                            <div className="from_text_12">
-                                <DestinationPicker headerText={"To"} destinationCode={destinationLocation.sourceCode} destinationName={destinationLocation.sourceName} inputPlaceHolder='To' isVisible={isDestinationVisible}
-                                    setIsVisible={setIsDestinationVisible}
-                                    handleDestinationPicking={handleDestinatioPicking}
+                                    locationCode={sourceocation.sourceCode}
+                                    locationName={sourceocation.sourceName}
+                                    handleLocationPick={handleSourcePicking}
+                                    inputPlaceHolder={"From"}
                                 />
-
-                            </div>
-                            <div className="exchanges">
-                                <Link to="#">
-                                    <i className="fa-solid fa-arrow-right-arrow-left"></i>
-                                </Link>
                             </div>
                         </li>
-                        <li className="same_wdth_2">
+                        <li className={`same_wdth_1 second_1 ${isDestinationVisible ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_search_wrapper" : ''} home-search-hover`}>
+                            <div className="from_text_12">
+                                <DestinationPickerWrapper
+                                    isVisible={isDestinationVisible}
+                                    setIsVisible={setIsDestinationVisible}
+                                    locationCode={destinationLocation.sourceCode}
+                                    locationName={destinationLocation.sourceName}
+                                    handleLocationPick={handleDestinatioPicking}
+                                    inputPlaceHolder={"To"}
+                                />
+                            </div>
+                            
+
+                        {selectedTripType === 'Round-trip' && (
+                                <div className="exchanges" onClick={()=>onClickRevert()}>
+                                    <Link to="#">
+                                        <i className="fa-solid fa-arrow-right-arrow-left"></i>
+                                    </Link>
+                                </div>
+                            )}
+                        </li>
+                        {/* <li className="same_wdth_2">
                             <div className="from_text">
                                 <h5 className="de1">Departure <i className="fa-regular fa-angle-down"></i></h5>
-                                {/* <h4 className="tr_1">21 <em>Dec'23</em></h4>
-                                <p className="satu1">Saturday</p> */}
-                                 
+                                <h4 className="tr_1">{new Date(departureDate  as Date).getDate()} <em>{ParseDate(departureDate as Date,'getMonth')}'{new Date(departureDate  as Date).getFullYear().toString().slice(-2)}</em></h4>
+                                <p className="satu1">{ParseDate(departureDate  as Date,"getDay")}</p>
+                                
+                            </div>
+
+                        </li> */}
+                        <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''} ${isDepModalVisible ? "active" : ''} home-search-hover`}>
+                            <div className="from_text">
+                                <h5 className="de1" onClick={() => setIsdepModalVisible(true)}>Departure <i className="fa-regular fa-angle-down"></i></h5>
+                                <h4 className="tr_1"
+                                onClick={() => setIsdepModalVisible(true)}
+                                >{new Date(departureDate as Date).getDate()} <em>{ParseDate(departureDate as Date, 'getMonth')}'{new Date(departureDate as Date).getFullYear().toString().slice(-2)}</em></h4>
+                                <p className="satu1">{ParseDate(departureDate as Date, "getDay")}</p>
+                                <CloseOnClickOutside show={isDepModalVisible} setShow={setIsdepModalVisible}>
+                                    <div className='custom-cal'>
+                                        <Calendar onChange={(val) => handleDepartureDateChange(val)} value={departureDate} minDate={new Date()} 
+                                        maxDate={new Date(new Date().getTime()+(160*24*60*60*1000))}
+                                        showDoubleView />
+                                    </div>
+                                </CloseOnClickOutside>
                             </div>
 
                         </li>
-                        <li className="same_wdth_2">
-                            <div className="from_text">
-                                <h5 className="de1">Return <i className="fa-regular fa-angle-down"></i></h5>
-                                <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
-                            </div>
-                        </li>
-                        
-                        <li className="same_wdth_3">
-                            <div className="from_text">
+                        {selectedTripType === 'Round-trip' && (
+                            // <li className="same_wdth_2">
+                            //     <div className="from_text">
+                            //         <h5 className="de1">Return <i className="fa-regular fa-angle-down"></i></h5>
+                            //         <p className="tap1">Tap to add a <br />return date for bigger<br /> discounts</p>
+                            //     </div>
+                            // </li>
+                            <li className={`same_wdth_2 ${locationHook.pathname !== '/' ? "detail_calender_wrapper" : ''} ${isReturnModalVisible ? "active" : ''} home-search-hover`}>
+                                <div className="from_text">
+                                    <h5 className="de1" onClick={() => setIsReturnModalVisible(true)}>Return <i className="fa-regular fa-angle-down"></i></h5>
+                                    <h4 className="tr_1"
+                                    onClick={() => setIsReturnModalVisible(true)}
+                                    >{new Date(returnDate as Date).getDate()} <em>{ParseDate(returnDate as Date, 'getMonth')}'{new Date(returnDate as Date).getFullYear().toString().slice(-2)}</em></h4>
+                                    <p className="satu1">{ParseDate(returnDate as Date, "getDay")}</p>
+                                    <CloseOnClickOutside show={isReturnModalVisible} setShow={setIsReturnModalVisible}>
+                                        <div className='custom-cal'>
+                                            <Calendar onChange={(val) => handleReturnDateChange(val)} value={returnDate} minDate={new Date(departureDate as Date)} 
+                                            maxDate={new Date(new Date(departureDate as Date).getTime()+(10*24*60*60*1000))}
+                                            showDoubleView />
+                                        </div>
+                                    </CloseOnClickOutside>
+                                </div>
+
+                            </li>
+                        )}
+
+
+                        <li className={`same_wdth_3 ${showPassengerModal ? "active" : ''} ${locationHook.pathname !== '/' ? "detail_passenger_wrapper" : ''} home-search-hover`}>
+                            <div
+                                className={`from_text ${showPassengerModal ? "pointer_events" : ''} `}
+                                onClick={() => setShowPassengerModal(!showPassengerModal)}>
                                 <h5 className="de1">Travellers & Class <i className="fa-regular fa-angle-down"></i></h5>
-                                <h4 className="tr_1">1 <em>Traveller</em></h4>
+                                <h4 className="tr_1">{passenger.Adult + passenger.Child + passenger.infant} <em>
+
+                                    {(passenger.Adult + passenger.Child + passenger.infant) > 1 ? 'Travellers' : 'Traveller'}
+                                </em></h4>
                                 <p className="economy">Economy/Premium Economy</p>
                             </div>
-                            {/* <PassengerPicker/> */}
+                            <CloseOnClickOutside show={showPassengerModal} setShow={setShowPassengerModal}>
+                                <PassengerPicker passenger={passenger} setPassenger={setPassenger} showModal={setShowPassengerModal} />
+                            </CloseOnClickOutside>
                         </li>
-                        
+
                     </ul>
                     <ul className="fare_type">
                         <li><em>Select A <br /> Fare Type:</em></li>
@@ -161,7 +297,10 @@ const FlightTabContent = (): JSX.Element => {
                             </li>
                         ))}
                     </ul>
-                    <ul className="search_return">
+                    {/* <div className='custom-cal'>
+                                <Calendar onChange={setDepartureDate} value={departureDate} />
+                                </div> */}
+                    {/* <ul className="search_return">
                         <li>
                             <input className="input-elevated" type="text" placeholder="Search Preferred Airline" />
                         </li>
@@ -178,9 +317,16 @@ const FlightTabContent = (): JSX.Element => {
                             </div>
                         </li>
                     </ul>
+                     */}
                 </div>
                 <div className="text-center mt_top">
-                    <input className="search_bt" type="submit" value="Search" onClick={() => navigate('/flights-search-result')} />
+                    <input className={`search_bt ${locationHook.pathname !== '/' ? "detail_search_button" : ''}`} type="submit" value="Search" onClick={(e) => onClickSearch(e)
+
+                        // navigate('/flights-search-result')
+
+                    }
+
+                    />
                 </div>
             </form>
         </>

@@ -1,14 +1,16 @@
 import FlightFilter from "../../components/flight/FlightFilter";
 import { useEffect, useState } from "react";
 import FlightsBottomBox from "../../components/common/BottomInfoBox";
-import CommonSearchSection from "../../components/flight/CommonSearchSection";
-import OneWayTab from "../../components/flight/oneway/OneWayTab";
-import RoundTripTab from "../../components/flight/roudtrip/RoundTripTab";
-import MultiCityTab from "../../components/flight/multicity/MultiCityTab";
 import OneWayFlightResult from "../../components/flight/oneway/OneWayFlightResult";
 import MultiCityFlightResult from "../../components/flight/multicity/MultiCityFlightResult";
 import RoundTripFlightResult from "../../components/flight/roudtrip/RoundTripFlightResult";
 import { RecommendationsItemsType } from "../../types/common";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/Store";
+import { InstaFlightSearch } from "../../store/reducers/InstaFlightSearchReducer";
+import FlightTabContent from "../../components/core/tabcontent/FlightTabContent";
+import GlowLoader from "../../components/shared/GlowLoader";
+import { ParseDate } from "../../helper/DateHelper";
 
 type carousel_OneItemType = {
     image: string,
@@ -50,6 +52,12 @@ const recommendations: Array<RecommendationsItemsType> = [
 ];
 
 const Flights = (): JSX.Element => {
+    const flightParams = localStorage.getItem("flightParams") || ''
+
+    const dispatch = useDispatch<AppDispatch>()
+    const { data, type } = useSelector((state: RootState) => state.instaFlightSearchSlice)
+    const [persistData, setPersistData] = useState<any>({})
+
     const carouselOneItems: Array<carousel_OneItemType> = [
         { image: "1.png", airline: "Vistara", price: "USD 1,937.99", stops: "1+ Stops" },
         { image: "2.png", airline: "Air Canada", price: "USD 1,937.99", stops: "1+ Stops" },
@@ -86,22 +94,12 @@ const Flights = (): JSX.Element => {
         setSelectedTravelType(type);
     };
 
-    // Function to Return the Specific Component based on selected tab
-    const renderTripTypeComponent = (): JSX.Element => {
-        if (selectedTravelType === "one-way") {
-            return <OneWayTab />
-        } else if (selectedTravelType === "round-trip") {
-            return <RoundTripTab />
-        } else if (selectedTravelType === "multi-city") {
-            return <MultiCityTab />
-        }
-        return <OneWayTab />
-    };
+
 
     // Function to Return the Specific Component based on selected tab
     const renderFlightResultComponent = (): JSX.Element => {
         if (selectedTravelType === "one-way") {
-            return <OneWayFlightResult recommendations={recommendations} />
+            // return <OneWayFlightResult recommendations={recommendations} />
         } else if (selectedTravelType === "round-trip") {
             return <RoundTripFlightResult recommendations={recommendations} />
         } else if (selectedTravelType === "multi-city") {
@@ -111,67 +109,29 @@ const Flights = (): JSX.Element => {
     };
 
     useEffect(() => {
-        (window as any).$ = (window as any).jQuery = require('jquery');
-        require('owl.carousel');
-
-        (window as any).$('#show-all-fares').owlCarousel({
-            autoplay: false,
-            rewind: false,
-            loop: true,
-            responsiveClass: true,
-            autoHeight: true,
-            autoplayTimeout: 7000,
-            smartSpeed: 800,
-            nav: true,
-            navText: [
-                '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-                '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-            ],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 4
-                },
-                1024: {
-                    items: 7
-                },
-                1366: {
-                    items: 9
-                }
+        if (flightParams) {
+            const paramDataObject = JSON.parse(flightParams)
+            const query = paramDataObject?.tripType === 'Round-trip' ? {
+                origin: paramDataObject.sourceLocation.sourceCode,
+                destination: paramDataObject.destination.sourceCode,
+                departuredate: paramDataObject.departuredate,
+                passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
+                returndate: paramDataObject.returnDate,
+                pointofsalecountry: paramDataObject.pontOfSaleCountry,
+                enabletagging: true,
+            } : {
+                origin: paramDataObject.sourceLocation.sourceCode,
+                destination: paramDataObject.destination.sourceCode,
+                passengercount: (paramDataObject.passengercount.Adult + paramDataObject.passengercount.Child + paramDataObject.passengercount.infant),
+                departuredate: paramDataObject.departuredate,
+                pointofsalecountry: paramDataObject.pontOfSaleCountry,
+                enabletagging: true,
             }
-        });
-        (window as any).$('#dce_calder').owlCarousel({
-            autoplay: false,
-            rewind: false,
-            loop: true,
-            responsiveClass: true,
-            autoHeight: true,
-            autoplayTimeout: 7000,
-            smartSpeed: 800,
-            nav: true,
-            navText: [
-                '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-                '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-            ],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 4
-                },
-                1024: {
-                    items: 7
-                },
-                1366: {
-                    items: 15
-                }
-            }
-        });
-    }, []);
-
+            dispatch(InstaFlightSearch({
+                query: query
+            }))
+        }
+    }, [dispatch, flightParams])
     return (
         <>
             {/* Flight Page TopSection */}
@@ -179,32 +139,8 @@ const Flights = (): JSX.Element => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <ul className="one_way">
-                                <li
-                                    className={selectedTravelType === 'one-way' ? 'active' : ''}
-                                    onClick={() => handleTravelTypeChange('one-way')}
-                                >
-                                    One-way
-                                </li>
-                                <li
-                                    className={selectedTravelType === 'round-trip' ? 'active' : ''}
-                                    onClick={() => handleTravelTypeChange('round-trip')}
-                                >
-                                    Round-trip
-                                </li>
-                                <li
-                                    className={selectedTravelType === 'multi-city' ? 'active' : ''}
-                                    onClick={() => handleTravelTypeChange('multi-city')}
-                                >
-                                    Multi-city
-                                </li>
-                            </ul>
+                            <FlightTabContent />
 
-                            {/* Render the specific component based on selected trip type */}
-                            {renderTripTypeComponent()}
-
-                            {/* CommonSearchSection */}
-                            <CommonSearchSection />
                         </div>
                     </div>
                 </div>
@@ -250,7 +186,8 @@ const Flights = (): JSX.Element => {
                                     <h4>
                                         <i className="fa-solid fa-calendar-day"></i>
                                         <br />
-                                        Dec
+                                        {/* Dec */}
+                                        {ParseDate(new Date(), "getMonth")}
                                     </h4>
                                 </div>
                                 <div id="dce_calder" className="owl-carousel">
@@ -268,15 +205,30 @@ const Flights = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
-
                     <div className="filter_box">
-                        <div className="row">
-                            {/* Flight Filter */}
-                            <FlightFilter />
+                        {
+                            type === 'instaFlightSearchSlice/InstaFlightSearch' ?
+                                <GlowLoader /> :
+                                (
+                                    <>
+                                        <div className="row">
+                                            {/* Flight Filter */}
+                                            {
+                                                data && data.PricedItineraries && data.PricedItineraries.length > 0
+                                                    ?
+                                                    (
+                                                        <>
+                                                            <FlightFilter />
+                                                            <OneWayFlightResult recommendations={data.PricedItineraries} />
+                                                        </>
+                                                    )
+                                                    :
+                                                    (<div className="no-results">No Results Found....</div>)}
+                                        </div>
+                                    </>
+                                )
+                        }
 
-                            {/* Render the specific component based on selected trip type */}
-                            {renderFlightResultComponent()}
-                        </div>
                     </div>
                 </div>
             </div>
