@@ -46,9 +46,9 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                                     {diffIntimeByElapsedTime(item.ElapsedTime)}
                                 </div>
                             </li>
-                            <div className="column-style">
+                            {/* <div className="column-style"> */}
                                 <div key={index}
-                                    style={index !== flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.length - 1 ? { marginBottom: '20px', borderBottom: '2px dotted #6c757d' } : {}}
+                                    style={index !== flight?.AirItinerary?.OriginDestinationOptions.OriginDestinationOption.length - 1 ? { marginBottom: '20px', borderBottom: '2px dotted #6c757d', flexGrow:1.5, } : {flexGrow:1.5} } className='col'
                                 >{
                                         item.FlightSegment.map(((dataToShow, i) => (
 
@@ -84,18 +84,18 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                                         )))
                                     }
                                 </div>
-                            </div>
+                            {/* </div> */}
+                            <li className="fd_6">
                             {index === 0 && (
                                 <>
-                                    <li className="fd_5">
+                                    {/* <li className="fd_5">
                                         <div className="fl_tr">
                                             <Link className="sl_14" to="#">
                                                 <img src="assets/images/icon/f.png" alt="" />
                                                 <span className="fe1">Select this<br /> Departure</span>
                                             </Link>
                                         </div>
-                                    </li>
-                                    <li className="fd_6">
+                                    </li> */}
                                         <div className="book_t1">
                                             <button className="book_t2" onClick={() => onClickBookButton(flight?.TPA_Extensions?.TagID)}>BOOK</button>
                                             <h5>
@@ -104,9 +104,9 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                                             </h5>
                                             <p>Price per person (incl. taxes & fees)</p>
                                         </div>
-                                    </li>
                                 </>
                             )}
+                                    </li>               
 
                         </ul>
                     )))

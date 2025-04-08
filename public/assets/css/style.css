@@ -2896,6 +2896,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
    display: flex;
    padding:0 20px;
    margin: 0 0 0 0;
+   justify-content: space-between;
 }
 .stops_t3{
    padding: 0;
@@ -3040,7 +3041,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
 .time_b1{
    display: flex; 
    align-items: center;
-   padding: 0;
+   padding: 0 0 15px 0;
    margin: 0;
 }
 .dac_box12{
@@ -3055,17 +3056,17 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
    color:#232020;
    line-height:18px;
    font-weight:400;
-   padding: 0 0 15px 0;
    margin: 0;
 }
 .dac_box12 h6 span{
-   font-size: 10px;
+   font-size: 12px;
    display: block;
    line-height: 13px;
    font-weight: 700;
    padding: 0;
    margin: 0;
 }
+
 .dac_box12 h6 span:last-child{
 	display: block;
 	line-height: 15px;
@@ -3180,7 +3181,7 @@ box-shadow: -1px 10px 14px -4px rgba(0,0,0,0.69);
    margin: 0;
 }
 .bom{
- width: 200px;
+ flex-grow: 2;
  text-align: center;
  padding: 0 15px;
 }
