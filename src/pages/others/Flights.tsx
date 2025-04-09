@@ -135,7 +135,7 @@ const Flights = (): JSX.Element => {
     return (
         <>
             {/* Flight Page TopSection */}
-            <div className="one_way_banner">
+            <div className=" banner_tabs" >
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
