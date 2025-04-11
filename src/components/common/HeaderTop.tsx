@@ -22,8 +22,8 @@ const HeaderTop = (): JSX.Element => {
     return (
         <>
             <div className="header_top">
-                <div className="container-fluid">
-                    <nav>
+                <div className="container">
+                    <nav  className="backgroud_color_harder">
                         <div className="navbar">
                             <i className='bx bx-menu'></i>
                             <div className="logo">
@@ -38,11 +38,11 @@ const HeaderTop = (): JSX.Element => {
                                     </span>
                                     <i className='bx bx-x'></i>
                                 </div>
-                                <ul className="links">
+                                {/* <ul className="links">
                                     <li className="active"><Link to="#">Home</Link></li>
                                     <li><Link to="#">Discover</Link></li>
                                     <li><Link to="#">Special Deals</Link></li>
-                                </ul>
+                                </ul> */}
                             </div>
                             <div className="search-box">
                                 <ul className="s_box">

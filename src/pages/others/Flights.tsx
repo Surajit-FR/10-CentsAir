@@ -50,14 +50,34 @@ const recommendations: Array<RecommendationsItemsType> = [
         image: "",
     },
 ];
-
+const StopFilter = [
+    {label:"2 stops", value: 2},
+    {label:"1 stop", value: 1},
+    {label:"Non- Stop", value: 0},
+]
+const timeFilters = [
+    {
+        label:"Morning 6 AM - 12",value:"06001200", id: '1'
+    },
+    {
+        label:"Noon 12 PM - 6",value:"12001800", id: '2'
+    },
+    {
+        label:"Evening 6 PM - 12",value:"18000000", id: '3'
+    },
+    {
+        label:"Night 12 AM - 6",value:"00000600", id: '4'
+    },
+]
 const Flights = (): JSX.Element => {
     const flightParams = localStorage.getItem("flightParams") || ''
 
     const dispatch = useDispatch<AppDispatch>()
     const { data, type } = useSelector((state: RootState) => state.instaFlightSearchSlice)
     const [persistData, setPersistData] = useState<any>({})
-
+    const [outboundWindow, setOutBoundWindow] = useState("")
+    const [inboundWindow, setInBoundWindow] = useState("")
+    const [outboundflightstops, setOutboundflightstops] = useState<string| number>('')
     const carouselOneItems: Array<carousel_OneItemType> = [
         { image: "1.png", airline: "Vistara", price: "USD 1,937.99", stops: "1+ Stops" },
         { image: "2.png", airline: "Air Canada", price: "USD 1,937.99", stops: "1+ Stops" },
@@ -95,7 +115,7 @@ const Flights = (): JSX.Element => {
     };
 
 
-
+console.log({outboundWindow,inboundWindow})
     // Function to Return the Specific Component based on selected tab
     const renderFlightResultComponent = (): JSX.Element => {
         if (selectedTravelType === "one-way") {
@@ -111,7 +131,7 @@ const Flights = (): JSX.Element => {
     useEffect(() => {
         if (flightParams) {
             const paramDataObject = JSON.parse(flightParams)
-            const query = paramDataObject?.tripType === 'Round-trip' ? {
+            const query: any = paramDataObject?.tripType === 'Round-trip' ? {
                 origin: paramDataObject.sourceLocation.sourceCode,
                 destination: paramDataObject.destination.sourceCode,
                 departuredate: paramDataObject.departuredate,
@@ -119,6 +139,7 @@ const Flights = (): JSX.Element => {
                 returndate: paramDataObject.returnDate,
                 pointofsalecountry: paramDataObject.pontOfSaleCountry,
                 enabletagging: true,
+                outboundflightstops,
             } : {
                 origin: paramDataObject.sourceLocation.sourceCode,
                 destination: paramDataObject.destination.sourceCode,
@@ -126,16 +147,24 @@ const Flights = (): JSX.Element => {
                 departuredate: paramDataObject.departuredate,
                 pointofsalecountry: paramDataObject.pontOfSaleCountry,
                 enabletagging: true,
+                outboundflightstops,
+
+            }
+            if(inboundWindow){
+                query.inbounddeparturewindow=inboundWindow
+            }
+            if(outboundWindow){
+                query.outbounddeparturewindow=outboundWindow
             }
             dispatch(InstaFlightSearch({
                 query: query
             }))
         }
-    }, [dispatch, flightParams])
+    }, [dispatch, flightParams,outboundflightstops,inboundWindow,outboundWindow])
     return (
         <>
             {/* Flight Page TopSection */}
-            <div className="one_way_banner">
+            <div className="banner_tabs">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -205,6 +234,18 @@ const Flights = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
+                    <div className="applied_filters">
+                    <div className="filter_2">
+                        <h4>Applied filters</h4>
+                    </div>
+                        <ul>
+                        <li>Travel Stops: <span>{StopFilter.filter(stop=> stop.value === outboundflightstops)[0]?.label}</span>
+                        <button onClick={()=>setOutboundflightstops('')}><i className="fi fi-br-cross"></i></button>
+                        </li>
+                        <li>Departure Time: <span className="m-2">{timeFilters.filter(time=> outboundWindow === time.value)[0]?.label}</span><button onClick={()=>setOutBoundWindow('')}><i className="fi fi-br-cross"></i></button></li>
+                        <li>Arrival Time: <span className="m-2">{timeFilters.filter(time=> inboundWindow === time.value)[0]?.label}</span><button onClick={()=>setInBoundWindow('')}><i className="fi fi-br-cross"></i></button></li>
+                        </ul>
+                    </div>
                     <div className="filter_box">
                         {
                             type === 'instaFlightSearchSlice/InstaFlightSearch' ?
@@ -218,7 +259,13 @@ const Flights = (): JSX.Element => {
                                                     ?
                                                     (
                                                         <>
-                                                            <FlightFilter />
+                                                            <FlightFilter 
+                                                            setOutboundWindow={setOutBoundWindow} 
+                                                            setInBoundWindow={setInBoundWindow}
+                                                            setOutboundflightstops={setOutboundflightstops}
+                                                            outboundflightstops={outboundflightstops}
+                                                            totalFlights={data.Page.TotalTags}
+                                                            />
                                                             <OneWayFlightResult recommendations={data.PricedItineraries} />
                                                         </>
                                                     )

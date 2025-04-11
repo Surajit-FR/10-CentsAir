@@ -155,11 +155,17 @@ export interface InstaFlightSearchParamstypes {
     passengercount: number,
     enabletagging: boolean
 }
+export interface InstaFlightPagination {
+    Offset: number
+    Size: number
+    TotalTags: number
+}
 export interface InstaSearchResult {
     PricedItineraries: InstaFlightResultObject[]
     DepartureDateTime: Date
     DestinationLocation: string
     OriginLocation: string
+    Page: InstaFlightPagination
 }
 export interface InstaSearchState {
     data: InstaSearchResult

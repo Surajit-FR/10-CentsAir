@@ -55,7 +55,7 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                                             <div className="time_b1" key={i}>
                                                 <div className="dac_box12">
                                                     <h6>
-                                                        <span>{ParseDate(new Date(dataToShow.DepartureDateTime))}</span>
+                                                        <span>{ParseDate(new Date(dataToShow.DepartureDateTime),"dayDate")}</span>
                                                         <span>{new Date(dataToShow.DepartureDateTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
                                                         <span>{dataToShow.DepartureAirport.LocationCode}</span>
                                                     </h6>
@@ -74,7 +74,7 @@ const OneWayFlightItem = ({ flight }: { flight: InstaFlightResultObject }) => {
                                                 </div>
                                                 <div className="dac_box12">
                                                     <h6>
-                                                        <span>{ParseDate(new Date(dataToShow.ArrivalDateTime))}</span>
+                                                        <span>{ParseDate(new Date(dataToShow.ArrivalDateTime),"dayDate")}</span>
                                                         <span>{new Date(dataToShow.ArrivalDateTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
                                                         <span>{dataToShow.ArrivalAirport.LocationCode}</span>
                                                     </h6>

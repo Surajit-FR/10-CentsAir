@@ -22,12 +22,14 @@ useEffect(()=>{
 },[sabreAccesstoken])
   // Function to determine which header to render based on the pathname
   const renderHeader = (): JSX.Element => {
-    if (location.pathname === "/") {
-      return <HeaderTop />;
-    } else if (location.pathname.startsWith("/hotels-search-result")) {
-      return <HeaderTopWithSubNav />
-    }
-    return <CommonHeaderTop />;
+    // if (location.pathname === "/") {
+    //   return <HeaderTop />;
+    // } else if (location.pathname.startsWith("/hotels-search-result")) {
+    //   return <HeaderTopWithSubNav />
+    // }
+    // return <CommonHeaderTop />;
+    return <HeaderTop />;
+
   };
 
   // Function to determine which footer to render based on the pathname

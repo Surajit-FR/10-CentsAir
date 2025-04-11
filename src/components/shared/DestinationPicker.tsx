@@ -45,6 +45,7 @@ const DestinationPicker = ({ isVisible, destinationCode, inputPlaceHolder, handl
                             <>
                                 {data && data.doclist && data.doclist.docs && data.doclist.docs.length > 0 && data.doclist.docs.map((airPorts: any) => (
                                     <div className='air_text' key={airPorts.id} onClick={() => {
+                                        console.log({airPorts})
                                         handleDestinationPicking && handleDestinationPicking(airPorts.name, airPorts.iataCityCode, airPorts.stateName, airPorts.city, airPorts.country)
                                     }
                                     }>

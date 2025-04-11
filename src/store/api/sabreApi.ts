@@ -40,7 +40,11 @@ export const INSTAFLIGHTSEARCHRESULTS = (data: any) => {
       enabletagging: true,
       limit:50,
       pointofsalecountry: data?.pointofsalecountry,
-      outbounddeparturewindow:"00000600",
+      outbounddeparturewindow:data?.outbounddeparturewindow,
+      outboundflightstops:data?.outboundflightstops,
+      inbounddeparturewindow:data?.inbounddeparturewindow,
+      
+      // offset:50
     },
   });
 }

@@ -120,7 +120,7 @@ const FlightTabContent = (): JSX.Element => {
         setSourceLocation(destinationLocation)
         setdestinationLocation(sourceocation)
     }
-
+console.log({sourceocation})
     const onClickSearch = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
         localStorage.setItem("flightParams", JSON.stringify({

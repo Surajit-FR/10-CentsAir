@@ -92,7 +92,12 @@ const initialState: InstaSearchState = {
         PricedItineraries: [],
         DepartureDateTime: new Date(),
         DestinationLocation: '',
-        OriginLocation: ''
+        OriginLocation: '',
+        Page:{
+            Offset: 0,
+            Size: 0,
+            TotalTags: 0,
+        }
     },
     singleSearchData: {
         AirItinerary: { DirectionInd: '', OriginDestinationOptions: { OriginDestinationOption: [] } },
