@@ -1,8 +1,30 @@
-.header_top{
-  background: #100F0F;
-  padding: 5px 0;
+h1, h2, h3, h4, h5, h6, p{
+  font-family: "Assistant", sans-serif;
+}
+ul li{
+  font-family: "Assistant", sans-serif;
+}
+span{
+  font-family: "Assistant", sans-serif;
+}
+em{
+  font-family: "Assistant", sans-serif;
 }
 
+.header_top{
+  position: absolute;
+  top:15px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.backgroud_color_harder{
+  background: #8ec4ff24;
+  padding: 7px;
+  border-radius: 8px;
+  width: 100%;
+  border: 1px solid #6582ab4f;
+}
 nav .navbar{
   width: 100%;
   display: flex;
@@ -327,17 +349,18 @@ nav .navbar .links li .sub-menu li{
   display: flex;
   padding: 0 22px 0 0;
   margin: 0;
-  aliggn-items: center;
+  align-items: center;
+  font-family: "Assistant", sans-serif;
 }
 .s_box li:last-child{ 
   padding: 0; 
 }
 .s_box li .d_span{
-  background: #435970;
+  background: #e6a400;
   font-size: 20px;
   color: #fff;
   line-height: 25px;
-  padding: 14px 25px;
+  padding: 12px 20px;
   border-radius: 8px;
   font-weight: 500;
   margin: 0;
@@ -352,7 +375,7 @@ nav .navbar .links li .sub-menu li{
   transition:all 500ms ease-in-out;
 }
 .s_box li .d_span a:hover{
-  color: #ffb703;
+  color: #000;
 }
 .speak_img{
   width: 40px;
@@ -371,13 +394,14 @@ nav .navbar .links li .sub-menu li{
   float:left;
   padding: 0 0 0 10px;
   margin: 0;
+  text-align: left;
 }
 .speak_1 h5{
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
   color: #fff;
   font-weight: 700;
-  padding:0px 0 3px 0;
+  padding:0;
   margin: 0;
 }
 .speak_1 p{

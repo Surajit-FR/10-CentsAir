@@ -234,18 +234,18 @@ console.log({outboundWindow,inboundWindow})
                             </div>
                         </div>
                     </div>
-                    <div className="applied_filters">
-                    <div className="filter_2">
-                        <h4>Applied filters</h4>
-                    </div>
-                        <ul>
+                    {/* <div className="applied_filters"> */}
+                    {/* <div className="filter_2"> */}
+                        {/* <h4>Applied filters</h4> */}
+                    {/* </div> */}
+                        {/* <ul>
                         <li>Travel Stops: <span>{StopFilter.filter(stop=> stop.value === outboundflightstops)[0]?.label}</span>
                         <button onClick={()=>setOutboundflightstops('')}><i className="fi fi-br-cross"></i></button>
                         </li>
                         <li>Departure Time: <span className="m-2">{timeFilters.filter(time=> outboundWindow === time.value)[0]?.label}</span><button onClick={()=>setOutBoundWindow('')}><i className="fi fi-br-cross"></i></button></li>
                         <li>Arrival Time: <span className="m-2">{timeFilters.filter(time=> inboundWindow === time.value)[0]?.label}</span><button onClick={()=>setInBoundWindow('')}><i className="fi fi-br-cross"></i></button></li>
-                        </ul>
-                    </div>
+                        </ul> */}
+                    {/* </div> */}
                     <div className="filter_box">
                         {
                             type === 'instaFlightSearchSlice/InstaFlightSearch' ?

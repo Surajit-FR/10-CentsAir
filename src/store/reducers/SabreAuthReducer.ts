@@ -22,6 +22,8 @@ const SabreAuthSlice = createSlice({
             state.type = type;
             state.error = payload;
         },
+   
+
 
     }
 });

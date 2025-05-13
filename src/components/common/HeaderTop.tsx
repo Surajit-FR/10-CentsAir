@@ -8,26 +8,27 @@ const HeaderTop = (): JSX.Element => {
     const _id: string | null = window.localStorage.getItem("_id");
 
     const dispatch: AppDispatch = useDispatch();
-    const {singleUserData} = useSelector((state: RootState)=> state.authSlice)
+    const { singleUserData } = useSelector((state: RootState) => state.authSlice)
     const navigate: NavigateFunction = useNavigate();
 
     const userLogout = () => {
         dispatch(AuthLogoutRequest({ navigate }));
     };
-    useEffect(()=>{
-        if(_id){
-            dispatch(GetSingleUserRequest({userId:_id}))
+    useEffect(() => {
+        if (_id) {
+            dispatch(GetSingleUserRequest({ userId: _id }))
         }
-    },[_id, dispatch])
+    }, [_id, dispatch])
+
     return (
         <>
             <div className="header_top">
                 <div className="container">
-                    <nav  className="backgroud_color_harder">
+                    <nav className="backgroud_color_harder">
                         <div className="navbar">
                             <i className='bx bx-menu'></i>
                             <div className="logo">
-                                <Link to="#">
+                                <Link to="/">
                                     <img src="assets/images/logo.png" alt="" />
                                 </Link>
                             </div>
@@ -64,9 +65,9 @@ const HeaderTop = (): JSX.Element => {
                                         </select>
                                     </li> */}
                                     {_id && (
-                                    <li className="usd_123">
-                                      Hello, {singleUserData?.firstName} {singleUserData?.lastName}
-                                    </li>
+                                        <li className="usd_123">
+                                            Hello, {singleUserData?.firstName} {singleUserData?.lastName}
+                                        </li>
 
                                     )}
                                     <li>
