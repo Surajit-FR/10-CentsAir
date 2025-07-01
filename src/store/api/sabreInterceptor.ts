@@ -19,11 +19,11 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 export const setupInterceptors = () => {
     SABREAPI.interceptors.request.use(
         (config) => {
-            // const accessToken = localStorage.getItem("sabreAccessToken")
-            // if (accessToken) {
-            //     config.headers.Authorization = `Bearer ${accessToken}`;
-            // }
-            config.headers.Authorization = `Bearer T1RLAQIJAs3M1FEcOUzNkmIgPmtm7qYCK2lr2u9DJBBmcPYvbRATEHYO+4rRcXfyTEf0ArtzAADQc5Z8sKYcEDJEXLT5V2SQekOaRS0orO5dattuUWdxJ3wR0xcyF058oz2zMapwSkzBBITms71pume0Fa2LSwG3aRRy6VkEIQyE7n5mkjUs3hQUymNyVahYleGi288vgd8BuH9edeEy2bPGhMnt7scZJeK17ttr/RtKgrrQVNtql4jrC9k7kgWQYGjZrE3gZxTzgz9Z1pkRqhqGBYDFwDSMMntI4VwSWQLqdZiqmFUsqY75u08zZQHnwHaeBNFDN0EvtdarkWd3q8/v5KESeWETIg**`;
+            const accessToken = localStorage.getItem("sabreAccessToken")
+            if (accessToken) {
+                config.headers.Authorization = `Bearer ${accessToken}`;
+            }
+            // config.headers.Authorization = `Bearer ${accessToken}`;
             
             return config;
         },

@@ -19,6 +19,9 @@ useEffect(()=>{
   if(!sabreAccesstoken){
     dispatch(SabreAuthRequest('sabreAuthSlice/SabreAuthRequest'))
   }
+  return()=>{
+    localStorage.removeItem("sabreAccessToken")
+  }
 },[sabreAccesstoken])
   // Function to determine which header to render based on the pathname
   const renderHeader = (): JSX.Element => {
