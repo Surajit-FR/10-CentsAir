@@ -1,6 +1,5 @@
 import axios from "axios";
-import { SABREAPI } from "./sabreApi";
-import { error } from "console";
+import { GETACCESSTOKEN, SABREAPI } from "./sabreApi";
 
 let isRefreshing = false;
 let refreshSubscribers: ((token: string) => void)[] = [];
@@ -38,6 +37,11 @@ async (error)=>{
     if((response?.status === 401 || response.type ===" Validation") && !originalRequest._retry){
         const errorMessage = response.data?.message || ''
         console.log("errorMessage",errorMessage)
+        if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401){
+            console.log("token has expired")
+            const data = GETACCESSTOKEN();
+            console.log({data})
+        }
     }
 
 })
