@@ -7,7 +7,7 @@ export const SABREAPI = axios.create({ baseURL: REACT_APP_SABRE_API_BASE_URL, wi
 export const GETACCESSTOKEN = ()=>  axios({
   url:'https://api.platform.sabre.com/v2/auth/token',
   method: 'post',
-  headers:{Authorization:'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRNPQ==',"Content-Type":'application/x-www-form-urlencoded'},
+  headers:{Authorization:'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==',"Content-Type":'application/x-www-form-urlencoded'},
   data:{grant_type: 'client_credentials'}
 })
 
