@@ -34,7 +34,7 @@ export const setupInterceptors = () => {
             const { config, response } = error
             const originalRequest = config
 
-            if ((response?.status === 401 || response.type === "Validation") && !originalRequest._retry) {
+            if ((response?.status === 401 || response.type === "Validation")) {
                 const errorMessage = response.data?.message || ''
                 console.log("errorMessage", errorMessage)
                 if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401) {
