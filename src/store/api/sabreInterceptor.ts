@@ -24,32 +24,37 @@ export const setupInterceptors = () => {
                 config.headers.Authorization = `Bearer ${accessToken}`;
             }
             // config.headers.Authorization = `Bearer ${accessToken}`;
-            
+
             return config;
         },
         (error) => Promise.reject(error)
     );
-SABREAPI.interceptors.response.use((response)=>response,
-async (error)=>{
-    const {config, response} = error
-    const originalRequest = config
+    SABREAPI.interceptors.response.use((response) => response,
+        async (error) => {
+            const { config, response } = error
+            const originalRequest = config
 
-    if((response?.status === 401 || response.type ===" Validation") && !originalRequest._retry){
-        const errorMessage = response.data?.message || ''
-        console.log("errorMessage",errorMessage)
-        if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401){
-            console.log("token has expired")
-            const data = await axios({
-  url:'https://api.platform.sabre.com/v2/auth/token',
-  method: 'post',
-  headers:{Authorization:'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==',"Content-Type":'application/x-www-form-urlencoded'},
-  data:{grant_type: 'client_credentials'}
-})
-            console.log({data})
-        }
-    }
+            if ((response?.status === 401 || response.type === " Validation") && !originalRequest._retry) {
+                const errorMessage = response.data?.message || ''
+                console.log("errorMessage", errorMessage)
+                if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401) {
+                    console.log("token has expired")
+                    const refreshResponse = await axios({
+                        url: 'https://api.platform.sabre.com/v2/auth/token',
+                        method: 'post',
+                        headers: { Authorization: 'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==', "Content-Type": 'application/x-www-form-urlencoded' },
+                        data: { grant_type: 'client_credentials' }
+                    })
+                    const { access_token, } = refreshResponse.data.data;
+                    localStorage.setItem("sabreAccessToken", access_token);
+                    return new Promise((resolve,reject)=>{
+                        originalRequest.headers.Authorization = `Bearer ${access_token}`;
+                        resolve(SABREAPI(originalRequest));
+                    })
+                }
+            }
 
-})
+        })
     // SABREAPI.interceptors.response.use(
     //     (response) => response, // Return the response directly if no error
     //     // async (error) => {
@@ -63,7 +68,7 @@ async (error)=>{
     //     //         // console.log("here=============>")
     //     //         // if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401) {
     //     //             // Token has expired, we need to refresh
-        
+
     //     //             // if (isRefreshing) {
     //     //             //     // Queue the request if token is already being refreshed
     //     //             //     return new Promise((resolve, reject) => {
