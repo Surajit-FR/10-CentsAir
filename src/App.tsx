@@ -20,7 +20,7 @@ useEffect(()=>{
     dispatch(SabreAuthRequest('sabreAuthSlice/SabreAuthRequest'))
   }
   return()=>{
-    localStorage.removeItem("sabreAccessToken")
+    // localStorage.removeItem("sabreAccessToken")
   }
 },[sabreAccesstoken, dispatch])
   // Function to determine which header to render based on the pathname

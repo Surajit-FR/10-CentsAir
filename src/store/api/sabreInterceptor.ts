@@ -36,6 +36,7 @@ export const setupInterceptors = () => {
 
             if ((response?.status === 401 || response.type === "Validation")) {
                 const errorMessage = response.data?.message || ''
+                localStorage.removeItem("sabreAccessToken")
                 console.log("errorMessage", errorMessage)
                 if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401) {
                     console.log("token has expired")
@@ -54,7 +55,12 @@ export const setupInterceptors = () => {
                     isRefreshing = true;
 
                     try {
-                        const refreshResponse = await GETACCESSTOKEN()
+                        const refreshResponse = await axios({
+                            url: 'https://api.platform.sabre.com/v2/auth/token',
+                            method: 'post',
+                            headers: { Authorization: 'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==', "Content-Type": 'application/x-www-form-urlencoded' },
+                            data: { grant_type: 'client_credentials' }
+                        })
                         const { access_token } = refreshResponse.data?.data
                         if (access_token) {
                             localStorage.setItem("sabreAccessToken", access_token)
@@ -75,7 +81,7 @@ export const setupInterceptors = () => {
                         }
 
                         return Promise.reject(err);
-                     }
+                    }
                 }
             }
             // Reject the error if it's not a token expiration issue
