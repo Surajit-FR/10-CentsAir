@@ -39,7 +39,12 @@ async (error)=>{
         console.log("errorMessage",errorMessage)
         if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401){
             console.log("token has expired")
-            const data = GETACCESSTOKEN();
+            const data = await axios({
+  url:'https://api.platform.sabre.com/v2/auth/token',
+  method: 'post',
+  headers:{Authorization:'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==',"Content-Type":'application/x-www-form-urlencoded'},
+  data:{grant_type: 'client_credentials'}
+})
             console.log({data})
         }
     }
