@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SABREAPI } from "./sabreApi";
+import { error } from "console";
 
 let isRefreshing = false;
 let refreshSubscribers: ((token: string) => void)[] = [];
@@ -29,7 +30,17 @@ export const setupInterceptors = () => {
         },
         (error) => Promise.reject(error)
     );
+SABREAPI.interceptors.response.use((response)=>response,
+async (error)=>{
+    const {config, response} = error
+    const originalRequest = config
 
+    if((response?.status === 401 || response.type ===" Validation") && !originalRequest._retry){
+        const errorMessage = response.data?.message || ''
+        console.log("errorMessage",errorMessage)
+    }
+
+})
     // SABREAPI.interceptors.response.use(
     //     (response) => response, // Return the response directly if no error
     //     // async (error) => {
