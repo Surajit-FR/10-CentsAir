@@ -16,13 +16,14 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 };
 
 // Attach request and response interceptors to the Axios instance
+
 export const setupInterceptors = () => {
     SABREAPI.interceptors.request.use(
         (config) => {
             const accessToken = localStorage.getItem("sabreAccessToken")
-            if (accessToken) {
-                config.headers.Authorization = `Bearer ${accessToken}`;
-            }
+            // if (accessToken) {
+                config.headers.Authorization = `Bearer T1RLAQLmT3lR6uByHlguwbaGCA/b4b7YYSCqMMNfX6Cas/L/PxBTZPYnTl5vd3i/SZ+t6mwgAADgeXnuSrpRjrNIoljwSy8Nc+1T+Ir8Ch8/HFM7V4DwdH8Kp/XtGj40owAImBI9LzbAXpFRD4EErCPZyBdbQOb36WXQ93ZPNsB75DpwrEE08MVlOBaKWx99NcEmCTeDcS8JNWSUB0YQUpDGrtxBgAq1POKVccVVtr4jL7fQPAaJj3oDM+wHtoxjhsFJBoQ7uFYAoxcnsotWQTr2u60BdoPo5ICRzW3/zIzToQDjYj0q0vBmGllR5qsB3Z5Lv8IUr22oYDTPn+5+P9doLDY2rvY7NyNsKtZfTOj5PJEtOUWxOHM*`;
+            // }
             // config.headers.Authorization = `Bearer ${accessToken}`;
 
             return config;
@@ -31,59 +32,59 @@ export const setupInterceptors = () => {
     );
     SABREAPI.interceptors.response.use((response) => response,
         async (error) => {
-            const { config, response } = error
-            const originalRequest = config
+            // const { config, response } = error
+            // const originalRequest = config
 
-            if ((response?.status === 401 || response.type === "Validation")) {
-                const errorMessage = response.data?.message || ''
-                localStorage.removeItem("sabreAccessToken")
-                console.log("errorMessage", errorMessage)
-                if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401) {
-                    console.log("token has expired")
-                    if (isRefreshing) {
-                        // Queue the request if token is already being refreshed
-                        return new Promise((resolve, reject) => {
-                            addRefreshSubscriber((token: string) => {
-                                originalRequest.headers.Authorization = `Bearer ${token}`;
-                                resolve(SABREAPI(originalRequest));
-                            });
-                        });
-                    }
+            // if ((response?.status === 401 || response.type === "Validation")) {
+            //     const errorMessage = response.data?.message || ''
+            //     localStorage.removeItem("sabreAccessToken")
+            //     console.log("errorMessage", errorMessage)
+            //     if (errorMessage === "Authentication failed due to invalid credentials" || response?.status === 401) {
+            //         console.log("token has expired")
+            //         if (isRefreshing) {
+            //             // Queue the request if token is already being refreshed
+            //             return new Promise((resolve, reject) => {
+            //                 addRefreshSubscriber((token: string) => {
+            //                     originalRequest.headers.Authorization = `Bearer ${token}`;
+            //                     resolve(SABREAPI(originalRequest));
+            //                 });
+            //             });
+            //         }
 
                     // Set retry flag to avoid looping
-                    originalRequest._retry = true;
-                    isRefreshing = true;
+            //         originalRequest._retry = true;
+            //         isRefreshing = true;
 
-                    try {
-                        const refreshResponse = await axios({
-                            url: 'https://api.platform.sabre.com/v2/auth/token',
-                            method: 'post',
-                            headers: { Authorization: 'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==', "Content-Type": 'application/x-www-form-urlencoded' },
-                            data: { grant_type: 'client_credentials' }
-                        })
-                        const { access_token } = refreshResponse.data?.data
-                        if (access_token) {
-                            localStorage.setItem("sabreAccessToken", access_token)
-                            // Notify all queued requests with the new token
-                            onRefreshed(access_token);
-                            isRefreshing = false;
+            //         try {
+            //             const refreshResponse = await axios({
+            //                 url: 'https://api.platform.sabre.com/v2/auth/token',
+            //                 method: 'post',
+            //                 headers: { Authorization: 'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==', "Content-Type": 'application/x-www-form-urlencoded' },
+            //                 data: { grant_type: 'client_credentials' }
+            //             })
+            //             const { access_token } = refreshResponse.data?.data
+            //             if (access_token) {
+            //                 localStorage.setItem("sabreAccessToken", access_token)
+            //                 // Notify all queued requests with the new token
+            //                 onRefreshed(access_token);
+            //                 isRefreshing = false;
 
-                            // Retry original request with the new token
-                            originalRequest.headers.Authorization = `Bearer ${access_token}`;
-                            return SABREAPI(originalRequest);
-                        }
-                    }
-                    catch (err: any) {
-                        isRefreshing = false;
-                        // If the refresh token has expired or is invalid
-                        if (err.response?.data?.message === "Authentication failed due to invalid credentials") {
-                            localStorage.removeItem("sabreAccessToken");
-                        }
+            //                 // Retry original request with the new token
+            //                 originalRequest.headers.Authorization = `Bearer ${access_token}`;
+            //                 return SABREAPI(originalRequest);
+            //             }
+            //         }
+            //         catch (err: any) {
+            //             isRefreshing = false;
+            //             // If the refresh token has expired or is invalid
+            //             if (err.response?.data?.message === "Authentication failed due to invalid credentials") {
+            //                 localStorage.removeItem("sabreAccessToken");
+            //             }
 
-                        return Promise.reject(err);
-                    }
-                }
-            }
+            //             return Promise.reject(err);
+            //         }
+            //     }
+            // }
             // Reject the error if it's not a token expiration issue
             return Promise.reject(error);
         })

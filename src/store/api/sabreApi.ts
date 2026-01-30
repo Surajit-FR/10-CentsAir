@@ -5,9 +5,9 @@ import { setupInterceptors } from "./sabreInterceptor";
 export const SABREAPI = axios.create({ baseURL: REACT_APP_SABRE_API_BASE_URL, withCredentials: true });
 
 export const GETACCESSTOKEN = ()=>  axios({
-  url:'https://api.platform.sabre.com/v2/auth/token',
+  url:'https://api.cert.platform.sabre.com/v2/auth/token',
   method: 'post',
-  headers:{Authorization:'Basic VmpFNk56WXdOamsxT2pKWlJFdzZRVUU9OlRXOXVhWEl4TkRVPQ==',"Content-Type":'application/x-www-form-urlencoded'},
+  headers:{Authorization:'Basic VmpFNk5IcG1kV054YVd0b2RqVmtPVFJtT0RwRVJWWkRSVTVVUlZJNlJWaFU6VlRoQ09HMVdZblU9OlZUaENPRzFXWW5VPQ==',"Content-Type":'application/x-www-form-urlencoded'},
   data:{grant_type: 'client_credentials'}
 })
 
@@ -18,7 +18,7 @@ export const SEARCHLOCATIONS = (data: any) => {return  SABREAPI({
     url: `/v2/geo/autocomplete`,
     params:{
       limit:30,
-      clientId:"VjE6NzYwNjk1OjJZREw6QUE=",
+      clientId:"VjE6NHpmdWNxaWtodjVkOTRmODpERVZDRU5URVI6RVhU",
       query:data
     },
   });
