@@ -22,7 +22,7 @@ export function* sabreAccesstokenSaga({ payload, type }: { payload: {  }, type: 
         // };
     } catch (error: any) {
         yield put(SabreAuthRequestFailure(error?.response?.data?.message));
-        showToast({ message: error?.response?.data?.message || 'token update failed.', type: 'error', durationTime: 3500, position: "bottom-center" });
+        // showToast({ message: error?.response?.data?.message || 'token update failed.', type: 'error', durationTime: 3500, position: "bottom-center" });
     };
 };
 

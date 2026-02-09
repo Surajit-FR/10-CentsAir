@@ -22,7 +22,7 @@ export const setupInterceptors = () => {
         (config) => {
             const accessToken = localStorage.getItem("sabreAccessToken")
             // if (accessToken) {
-                config.headers.Authorization = `Bearer T1RLAQLmT3lR6uByHlguwbaGCA/b4b7YYSCqMMNfX6Cas/L/PxBTZPYnTl5vd3i/SZ+t6mwgAADgeXnuSrpRjrNIoljwSy8Nc+1T+Ir8Ch8/HFM7V4DwdH8Kp/XtGj40owAImBI9LzbAXpFRD4EErCPZyBdbQOb36WXQ93ZPNsB75DpwrEE08MVlOBaKWx99NcEmCTeDcS8JNWSUB0YQUpDGrtxBgAq1POKVccVVtr4jL7fQPAaJj3oDM+wHtoxjhsFJBoQ7uFYAoxcnsotWQTr2u60BdoPo5ICRzW3/zIzToQDjYj0q0vBmGllR5qsB3Z5Lv8IUr22oYDTPn+5+P9doLDY2rvY7NyNsKtZfTOj5PJEtOUWxOHM*`;
+                config.headers.Authorization = `Bearer T1RLAQJWECC88vdpTCCOCyPe6OEA156HHOYDQIOfpKfFRI1yGxDx74172AVckPYHAPPN+VQDAADggNedpLC5lbWdtWIO2wYbvSiRpJVSqqpJXAgXbhcLD73pDwphywTBvMOBFn0YgSJgADOLqPcGsm/I7OszM0zswqD3xeHS2nOJ0kV7gZogA7PmcjpUKAnQy63tYzJdHXfMX3QV2/wmItEBJp1wA4qjQELg3Vd4RKasGQ7d4yoIIdXKSn5jLWwOAJvJazyW9xVMyk1G/mcVoBVHklx3tAgU1nhej7XYrzXoeWZWMT3+tC2QqPS4gZutYM/QPLttGr//SKFRt/Ez0TnUaYF2BYgWY1yc+ix2wq/aq40hDq1NSMc*`;
             // }
             // config.headers.Authorization = `Bearer ${accessToken}`;
 
